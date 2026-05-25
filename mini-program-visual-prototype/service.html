@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>客服咨询 · 香薰雕刻蜡烛</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="service">
+  <main class="prototype-page">
+    <section class="phone-shell" aria-label="客服咨询页面视觉稿">
+      <div class="wx-status"><span>11:26</span><span class="wx-dots"><span></span><span></span><span></span></span></div>
+      <header class="wx-header">
+        <a class="icon-button" href="product.html" aria-label="返回商品详情"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"/></svg></a>
+        <div>
+          <h1>搭配顾问</h1>
+          <span class="subtle-title">色系 · 香型 · 批发</span>
+        </div>
+        <div class="capsule" aria-label="微信胶囊按钮">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="8"/></svg>
+        </div>
+      </header>
+
+      <div class="screen-scroll has-cta">
+        <section class="gift-hero">
+          <p class="eyebrow" style="color: var(--berry);">CONCIERGE</p>
+          <h2>把“我不确定”变成可成交的问题。</h2>
+          <p>客服入口按问题分类，先收集预算、用途、色系和渠道身份，再进入人工顾问。</p>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <h2 class="section-title serif">常见咨询</h2>
+          </div>
+          <div class="support-grid">
+            <a class="support-tile" href="gift.html"><strong>帮我选礼</strong><span>预算、收礼人、色系不确定。</span></a>
+            <a class="support-tile" href="product.html"><strong>问尺寸香型</strong><span>点燃、陈列、香味浓淡。</span></a>
+            <a class="support-tile" href="sample.html"><strong>批发拿样</strong><span>渠道价、起订量、素材支持。</span></a>
+            <a class="support-tile" href="aftersales.html"><strong>运输售后</strong><span>破损、补寄、订单状态。</span></a>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <h2 class="section-title serif">对话示例</h2>
+            <span class="section-note">真实功能开发前的视觉稿</span>
+          </div>
+          <div class="chat-panel">
+            <div class="chat-row">
+              <div class="avatar">顾</div>
+              <div class="bubble">您好，我先帮您缩小选择范围。是送礼、自己陈列，还是渠道拿样？</div>
+            </div>
+            <div class="chat-row user">
+              <div class="bubble">送生日礼物，预算 300-500，不知道选什么颜色。</div>
+            </div>
+            <div class="chat-row">
+              <div class="avatar">顾</div>
+              <div class="bubble">建议优先看莓红象牙或金蓝礼盒。前者更有仪式感，后者更温和稳妥。</div>
+            </div>
+            <div class="recommend-card" style="box-shadow:none;">
+              <div class="product-media photo-media contain"><img src="assets/product-berry-candle.png" alt="客服推荐的莓红雕刻蜡烛"></div>
+              <div class="recommend-info">
+                <div class="tag-row"><span class="tag berry">顾问推荐</span></div>
+                <h3>莓果洛可可 · 标准礼盒</h3>
+                <p>适合生日、节日和重要关系赠礼。</p>
+                <div class="price-line">¥328 <small>中号起</small></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="sticky-cta single">
+        <div class="service-input">
+          <input aria-label="输入咨询问题" placeholder="输入预算、用途或渠道需求">
+          <button class="btn primary" data-toast="已模拟发送：顾问将继续追问预算、用途和色系" aria-label="发送咨询"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg></button>
+        </div>
+      </div>
+      <div class="toast" data-toast-host role="status" aria-live="polite"></div>
+    </section>
+  </main>
+  <script src="assets/app.js"></script>
+</body>
+</html>

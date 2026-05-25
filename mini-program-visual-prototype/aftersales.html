@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>售后申请 · 香薰雕刻蜡烛</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="aftersales">
+  <main class="prototype-page">
+    <section class="phone-shell" aria-label="售后申请页面视觉稿">
+      <div class="wx-status"><span>11:26</span><span class="wx-dots"><span></span><span></span><span></span></span></div>
+      <header class="wx-header">
+        <a class="icon-button" href="mine.html" aria-label="返回我的"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"/></svg></a>
+        <div>
+          <h1>售后申请</h1>
+          <span class="subtle-title">破损 · 补寄 · 进度</span>
+        </div>
+        <div class="capsule" aria-label="微信胶囊按钮">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="8"/></svg>
+        </div>
+      </header>
+
+      <div class="screen-scroll has-cta">
+        <section class="gift-hero">
+          <p class="eyebrow" style="color: var(--berry);">AFTER-SALES</p>
+          <h2>让易损工艺品的售后规则更可信。</h2>
+          <p>售后页重点解释运输破损、照片凭证、补寄规则和处理进度，减少高客单用户下单前的不安。</p>
+        </section>
+
+        <section class="section">
+          <article class="cart-item">
+            <div class="product-media photo-media contain"><img src="assets/product-berry-candle.png" alt="售后订单中的莓红雕刻蜡烛"></div>
+            <div class="cart-info">
+              <div class="tag-row"><span class="tag berry">可申请售后</span><span class="tag">礼盒订单</span></div>
+              <h3>莓果洛可可 · 中号</h3>
+              <p>订单号：WX202605250018 · 已签收</p>
+              <div class="price-line">¥328</div>
+            </div>
+          </article>
+        </section>
+
+        <section class="section">
+          <div class="progress-card">
+            <h3 style="margin: 0 0 12px; font-size: 15px;">处理进度</h3>
+            <div class="status-steps">
+              <div class="status-step done"><div class="status-dot">✓</div><div><h3>提交申请</h3><p>上传破损照片、外包装照片和问题描述。</p></div></div>
+              <div class="status-step active"><div class="status-dot">2</div><div><h3>客服审核</h3><p>预计 24 小时内确认补寄或其他处理方案。</p></div></div>
+              <div class="status-step"><div class="status-dot">3</div><div><h3>补寄 / 完成</h3><p>补寄后可在订单中查看物流状态。</p></div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <form class="form-card">
+            <div class="field"><label for="issue-type">售后类型</label><select id="issue-type"><option>运输破损</option><option>漏发礼盒 / 贺卡</option><option>香型或尺寸疑问</option><option>其他问题</option></select></div>
+            <div class="field"><label for="issue-desc">问题描述</label><textarea id="issue-desc" placeholder="请描述破损位置、签收时间和希望处理方式"></textarea></div>
+            <div class="field"><label for="issue-photo">上传凭证</label><input id="issue-photo" type="file" accept="image/*"></div>
+          </form>
+        </section>
+
+        <section class="section">
+          <div class="info-card">
+            <h3>售后规则提示</h3>
+            <p>雕刻卷边属于细节工艺，默认加固包装。签收后如发现运输破损，请保留外包装和商品照片，客服会根据情况补寄或处理。</p>
+          </div>
+        </section>
+      </div>
+
+      <div class="sticky-cta">
+        <a class="btn ghost" href="service.html">联系客服</a>
+        <button class="btn primary" data-toast="已模拟提交：售后申请进入客服审核">提交售后申请</button>
+      </div>
+      <div class="toast" data-toast-host role="status" aria-live="polite"></div>
+    </section>
+  </main>
+  <script src="assets/app.js"></script>
+</body>
+</html>

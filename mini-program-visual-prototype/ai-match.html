@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 搭配推荐 · 香薰雕刻蜡烛</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="ai-match">
+  <main class="prototype-page">
+    <section class="phone-shell" aria-label="AI 搭配推荐页面视觉稿">
+      <div class="wx-status"><span>11:26</span><span class="wx-dots"><span></span><span></span><span></span></span></div>
+      <header class="wx-header">
+        <a class="icon-button" href="home.html" aria-label="返回首页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"/></svg></a>
+        <div>
+          <h1>AI 搭配推荐</h1>
+          <span class="subtle-title">预算 · 收礼人 · 场景</span>
+        </div>
+        <div class="capsule" aria-label="微信胶囊按钮">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="8"/></svg>
+        </div>
+      </header>
+
+      <div class="screen-scroll has-cta">
+        <section class="growth-hero">
+          <p class="eyebrow">AI GIFT MATCH</p>
+          <h2>把模糊的送礼需求，变成三款可解释的推荐。</h2>
+          <p>视觉稿阶段只演示推荐结构，真实 AI 能力后续再接入。</p>
+          <div class="hero-stat-row">
+            <div class="hero-stat"><strong>3 款</strong><span>推荐结果</span></div>
+            <div class="hero-stat"><strong>4 项</strong><span>输入偏好</span></div>
+            <div class="hero-stat"><strong>顾问</strong><span>兜底确认</span></div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="prompt-card">
+            <div class="section-head" style="margin-bottom: 8px;">
+              <h2 class="section-title">描述你的送礼场景</h2>
+            </div>
+            <textarea aria-label="送礼场景描述">送给女性朋友，生日礼物，预算 300-500，喜欢红色但不要太张扬。</textarea>
+            <div class="segmented" data-choice-group style="margin-top: 12px;">
+              <button class="segment active" data-choice aria-pressed="true">生日</button>
+              <button class="segment" data-choice aria-pressed="false">乔迁</button>
+              <button class="segment" data-choice aria-pressed="false">婚礼</button>
+              <button class="segment" data-choice aria-pressed="false">门店</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <h2 class="section-title serif">推荐结果</h2>
+            <span class="section-note">静态生成示意</span>
+          </div>
+          <article class="ai-result">
+            <img src="assets/product-berry-candle.png" alt="AI 推荐的莓果洛可可蜡烛">
+            <div>
+              <div class="tag-row"><span class="tag berry">最匹配</span><span class="tag">礼盒</span></div>
+              <h3>莓果洛可可 · 中号礼盒</h3>
+              <p>红色足够有仪式感，象牙和金色会压住张扬感，适合生日赠礼。</p>
+              <div class="price-line">¥328 <small>中号起</small></div>
+            </div>
+          </article>
+        </section>
+
+        <section class="section">
+          <div class="insight-list">
+            <div class="mini-step"><b>1</b><div><strong>为什么推荐它</strong><span>预算匹配、色系明确、礼盒可选，客服能继续追问贺卡内容。</span></div></div>
+            <div class="mini-step"><b>2</b><div><strong>备选方向</strong><span>如果希望更温和，可切换为金蓝象牙礼盒。</span></div></div>
+          </div>
+        </section>
+      </div>
+
+      <div class="sticky-cta">
+        <a class="btn ghost" href="service.html">问顾问</a>
+        <button class="btn primary" data-toast="已模拟生成：已更新三款搭配推荐">生成推荐</button>
+      </div>
+      <div class="toast" data-toast-host role="status" aria-live="polite"></div>
+    </section>
+  </main>
+  <script src="assets/app.js"></script>
+</body>
+</html>

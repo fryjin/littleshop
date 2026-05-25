@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>定制蜡烛 · 香薰雕刻蜡烛</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="custom">
+  <main class="prototype-page">
+    <section class="phone-shell" aria-label="定制蜡烛页面视觉稿">
+      <div class="wx-status"><span>11:26</span><span class="wx-dots"><span></span><span></span><span></span></span></div>
+      <header class="wx-header">
+        <a class="icon-button" href="home.html" aria-label="返回首页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"/></svg></a>
+        <div>
+          <h1>定制蜡烛</h1>
+          <span class="subtle-title">色系 · 香型 · 贺卡</span>
+        </div>
+        <div class="capsule" aria-label="微信胶囊按钮">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="8"/></svg>
+        </div>
+      </header>
+
+      <div class="screen-scroll has-cta">
+        <section class="detail-gallery">
+          <div class="gallery-stage photo-stage">
+            <img src="assets/hero-candle-collection.png" alt="可定制色系的德国手工雕刻蜡烛">
+          </div>
+        </section>
+
+        <section class="detail-main">
+          <div class="tag-row"><span class="tag berry">高客单</span><span class="tag">顾问确认</span><span class="tag">礼品定制</span></div>
+          <h2 class="detail-title">把色系、香型和赠礼语气，都留给收礼人。</h2>
+          <p class="detail-sub">定制页用于先收集偏好，不直接承诺生产周期和价格，最终由顾问确认可行性。</p>
+        </section>
+
+        <section class="section">
+          <div class="config-card">
+            <h3>定制偏好</h3>
+            <p class="option-label">色系方向</p>
+            <div class="swatch-row" data-choice-group>
+              <button class="swatch" data-choice aria-pressed="true" aria-label="莓红金色" style="background: linear-gradient(135deg,#fff5e6 0 40%,#8a1238 41% 76%,#f3d991 77%);"></button>
+              <button class="swatch" data-choice aria-pressed="false" aria-label="金蓝象牙" style="background: linear-gradient(135deg,#fffefa 0 38%,#d6a645 39% 66%,#9ebbd2 67%);"></button>
+              <button class="swatch" data-choice aria-pressed="false" aria-label="青绿深蓝" style="background: linear-gradient(135deg,#fffefa 0 38%,#0f766e 39% 70%,#22577a 71%);"></button>
+            </div>
+            <p class="option-label">香型</p>
+            <div class="segmented" data-choice-group>
+              <button class="segment active" data-choice aria-pressed="true">玫瑰木</button>
+              <button class="segment" data-choice aria-pressed="false">白茶</button>
+              <button class="segment" data-choice aria-pressed="false">无香陈列</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="estimate-card">
+            <strong>¥680-980</strong>
+            <span>参考预算区间。具体价格按尺寸、色层复杂度、包装和交期确认。</span>
+          </div>
+        </section>
+
+        <section class="section">
+          <form class="form-card">
+            <div class="field"><label for="custom-text">贺卡 / 刻字内容</label><textarea id="custom-text" placeholder="例如：生日快乐，希望这支蜡烛陪你度过每个安静夜晚"></textarea></div>
+            <div class="field"><label for="custom-date">期望使用日期</label><input id="custom-date" placeholder="例如：6 月 18 日前"></div>
+          </form>
+        </section>
+      </div>
+
+      <div class="sticky-cta">
+        <a class="btn ghost" href="ai-match.html">先让 AI 推荐</a>
+        <button class="btn primary" data-toast="已模拟提交：顾问将确认定制可行性">提交定制咨询</button>
+      </div>
+      <div class="toast" data-toast-host role="status" aria-live="polite"></div>
+    </section>
+  </main>
+  <script src="assets/app.js"></script>
+</body>
+</html>
