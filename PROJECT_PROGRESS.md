@@ -178,3 +178,41 @@ AI 绘图生成并用于项目的图片素材：
 当前视觉稿入口：
 
 `D:\codex\mini-program-visual-prototype\index.html`
+
+## 11. 本轮 Codex 线程摘要
+
+本轮用户要求先接管 `D:\codex` 项目并检查当前规划需求实现情况。经读取目录、页面、样式、脚本、素材和截图后确认：
+
+- 项目为纯 HTML/CSS/JS 微信小程序商城静态视觉稿。
+- 第一阶段 MVP 页面已完成。
+- 当前不进入真实小程序、后端、支付、登录、客服接口开发。
+
+随后用户明确下一步策略：
+
+- 先输出所有未来需要开发页面的静态视觉稿。
+- 第二阶段保留：会员积分、复购券、节日活动、素材下载、渠道报价单。
+- 第二阶段去除：分销员、视频号直播承接。
+- 第三阶段保留：定制蜡烛、婚礼批量采购、AI 搭配推荐、门店陈列方案。
+- 第三阶段去除：3D/360 展示。
+
+根据上述取舍，已实现 V1.1 静态页面补充：
+
+- 新增 9 个 HTML 页面。
+- 更新 `index.html` 页面地图。
+- 更新 `home.html`、`mine.html`、`wholesale.html`、`sample.html` 的业务入口链路。
+- 扩展 `assets/styles.css` 的增长页和高级页组件样式。
+- 修正 `assets/app.js` 的选择态与 toast 演示交互。
+- 刷新关键页面截图到 `_screenshots/`。
+
+本轮验证结果：
+
+- 当前共有 19 个 HTML 页面。
+- 所有本地 `href/src/url(...)` 引用检查通过。
+- 19 个页面在 390 x 844 移动视口下无横向溢出。
+- 新增页面的 toast、选择态交互检查通过。
+
+GitHub 上传记录：
+
+- 仓库：`https://github.com/fryjin/littleshop`
+- 分支：`main`
+- 上传范围：`README.md`、`PROJECT_PROGRESS.md`、`mini-program-visual-prototype/` 全量视觉稿、素材与截图。
