@@ -3,18 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>选礼 · 香薰雕刻蜡烛</title>
+  <title>送礼 · 香薰雕刻蜡烛</title>
+  <link rel="icon" href="data:,">
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body data-page="gift">
   <main class="prototype-page">
-    <section class="phone-shell" aria-label="选礼页面视觉稿">
+    <section class="phone-shell" aria-label="零售送礼页面视觉稿">
       <div class="wx-status"><span>11:26</span><span class="wx-dots"><span></span><span></span><span></span></span></div>
       <header class="wx-header">
         <a class="icon-button" href="home.html" aria-label="返回首页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"/></svg></a>
         <div>
-          <h1>选礼助手</h1>
-          <span class="subtle-title">三步推荐</span>
+          <h1>送礼</h1>
+          <span class="subtle-title">场景 · 预算 · 节日</span>
         </div>
         <div class="capsule" aria-label="微信胶囊按钮">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
@@ -23,76 +24,179 @@
       </header>
 
       <div class="screen-scroll">
-        <section class="gift-hero">
-          <p class="eyebrow" style="color: var(--berry);">GIFT FINDER</p>
-          <h2>不用懂蜡烛，也能选到体面的礼。</h2>
-          <p>把选择题缩短为预算、用途、色系。适合第一次接触雕刻蜡烛的用户，也方便客服二次跟进。</p>
-          <div class="progress-line" aria-hidden="true">
-            <span class="progress-step active"></span>
-            <span class="progress-step active"></span>
-            <span class="progress-step"></span>
+        <nav class="gift-tabbar flush" aria-label="零售送礼路径">
+          <button class="gift-tab active" type="button" data-gift-tab="scene" aria-pressed="true">按场景选</button>
+          <button class="gift-tab" type="button" data-gift-tab="budget" aria-pressed="false">按预算选</button>
+          <button class="gift-tab" type="button" data-gift-tab="festival" aria-pressed="false">按节日选</button>
+        </nav>
+
+        <section class="gift-panel active" data-gift-panel="scene">
+          <div class="section-head">
+            <h2 class="section-title serif">按场景选</h2>
+            <span class="section-note">先确定送给谁</span>
           </div>
+          <div class="scene-choice-grid">
+            <a class="recommend-card scene-choice-card" href="product.html">
+              <div class="product-media photo-media contain"><img src="assets/product-berry-candle.png" alt="生日答谢送礼蜡烛"></div>
+              <div class="recommend-info">
+                <div class="tag-row"><span class="tag berry">生日 / 答谢</span><span class="tag">进阶系列</span></div>
+                <h3>莓果洛可可 · 体面不出错</h3>
+                <p>适合普通朋友、同事和第一次送雕刻蜡烛。色彩温和，默认精品包装。</p>
+                <div class="price-line">零售价待确认 <small>按尺寸确认</small></div>
+              </div>
+            </a>
+            <a class="recommend-card scene-choice-card" href="product.html">
+              <div class="product-media photo-media"><img src="assets/gift-box-candle.png" alt="重要关系礼盒蜡烛"></div>
+              <div class="recommend-info">
+                <div class="tag-row"><span class="tag berry">重要关系</span><span class="tag">匠作系列</span></div>
+                <h3>晨雾金蓝 · 礼盒陈列款</h3>
+                <p>适合纪念日、长辈和重要客户礼。默认礼盒包装，颜色更有收藏感。</p>
+                <div class="price-line">零售价待确认 <small>礼盒款</small></div>
+              </div>
+            </a>
+            <a class="recommend-card scene-choice-card" href="product.html">
+              <div class="product-media photo-media"><img src="assets/detail/detail-giftbox.png" alt="乔迁空间陈列蜡烛"></div>
+              <div class="recommend-info">
+                <div class="tag-row"><span class="tag berry">乔迁 / 空间礼</span><span class="tag">L/XL 尺寸</span></div>
+                <h3>更适合摆出来的礼物</h3>
+                <p>优先选大尺寸和低饱和色系，兼顾香氛、陈列和新家氛围。</p>
+                <div class="price-line">顾问确认 <small>按空间选尺寸</small></div>
+              </div>
+            </a>
+            <a class="recommend-card scene-choice-card" href="festival.html">
+              <div class="product-media photo-media"><img src="assets/hero-candle-collection.png" alt="企业节点送礼组合"></div>
+              <div class="recommend-info">
+                <div class="tag-row"><span class="tag berry">企业 / 节点</span><span class="tag">节日系列</span></div>
+                <h3>节日限定组合</h3>
+                <p>适合节点活动、企业礼和年末祝福。包装需手动选择，方便适配预算。</p>
+                <div class="price-line">零售价待确认 <small>包装另选</small></div>
+              </div>
+            </a>
+          </div>
+          <p class="note-line">默认用户为零售买家，此处不展示批发价格和渠道专属基础线。</p>
         </section>
 
-        <section class="section">
+        <section class="gift-panel" data-gift-panel="budget">
           <div class="section-head">
-            <h2 class="section-title">1. 预算范围</h2>
-            <span class="section-note">零售价格段清晰</span>
+            <h2 class="section-title serif">按预算选</h2>
+            <span class="section-note">先定金额，再看建议</span>
           </div>
-          <div class="choice-grid two" data-choice-group>
-            <button class="choice-card" data-choice aria-pressed="false"><strong>¥200-300</strong><span>入门礼品，适合生日和答谢。</span></button>
-            <button class="choice-card" data-choice aria-pressed="true"><strong>¥300-500</strong><span>标准礼盒，最稳妥的送礼档。</span></button>
-            <button class="choice-card" data-choice aria-pressed="false"><strong>¥500-700</strong><span>高级系列，适合重要关系。</span></button>
-            <button class="choice-card" data-choice aria-pressed="false"><strong>¥700-900</strong><span>大尺寸陈列，适合空间礼。</span></button>
+          <div class="choice-grid two budget-picker" data-budget-picker data-choice-group>
+            <button class="choice-card budget-choice" type="button" data-choice data-budget-option="under199" aria-pressed="false"><strong>¥199 内</strong><span>轻量答谢、首次购买、小礼。</span></button>
+            <button class="choice-card budget-choice" type="button" data-choice data-budget-option="mid399" aria-pressed="false"><strong>¥200-399</strong><span>朋友、同事、生日送礼主力区间。</span></button>
+            <button class="choice-card budget-choice" type="button" data-choice data-budget-option="high699" aria-pressed="false"><strong>¥400-699</strong><span>重要关系、礼盒组合、升级包装。</span></button>
+            <button class="choice-card budget-choice" type="button" data-choice data-budget-option="over700" aria-pressed="false"><strong>¥700+</strong><span>高端陈列、企业节点、空间礼。</span></button>
+            <button class="choice-card budget-choice wide" type="button" data-choice data-budget-option="custom" aria-pressed="false"><strong>预算不确定</strong><span>让顾问先帮你缩小范围。</span></button>
           </div>
-        </section>
 
-        <section class="section">
-          <div class="section-head">
-            <h2 class="section-title">2. 使用场景</h2>
+          <div class="budget-result-empty" data-budget-empty>
+            <strong>请选择一个预算区间</strong>
+            <span>下方会给出尺寸、包装和下一步入口，不重复按场景内容。</span>
           </div>
-          <div class="choice-grid" data-choice-group>
-            <button class="choice-card" data-choice aria-pressed="true"><strong>生日 / 节日送礼</strong><span>优先推荐礼盒、贺卡、不过分挑人的色系。</span></button>
-            <button class="choice-card" data-choice aria-pressed="false"><strong>婚礼 / 活动伴手礼</strong><span>推荐成套色系，方便批量统一陈列。</span></button>
-            <button class="choice-card" data-choice aria-pressed="false"><strong>民宿 / 门店陈列</strong><span>优先推荐视觉冲击强、尺寸更大的款式。</span></button>
-          </div>
-        </section>
 
-        <section class="section">
-          <div class="section-head">
-            <h2 class="section-title">3. 喜欢的色系</h2>
-          </div>
-          <div class="swatch-row" data-choice-group>
-            <button class="swatch" data-choice aria-pressed="true" aria-label="莓红象牙色" style="background: linear-gradient(135deg,#fff5e6 0 40%,#8a1238 41% 76%,#f3d991 77%);"></button>
-            <button class="swatch" data-choice aria-pressed="false" aria-label="金蓝象牙色" style="background: linear-gradient(135deg,#fffefa 0 38%,#d6a645 39% 66%,#9ebbd2 67%);"></button>
-            <button class="swatch" data-choice aria-pressed="false" aria-label="青绿象牙色" style="background: linear-gradient(135deg,#fffefa 0 38%,#0f766e 39% 70%,#22577a 71%);"></button>
-            <button class="swatch" data-choice aria-pressed="false" aria-label="黑金灰色" style="background: linear-gradient(135deg,#f4efe6 0 33%,#1f1b19 34% 68%,#a16207 69%);"></button>
-            <button class="swatch" data-choice aria-pressed="false" aria-label="粉白色" style="background: linear-gradient(135deg,#fff7f2 0 35%,#d96c86 36% 70%,#fffefa 71%);"></button>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="section-head">
-            <h2 class="section-title serif">推荐结果</h2>
-            <a class="link-small" href="product.html">看详情</a>
-          </div>
-          <a class="recommend-card" href="product.html">
-            <div class="product-media photo-media contain"><img src="assets/product-berry-candle.png" alt="推荐款莓红象牙雕刻蜡烛"></div>
-            <div class="recommend-info">
-              <div class="tag-row"><span class="tag berry">最稳妥</span><span class="tag">礼盒可选</span></div>
-              <h3>莓果洛可可 · 标准礼盒</h3>
-              <p>莓红与象牙色对比强，适合生日、节日和仪式感场景。可附空白贺卡。</p>
-              <div class="price-line">¥328 <small>中号起</small></div>
+          <div class="budget-result" data-budget-panel="under199">
+            <div class="budget-advice">
+              <div>
+                <span class="eyebrow dark">¥199 内</span>
+                <h3>S 尺寸优先，保持精品包装</h3>
+                <p>适合轻量答谢和第一次购买。建议选进阶系列浅色或柔和色，控制预算同时保留礼品感。</p>
+              </div>
+              <div class="advice-grid">
+                <span><b>尺寸</b>S / 小体量</span>
+                <span><b>包装</b>默认精品</span>
+                <span><b>组合</b>单件更稳</span>
+              </div>
+              <a class="btn primary" href="catalog.html">看可选商品</a>
             </div>
-          </a>
-          <p class="note-line">不确定色系时，推荐先进入详情页点击“问搭配顾问”，比让用户自己翻完整列表更容易成交。</p>
+          </div>
+
+          <div class="budget-result" data-budget-panel="mid399">
+            <div class="budget-advice">
+              <div>
+                <span class="eyebrow dark">¥200-399</span>
+                <h3>M 尺寸适合多数零售送礼</h3>
+                <p>预算和体面感最均衡。优先看进阶系列，也可在重要关系时升级礼盒包装。</p>
+              </div>
+              <div class="advice-grid">
+                <span><b>尺寸</b>M / 推荐送礼</span>
+                <span><b>包装</b>精品或礼盒</span>
+                <span><b>组合</b>单件 + 贺卡</span>
+              </div>
+              <a class="btn primary" href="product.html">查看推荐款</a>
+            </div>
+          </div>
+
+          <div class="budget-result" data-budget-panel="high699">
+            <div class="budget-advice">
+              <div>
+                <span class="eyebrow dark">¥400-699</span>
+                <h3>L 尺寸或匠作系列更有分量</h3>
+                <p>适合长辈、纪念日和重要客户。建议选择匠作系列或进阶系列升级礼盒。</p>
+              </div>
+              <div class="advice-grid">
+                <span><b>尺寸</b>L / 陈列更稳</span>
+                <span><b>包装</b>礼盒优先</span>
+                <span><b>组合</b>可加贺卡</span>
+              </div>
+              <a class="btn primary" href="catalog.html">看匠作系列</a>
+            </div>
+          </div>
+
+          <div class="budget-result" data-budget-panel="over700">
+            <div class="budget-advice">
+              <div>
+                <span class="eyebrow dark">¥700+</span>
+                <h3>XL 或多件组合，强调空间陈列</h3>
+                <p>适合企业节点、乔迁空间礼和高端关系。建议由顾问确认尺寸、色系和运输方案。</p>
+              </div>
+              <div class="advice-grid">
+                <span><b>尺寸</b>XL / 空间礼</span>
+                <span><b>包装</b>礼盒 + 外箱</span>
+                <span><b>组合</b>可多件搭配</span>
+              </div>
+              <a class="btn primary" href="service.html">问顾问搭配</a>
+            </div>
+          </div>
+
+          <div class="budget-result" data-budget-panel="custom">
+            <div class="budget-advice">
+              <div>
+                <span class="eyebrow dark">预算不确定</span>
+                <h3>先告诉我们关系、节日和收礼人</h3>
+                <p>顾问会先给出 2-3 个零售方案，再确认尺寸、包装和最终价格。</p>
+              </div>
+              <div class="advice-grid">
+                <span><b>输入</b>关系与场景</span>
+                <span><b>输出</b>预算范围</span>
+                <span><b>价格</b>顾问确认</span>
+              </div>
+              <a class="btn primary" href="service.html">开始咨询</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="gift-panel" data-gift-panel="festival">
+          <div class="section-head">
+            <h2 class="section-title serif">按节日选</h2>
+            <span class="section-note">常见节点先覆盖</span>
+          </div>
+          <div class="festival-grid">
+            <a class="festival-card" href="festival.html"><img src="assets/festival/festival-spring.png" alt="春节送礼香薰蜡烛"><span>春节</span><strong>金红、香槟、企业拜访礼</strong></a>
+            <a class="festival-card" href="festival.html"><img src="assets/festival/festival-lantern.png" alt="元宵和开年礼香薰蜡烛"><span>元宵 / 开年礼</span><strong>暖光、茶席、轻商务祝福</strong></a>
+            <a class="festival-card" href="product.html"><img src="assets/festival/festival-mother.png" alt="女神节母亲节香薰蜡烛"><span>女神节 / 母亲节</span><strong>花香、柔粉、温柔礼盒</strong></a>
+            <a class="festival-card" href="product.html"><img src="assets/festival/festival-romance.png" alt="520七夕纪念日香薰蜡烛"><span>520 / 七夕</span><strong>莓红、象牙、仪式感</strong></a>
+            <a class="festival-card" href="festival.html"><img src="assets/festival/festival-dragonboat.png" alt="端午伴手礼香薰蜡烛"><span>端午</span><strong>青绿、草本、伴手礼</strong></a>
+            <a class="festival-card" href="festival.html"><img src="assets/festival/festival-midautumn.png" alt="中秋团圆礼香薰蜡烛"><span>中秋</span><strong>暖金、团圆、礼盒组合</strong></a>
+            <a class="festival-card" href="product.html"><img src="assets/festival/festival-teacher.png" alt="教师节感谢礼香薰蜡烛"><span>教师节 / 感谢礼</span><strong>低调、雅致、感谢心意</strong></a>
+            <a class="festival-card" href="festival.html"><img src="assets/festival/festival-yearend.png" alt="圣诞和年末祝福香薰蜡烛"><span>圣诞 / 年末</span><strong>松绿、酒红、年末祝福</strong></a>
+          </div>
         </section>
       </div>
 
       <nav class="tabbar" aria-label="底部导航">
         <a class="tab-item" data-tab="home" href="home.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10"/></svg><span>首页</span></a>
-        <a class="tab-item" data-tab="gift" href="gift.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 12v8H4v-8"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/></svg><span>选礼</span></a>
-        <a class="tab-item" data-tab="wholesale" href="wholesale.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 7h18v13H3z"/><path d="M7 7V4h10v3"/></svg><span>批发</span></a>
+        <a class="tab-item" data-tab="gift" href="gift.html#scene"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 12v8H4v-8"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/></svg><span>送礼</span></a>
+        <a class="tab-item" data-tab="catalog" href="catalog.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h7v7H4z"/><path d="M13 4h7v7h-7z"/><path d="M4 13h7v7H4z"/><path d="M13 13h7v7h-7z"/></svg><span>商品</span></a>
         <a class="tab-item" data-tab="cart" href="cart.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/><path d="M3 4h2l3 12h10l3-8H7"/></svg><span>购物车</span></a>
         <a class="tab-item" data-tab="mine" href="mine.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 22a8 8 0 0 1 16 0"/></svg><span>我的</span></a>
       </nav>

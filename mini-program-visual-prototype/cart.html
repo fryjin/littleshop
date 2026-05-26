@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>购物车 · 香薰雕刻蜡烛</title>
+  <link rel="icon" href="data:,">
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body data-page="cart">
@@ -13,8 +14,8 @@
       <header class="wx-header">
         <a class="icon-button" href="product.html" aria-label="返回商品详情"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"/></svg></a>
         <div>
-          <h1>确认礼品订单</h1>
-          <span class="subtle-title">下单前检查</span>
+          <h1>购物车</h1>
+          <span class="subtle-title">下单前检查配置</span>
         </div>
         <div class="capsule" aria-label="微信胶囊按钮">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
@@ -23,29 +24,67 @@
       </header>
 
       <div class="screen-scroll has-cta">
-        <section class="section" style="margin-top: 12px;">
+        <section class="section cart-section">
           <div class="cart-list">
             <article class="cart-item">
-              <div class="product-media photo-media contain"><img src="assets/product-berry-candle.png" alt="购物车中的莓红雕刻蜡烛"></div>
+              <div class="product-media photo-media contain"><img src="assets/detail/detail-hero.png" alt="购物车中的莓红雕刻蜡烛"></div>
               <div class="cart-info">
-                <div class="tag-row"><span class="tag berry">礼盒</span><span class="tag">中号</span></div>
+                <div class="tag-row"><span class="tag berry">进阶</span><span class="tag">M 号</span></div>
                 <h3>莓果洛可可 · 手工雕刻香薰蜡烛</h3>
-                <p>香型：玫瑰木 / 包装：硬质礼盒 + 空白贺卡</p>
+                <p class="cart-meta-list">M · 约 7 x 10 cm<br>玫瑰木：红莓 / 玫瑰木 / 琥珀<br>经典卷边 · 礼盒包装 +20 · 空白贺卡</p>
+                <button class="config-toggle" type="button" data-cart-config-toggle aria-expanded="false">修改配置</button>
                 <div class="qty-row">
-                  <div class="price-line">¥328</div>
+                  <div class="price-line">价格待确认</div>
                   <div class="qty-control" aria-label="数量选择"><button aria-label="减少数量">−</button><span>1</span><button aria-label="增加数量">+</button></div>
                 </div>
               </div>
             </article>
+
+            <div class="cart-config-panel" data-cart-config hidden>
+              <div class="cart-option-section">
+                <strong>尺寸</strong>
+                <div class="segmented compact" data-choice-group>
+                  <button class="segment" data-choice aria-pressed="false">S · 6 x 8</button>
+                  <button class="segment active" data-choice aria-pressed="true">M · 7 x 10</button>
+                  <button class="segment" data-choice aria-pressed="false">L · 8 x 12</button>
+                  <button class="segment" data-choice aria-pressed="false">XL · 10 x 15</button>
+                </div>
+              </div>
+              <div class="cart-option-section">
+                <strong>香型</strong>
+                <div class="fragrance-strip small" data-choice-group>
+                  <button class="fragrance-pill" type="button" data-choice aria-pressed="true">玫瑰木</button>
+                  <button class="fragrance-pill" type="button" data-choice aria-pressed="false">白茶</button>
+                  <button class="fragrance-pill" type="button" data-choice aria-pressed="false">无香陈列</button>
+                </div>
+                <p class="cart-fragrance-note">当前香调：前调红莓，中调玫瑰木，后调琥珀。完整香调只在修改配置时展开。</p>
+              </div>
+              <div class="cart-option-section">
+                <strong>雕花</strong>
+                <div class="segmented compact" data-choice-group>
+                  <button class="segment active" data-choice aria-pressed="true">经典卷边</button>
+                  <button class="segment" data-choice aria-pressed="false">花瓣层叠</button>
+                  <button class="segment" data-choice aria-pressed="false">宫廷褶皱</button>
+                </div>
+              </div>
+              <div class="cart-option-section">
+                <strong>包装</strong>
+                <div class="choice-grid two" data-choice-group>
+                  <button class="choice-card compact" data-choice aria-pressed="false"><strong>精品包装</strong><span>进阶默认，补差 ¥0。</span></button>
+                  <button class="choice-card compact" data-choice aria-pressed="true"><strong>礼盒包装</strong><span>当前选择，额外 +20。</span></button>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
         <section class="section">
           <div class="info-card">
-            <h3>礼品服务</h3>
+            <h3>订单服务</h3>
             <div class="choice-grid" data-choice-group="multi">
-              <button class="choice-card" data-choice aria-pressed="true"><strong>礼盒包装</strong><span>硬质盒、缓冲纸、防损外箱。</span></button>
-              <button class="choice-card" data-choice aria-pressed="true"><strong>空白贺卡</strong><span>避免机器字迹，支持手写赠言。</span></button>
+              <button class="choice-card" data-choice aria-pressed="true"><strong>加固外箱</strong><span>雕花边缘防损，默认随礼盒加固。</span></button>
+              <button class="choice-card" data-choice aria-pressed="true"><strong>送礼不放价格单</strong><span>包裹内不出现零售价和确认价。</span></button>
+              <button class="choice-card" data-choice aria-pressed="false"><strong>顾问核对后发货</strong><span>发货前二次确认香型、包装和贺卡。</span></button>
             </div>
           </div>
           <div class="info-card">
@@ -57,24 +96,25 @@
         <section class="section">
           <div class="info-card">
             <h3>订单金额</h3>
-            <div class="summary-row"><span>商品小计</span><strong>¥328</strong></div>
-            <div class="summary-row"><span>礼盒升级</span><strong>¥0</strong></div>
+            <div class="summary-row"><span>商品小计</span><strong>顾问确认</strong></div>
+            <div class="summary-row"><span>礼盒升级</span><strong>+¥20</strong></div>
+            <div class="summary-row"><span>订单服务</span><strong>¥0</strong></div>
             <div class="summary-row"><span>运费</span><strong>¥0</strong></div>
-            <div class="summary-row"><span>应付合计</span><strong style="color: var(--berry); font-size: 18px;">¥328</strong></div>
+            <div class="summary-row"><span>应付合计</span><strong style="color: var(--berry); font-size: 18px;">待确认</strong></div>
           </div>
         </section>
 
         <section class="section">
           <div class="info-card">
-            <h3>成交前降低疑虑</h3>
-            <p>如果不确定色系、尺寸或送礼是否合适，可以先咨询搭配顾问。客服话术入口放在支付前，减少用户返回商品页的流失。</p>
+            <h3>下单前降低疑虑</h3>
+            <p>如果不确定色系、尺寸或送礼是否合适，可以先咨询搭配顾问。客服入口放在支付前，减少用户返回商品页的流失。</p>
           </div>
         </section>
       </div>
 
       <div class="sticky-cta">
         <a class="btn ghost" href="service.html">问顾问</a>
-        <button class="btn primary" data-toast="已模拟微信支付确认流程">微信支付 ¥328</button>
+        <button class="btn primary" data-toast="已模拟提交，顾问将确认最终价格">提交确认</button>
       </div>
       <div class="toast" data-toast-host role="status" aria-live="polite"></div>
     </section>

@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>商品详情 · 香薰雕刻蜡烛</title>
+  <link rel="icon" href="data:,">
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body data-page="product">
@@ -11,10 +12,10 @@
     <section class="phone-shell" aria-label="商品详情页视觉稿">
       <div class="wx-status"><span>11:26</span><span class="wx-dots"><span></span><span></span><span></span></span></div>
       <header class="wx-header">
-        <a class="icon-button" href="home.html" aria-label="返回首页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"/></svg></a>
+        <a class="icon-button" href="catalog.html" aria-label="返回全部商品"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"/></svg></a>
         <div>
           <h1>商品详情</h1>
-          <span class="subtle-title">莓果洛可可</span>
+          <span class="subtle-title">AD-07 莓果洛可可</span>
         </div>
         <div class="capsule" aria-label="微信胶囊按钮">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
@@ -23,54 +24,107 @@
       </header>
 
       <div class="screen-scroll has-cta">
-        <section class="detail-gallery">
+        <section class="detail-gallery" data-gallery-carousel>
           <div class="gallery-stage photo-stage">
-            <img src="assets/product-berry-candle.png" alt="莓红象牙色德国手工雕刻香薰蜡烛细节">
+            <div class="gallery-track" data-gallery-track>
+              <img src="assets/detail/detail-hero.png" alt="莓红象牙色手工雕刻香薰蜡烛正面">
+              <img src="assets/detail/detail-angle.png" alt="手工雕刻香薰蜡烛侧面层次">
+              <img src="assets/detail/detail-macro.png" alt="雕刻花瓣和蜡质细节">
+              <img src="assets/detail/detail-giftbox.png" alt="精品包装与贺卡场景">
+            </div>
+            <span class="gallery-count" data-gallery-count>1/4</span>
+          </div>
+          <div class="gallery-dots" data-gallery-dots aria-label="商品图片切换">
+            <button type="button" class="active" aria-label="第 1 张图片"></button>
+            <button type="button" aria-label="第 2 张图片"></button>
+            <button type="button" aria-label="第 3 张图片"></button>
+            <button type="button" aria-label="第 4 张图片"></button>
           </div>
         </section>
 
         <section class="detail-main">
-          <div class="tag-row"><span class="tag berry">手工雕刻</span><span class="tag">礼盒可选</span><span class="tag">香薰蜡烛</span></div>
-          <h2 class="detail-title">莓果洛可可 · 德国手工雕刻香薰蜡烛</h2>
-          <p class="detail-sub">复杂卷边造型与莓红、象牙、金色层次搭配，适合生日礼物、节日礼盒和家居陈列。</p>
-          <div class="price-xl">¥328 <small>中号起 / 价格随尺寸变化</small></div>
+          <div class="tag-row"><span class="tag berry">进阶系列</span><span class="tag">AD-07</span><span class="tag">精品包装</span></div>
+          <h2 class="detail-title">莓果洛可可 · 手工雕刻香薰蜡烛</h2>
+          <p class="detail-sub">莓红、象牙和旧金色层次搭配，适合生日、感谢和节日送礼。当前为进阶系列示例，价格随尺寸和包装确认。</p>
+          <div class="price-xl">价格待确认 <small>尺寸、香型、包装由顾问确认</small></div>
+          <div class="product-spec-strip">
+            <span>系列：进阶系列</span>
+            <span>颜色：AD-07 莓果洛可可</span>
+            <span>销售：零售可购</span>
+          </div>
         </section>
 
         <section class="option-block">
           <p class="option-label">选择尺寸</p>
-          <div class="size-grid" data-choice-group>
-            <button class="size-card" data-choice aria-pressed="false"><strong>小号</strong><span>¥228</span></button>
-            <button class="size-card" data-choice aria-pressed="true"><strong>中号</strong><span>¥328</span></button>
-            <button class="size-card" data-choice aria-pressed="false"><strong>大号</strong><span>¥568</span></button>
+          <div class="size-grid four" data-choice-group>
+            <button class="size-card" data-choice aria-pressed="false"><strong>S</strong><span>约 6 x 8 cm</span><small>轻量小礼</small></button>
+            <button class="size-card" data-choice aria-pressed="true"><strong>M</strong><span>约 7 x 10 cm</span><small>推荐送礼</small></button>
+            <button class="size-card" data-choice aria-pressed="false"><strong>L</strong><span>约 8 x 12 cm</span><small>陈列更稳</small></button>
+            <button class="size-card" data-choice aria-pressed="false"><strong>XL</strong><span>约 10 x 15 cm</span><small>空间礼</small></button>
+          </div>
+        </section>
+
+        <section class="option-block fragrance-block" data-fragrance-selector>
+          <div class="option-headline">
+            <p class="option-label">选择香型</p>
+            <span class="section-note">进阶系列 3 选 1</span>
+          </div>
+          <div class="fragrance-strip" data-choice-group>
+            <button class="fragrance-pill" type="button" data-choice data-fragrance-name="玫瑰木" data-fragrance-type="花木调 · 中等扩香" data-fragrance-top="红莓、粉胡椒" data-fragrance-middle="玫瑰木、天竺葵" data-fragrance-base="琥珀、柔木" data-fragrance-scene="适合生日、感谢和纪念日礼。" aria-pressed="true">玫瑰木</button>
+            <button class="fragrance-pill" type="button" data-choice data-fragrance-name="白茶" data-fragrance-type="清茶调 · 轻柔扩香" data-fragrance-top="柑橘、白梨" data-fragrance-middle="白茶、铃兰" data-fragrance-base="雪松、白麝香" data-fragrance-scene="适合乔迁、办公室和日常空间礼。" aria-pressed="false">白茶</button>
+            <button class="fragrance-pill" type="button" data-choice data-fragrance-name="无香陈列" data-fragrance-type="无香 · 纯陈列" data-fragrance-top="不添加香精" data-fragrance-middle="不干扰空间气味" data-fragrance-base="适合敏感人群" data-fragrance-scene="适合只看造型、对气味敏感或商业陈列。" aria-pressed="false">无香陈列</button>
+          </div>
+          <div class="fragrance-detail" data-fragrance-detail>
+            <div>
+              <strong data-fragrance-title>玫瑰木</strong>
+              <span data-fragrance-type-text>花木调 · 中等扩香</span>
+            </div>
+            <dl>
+              <div><dt>前调</dt><dd data-fragrance-top-text>红莓、粉胡椒</dd></div>
+              <div><dt>中调</dt><dd data-fragrance-middle-text>玫瑰木、天竺葵</dd></div>
+              <div><dt>后调</dt><dd data-fragrance-base-text>琥珀、柔木</dd></div>
+            </dl>
+            <p data-fragrance-scene-text>适合生日、感谢和纪念日礼。</p>
+          </div>
+          <div class="artisan-scent-note">
+            <strong>匠作系列香型库</strong>
+            <span>匠作款会使用左右滑动香型标签承载 10 种香型：玫瑰木、白花麝香、晚香玉、雪松琥珀、檀木、乌木烟熏、莓果、柑橘橙花、白茶、无香陈列。</span>
           </div>
         </section>
 
         <section class="option-block">
-          <p class="option-label">选择香型</p>
-          <div class="segmented" data-choice-group>
-            <button class="segment active" data-choice aria-pressed="true">玫瑰木</button>
-            <button class="segment" data-choice aria-pressed="false">白茶</button>
-            <button class="segment" data-choice aria-pressed="false">雪松琥珀</button>
-            <button class="segment" data-choice aria-pressed="false">无香陈列</button>
+          <p class="option-label">选择雕花款式 <span>免费</span></p>
+          <div class="carving-grid" data-choice-group>
+            <button class="choice-card compact" data-choice aria-pressed="true"><strong>经典卷边</strong><span>层次稳妥，适合大多数礼品场景。</span></button>
+            <button class="choice-card compact" data-choice aria-pressed="false"><strong>花瓣层叠</strong><span>更柔和，适合生日和婚礼氛围。</span></button>
+            <button class="choice-card compact" data-choice aria-pressed="false"><strong>宫廷褶皱</strong><span>视觉更强，适合陈列和高端礼盒。</span></button>
           </div>
         </section>
 
-        <section class="section">
-          <div class="info-card">
-            <h3>为什么它不是普通蜡烛？</h3>
-            <ul>
-              <li>每支通过多层彩蜡与手工刀法形成卷边纹理。</li>
-              <li>卷边和色彩会有轻微差异，属于手工制品特征。</li>
-              <li>适合点燃，也适合作为礼品和空间陈列。</li>
-            </ul>
+        <section class="option-block" data-package-options data-package-series="advanced">
+          <div class="option-headline">
+            <p class="option-label">选择包装</p>
+            <span class="package-delta" data-package-delta>当前：精品包装，补差 ¥0</span>
           </div>
-          <div class="info-card">
-            <h3>礼品与运输保障</h3>
-            <p>可选硬质礼盒、空白贺卡与防损包装。签收后如发现运输损坏，按售后规则补寄或处理。</p>
+          <div class="package-grid two" data-choice-group data-package-choice-group>
+            <button class="choice-card compact" data-choice data-package-option="premium" data-package-delta="0" aria-pressed="true"><strong>精品包装</strong><span>进阶系列默认包装，补差 ¥0。</span></button>
+            <button class="choice-card compact" data-choice data-package-option="giftbox" data-package-delta="20" aria-pressed="false"><strong>礼盒包装</strong><span>升级硬质礼盒，额外 +20。</span></button>
           </div>
-          <div class="info-card">
-            <h3>买家实拍反馈</h3>
-            <p>“实物比照片更有层次，送朋友时包装完整，放在玄关非常显眼。”</p>
+          <p class="note-line" data-package-note>当前商品为进阶系列，普通包装不进入默认零售详情页选项。</p>
+        </section>
+
+        <section class="section reference-card-grid">
+          <div class="info-card purchase-reference">
+            <h3>香型与材质</h3>
+            <p>植物蜡基底搭配约 6%-8% 香薰比例；可点燃，也可作为无火陈列香氛。无香陈列款不添加香精。</p>
+          </div>
+          <div class="info-card purchase-reference">
+            <h3>使用与存储</h3>
+            <p>首次点燃建议 30-60 分钟；避光防尘，远离高温与风口。请放置于儿童和宠物不易触碰处。</p>
+          </div>
+          <div class="info-card purchase-reference">
+            <h3>物流与售后</h3>
+            <p>发货前核对尺寸、香型和包装；雕花边缘会加固防损。签收发现运输损坏，可联系客服处理。</p>
           </div>
         </section>
       </div>
