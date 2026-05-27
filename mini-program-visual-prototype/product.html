@@ -12,10 +12,10 @@
     <section class="phone-shell" aria-label="商品详情页视觉稿">
       <div class="wx-status"><span>11:26</span><span class="wx-dots"><span></span><span></span><span></span></span></div>
       <header class="wx-header">
-        <a class="icon-button" href="catalog.html" aria-label="返回全部商品"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"/></svg></a>
+        <a class="icon-button" href="catalog.html" aria-label="返回全部商品" data-product-back><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"/></svg></a>
         <div>
           <h1>商品详情</h1>
-          <span class="subtle-title">AD-07 莓果洛可可</span>
+          <span class="subtle-title" data-product-subtitle>AD-07 莓果洛可可</span>
         </div>
         <div class="capsule" aria-label="微信胶囊按钮">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
@@ -43,11 +43,11 @@
         </section>
 
         <section class="detail-main">
-          <div class="tag-row"><span class="tag berry">进阶系列</span><span class="tag">AD-07</span><span class="tag">精品包装</span></div>
-          <h2 class="detail-title">莓果洛可可 · 手工雕刻香薰蜡烛</h2>
-          <p class="detail-sub">莓红、象牙和旧金色层次搭配，适合生日、感谢和节日送礼。当前为进阶系列示例，价格随尺寸和包装确认。</p>
+          <div class="tag-row" data-product-tags><span class="tag berry">进阶系列</span><span class="tag">AD-07</span><span class="tag">精品包装</span></div>
+          <h2 class="detail-title" data-product-title>莓果洛可可 · 手工雕刻香薰蜡烛</h2>
+          <p class="detail-sub" data-product-desc>莓红、象牙和旧金色层次搭配，适合生日、感谢和节日送礼。当前为进阶系列示例，价格随尺寸和包装确认。</p>
           <div class="price-xl">价格待确认 <small>尺寸、香型、包装由顾问确认</small></div>
-          <div class="product-spec-strip">
+          <div class="product-spec-strip" data-product-specs>
             <span>系列：进阶系列</span>
             <span>颜色：AD-07 莓果洛可可</span>
             <span>销售：零售可购</span>
@@ -67,7 +67,7 @@
         <section class="option-block fragrance-block" data-fragrance-selector>
           <div class="option-headline">
             <p class="option-label">选择香型</p>
-            <span class="section-note">进阶系列 3 选 1</span>
+            <span class="section-note" data-fragrance-count>进阶系列 3 选 1</span>
           </div>
           <div class="fragrance-strip" data-choice-group>
             <button class="fragrance-pill" type="button" data-choice data-fragrance-name="玫瑰木" data-fragrance-type="花木调 · 中等扩香" data-fragrance-top="红莓、粉胡椒" data-fragrance-middle="玫瑰木、天竺葵" data-fragrance-base="琥珀、柔木" data-fragrance-scene="适合生日、感谢和纪念日礼。" aria-pressed="true">玫瑰木</button>
@@ -85,10 +85,6 @@
               <div><dt>后调</dt><dd data-fragrance-base-text>琥珀、柔木</dd></div>
             </dl>
             <p data-fragrance-scene-text>适合生日、感谢和纪念日礼。</p>
-          </div>
-          <div class="artisan-scent-note">
-            <strong>匠作系列香型库</strong>
-            <span>匠作款会使用左右滑动香型标签承载 10 种香型：玫瑰木、白花麝香、晚香玉、雪松琥珀、檀木、乌木烟熏、莓果、柑橘橙花、白茶、无香陈列。</span>
           </div>
         </section>
 
@@ -129,9 +125,17 @@
         </section>
       </div>
 
+      <div class="add-cart-panel" data-add-cart-panel hidden>
+        <strong>已加入购物车</strong>
+        <span>可以继续挑选其他商品，或去购物车统一检查配置。</span>
+        <div>
+          <a class="btn ghost" href="catalog.html">继续逛商品</a>
+          <a class="btn primary" href="cart.html">查看购物车</a>
+        </div>
+      </div>
       <div class="sticky-cta">
         <a class="btn ghost" href="service.html">问搭配顾问</a>
-        <a class="btn primary" href="cart.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14"/><path d="M12 5v14"/></svg>加入购物车</a>
+        <button class="btn primary" type="button" data-product-add><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14"/><path d="M12 5v14"/></svg>加入购物车</button>
       </div>
       <div class="toast" data-toast-host role="status" aria-live="polite"></div>
     </section>
