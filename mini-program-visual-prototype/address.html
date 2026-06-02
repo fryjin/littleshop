@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>地址管理 · 香薰雕刻蜡烛</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="mine">
+  <main class="prototype-page">
+    <section class="phone-shell" aria-label="地址管理页面视觉稿">
+      <div class="wx-status"><span>11:26</span><span class="wx-dots"><span></span><span></span><span></span></span></div>
+      <header class="wx-header">
+        <a class="back-link" href="mine.html" aria-label="返回我的">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"/></svg>
+        </a>
+        <div>
+          <h1>地址管理</h1>
+          <span class="subtle-title">多地址 · 默认地址</span>
+        </div>
+        <div class="capsule" aria-label="微信胶囊按钮">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="8"/></svg>
+        </div>
+      </header>
+
+      <div class="screen-scroll address-scroll">
+        <section class="section">
+          <div class="section-head">
+            <h2 class="section-title serif">收货地址</h2>
+            <button class="link-small link-button" type="button" data-address-add>新增地址</button>
+          </div>
+          <div class="address-list" data-address-list></div>
+        </section>
+      </div>
+
+      <nav class="tabbar" aria-label="底部导航">
+        <a class="tab-item" data-tab="home" href="home.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10"/></svg><span>首页</span></a>
+        <a class="tab-item" data-tab="gift" href="gift.html#scene"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 12v8H4v-8"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/></svg><span>送礼</span></a>
+        <a class="tab-item" data-tab="catalog" href="catalog.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h7v7H4z"/><path d="M13 4h7v7h-7z"/><path d="M4 13h7v7H4z"/><path d="M13 13h7v7h-7z"/></svg><span>商品</span></a>
+        <a class="tab-item" data-tab="cart" href="cart.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/><path d="M3 4h2l3 12h10l3-8H7"/></svg><span>购物车</span></a>
+        <a class="tab-item" data-tab="mine" href="mine.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 22a8 8 0 0 1 16 0"/></svg><span>我的</span></a>
+      </nav>
+      <div class="toast" data-toast-host role="status" aria-live="polite"></div>
+    </section>
+  </main>
+  <script src="assets/app.js"></script>
+</body>
+</html>

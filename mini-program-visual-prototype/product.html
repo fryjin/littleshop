@@ -55,13 +55,17 @@
         </section>
 
         <section class="option-block">
-          <p class="option-label">选择尺寸</p>
-          <div class="size-grid four" data-choice-group>
-            <button class="size-card" data-choice aria-pressed="false"><strong>S</strong><span>约 6 x 8 cm</span><small>轻量小礼</small></button>
-            <button class="size-card" data-choice aria-pressed="true"><strong>M</strong><span>约 7 x 10 cm</span><small>推荐送礼</small></button>
-            <button class="size-card" data-choice aria-pressed="false"><strong>L</strong><span>约 8 x 12 cm</span><small>陈列更稳</small></button>
-            <button class="size-card" data-choice aria-pressed="false"><strong>XL</strong><span>约 10 x 15 cm</span><small>空间礼</small></button>
+          <div class="option-headline">
+            <p class="option-label">选择尺寸</p>
+            <span class="section-note" data-size-summary>当前：M · 约 7 x 10 cm</span>
           </div>
+          <div class="size-compact-row" data-choice-group data-size-selector>
+            <button class="size-pill" data-choice data-size-name="S" data-size-measure="约 6 x 8 cm" data-size-usage="轻量小礼，适合答谢和小件心意。" aria-pressed="false"><strong>S</strong><span>约 6 x 8 cm</span></button>
+            <button class="size-pill" data-choice data-size-name="M" data-size-measure="约 7 x 10 cm" data-size-usage="推荐送礼，适合生日、答谢和常规礼品场景。" aria-pressed="true"><strong>M</strong><span>约 7 x 10 cm</span></button>
+            <button class="size-pill" data-choice data-size-name="L" data-size-measure="约 8 x 12 cm" data-size-usage="陈列更稳，适合乔迁、长辈和重要关系。" aria-pressed="false"><strong>L</strong><span>约 8 x 12 cm</span></button>
+            <button class="size-pill" data-choice data-size-name="XL" data-size-measure="约 10 x 15 cm" data-size-usage="空间礼，适合高端陈列或多件组合。" aria-pressed="false"><strong>XL</strong><span>约 10 x 15 cm</span></button>
+          </div>
+          <p class="size-summary-card" data-size-usage>推荐送礼，适合生日、答谢和常规礼品场景。</p>
         </section>
 
         <section class="option-block fragrance-block" data-fragrance-selector>
@@ -72,29 +76,46 @@
           <div class="fragrance-strip" data-choice-group>
             <button class="fragrance-pill" type="button" data-choice data-fragrance-name="玫瑰木" data-fragrance-type="花木调 · 中等扩香" data-fragrance-top="红莓、粉胡椒" data-fragrance-middle="玫瑰木、天竺葵" data-fragrance-base="琥珀、柔木" data-fragrance-scene="适合生日、感谢和纪念日礼。" aria-pressed="true">玫瑰木</button>
             <button class="fragrance-pill" type="button" data-choice data-fragrance-name="白茶" data-fragrance-type="清茶调 · 轻柔扩香" data-fragrance-top="柑橘、白梨" data-fragrance-middle="白茶、铃兰" data-fragrance-base="雪松、白麝香" data-fragrance-scene="适合乔迁、办公室和日常空间礼。" aria-pressed="false">白茶</button>
-            <button class="fragrance-pill" type="button" data-choice data-fragrance-name="无香陈列" data-fragrance-type="无香 · 纯陈列" data-fragrance-top="不添加香精" data-fragrance-middle="不干扰空间气味" data-fragrance-base="适合敏感人群" data-fragrance-scene="适合只看造型、对气味敏感或商业陈列。" aria-pressed="false">无香陈列</button>
+            <button class="fragrance-pill" type="button" data-choice data-fragrance-mode="unscented" data-fragrance-name="无香陈列" data-fragrance-type="无香 · 纯陈列" data-fragrance-top="不添加香精" data-fragrance-middle="不干扰空间气味" data-fragrance-base="适合敏感人群" data-fragrance-scene="适合只看造型、对气味敏感或商业陈列。" aria-pressed="false">无香陈列</button>
           </div>
           <div class="fragrance-detail" data-fragrance-detail>
             <div>
               <strong data-fragrance-title>玫瑰木</strong>
               <span data-fragrance-type-text>花木调 · 中等扩香</span>
             </div>
-            <dl>
+            <dl data-fragrance-notes>
               <div><dt>前调</dt><dd data-fragrance-top-text>红莓、粉胡椒</dd></div>
               <div><dt>中调</dt><dd data-fragrance-middle-text>玫瑰木、天竺葵</dd></div>
               <div><dt>后调</dt><dd data-fragrance-base-text>琥珀、柔木</dd></div>
             </dl>
+            <div class="fragrance-special" data-fragrance-special hidden>
+              <strong>无香说明</strong>
+              <span data-fragrance-special-text>不添加香精，不干扰空间气味，适合敏感人群或商业陈列。</span>
+            </div>
             <p data-fragrance-scene-text>适合生日、感谢和纪念日礼。</p>
           </div>
         </section>
 
         <section class="option-block">
-          <p class="option-label">选择雕花款式 <span>免费</span></p>
-          <div class="carving-grid" data-choice-group>
-            <button class="choice-card compact" data-choice aria-pressed="true"><strong>经典卷边</strong><span>层次稳妥，适合大多数礼品场景。</span></button>
-            <button class="choice-card compact" data-choice aria-pressed="false"><strong>花瓣层叠</strong><span>更柔和，适合生日和婚礼氛围。</span></button>
-            <button class="choice-card compact" data-choice aria-pressed="false"><strong>宫廷褶皱</strong><span>视觉更强，适合陈列和高端礼盒。</span></button>
+          <div class="option-headline">
+            <p class="option-label">选择雕花款式 <span>免费</span></p>
+            <span class="section-note" data-carving-summary>当前：经典卷边</span>
           </div>
+          <div class="carving-preview-grid" data-choice-group data-carving-selector>
+            <button class="carving-card" data-choice data-carving-name="经典卷边" data-carving-usage="层次稳妥，适合大多数礼品场景。" aria-pressed="true">
+              <span class="carving-thumb"><img src="assets/detail/detail-macro.png" alt="经典卷边雕花预览"></span>
+              <strong>经典卷边</strong><span>稳妥礼品</span>
+            </button>
+            <button class="carving-card" data-choice data-carving-name="花瓣层叠" data-carving-usage="更柔和，适合生日和婚礼氛围。" aria-pressed="false">
+              <span class="carving-thumb"><img src="assets/detail/detail-angle.png" alt="花瓣层叠雕花预览"></span>
+              <strong>花瓣层叠</strong><span>柔和仪式</span>
+            </button>
+            <button class="carving-card" data-choice data-carving-name="宫廷褶皱" data-carving-usage="视觉更强，适合陈列和高端礼盒。" aria-pressed="false">
+              <span class="carving-thumb"><img src="assets/detail/detail-giftbox.png" alt="宫廷褶皱雕花预览"></span>
+              <strong>宫廷褶皱</strong><span>陈列感强</span>
+            </button>
+          </div>
+          <p class="carving-summary" data-carving-usage>层次稳妥，适合大多数礼品场景。</p>
         </section>
 
         <section class="option-block" data-package-options data-package-series="advanced">
@@ -117,10 +138,6 @@
           <div class="info-card purchase-reference">
             <h3>使用与存储</h3>
             <p>首次点燃建议 30-60 分钟；避光防尘，远离高温与风口。请放置于儿童和宠物不易触碰处。</p>
-          </div>
-          <div class="info-card purchase-reference">
-            <h3>物流与售后</h3>
-            <p>发货前核对尺寸、香型和包装；雕花边缘会加固防损。签收发现运输损坏，可联系客服处理。</p>
           </div>
         </section>
       </div>

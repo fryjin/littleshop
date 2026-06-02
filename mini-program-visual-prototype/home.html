@@ -62,8 +62,8 @@
             <span class="section-note">未来页面入口</span>
           </div>
           <div class="feature-grid">
-            <a class="feature-card" href="custom.html"><strong>定制蜡烛</strong><span>定制色系、香型和贺卡内容。</span><small>定制</small></a>
-            <a class="feature-card" href="wedding.html"><strong>婚礼批采</strong><span>桌礼、伴手礼和迎宾区方案。</span><small>婚礼</small></a>
+            <a class="feature-card" href="custom.html"><strong>定制蜡烛</strong><span>定制色系、香型和贺卡内容。</span></a>
+            <a class="feature-card" href="wedding.html"><strong>婚礼批采</strong><span>桌礼、伴手礼和迎宾区方案。</span></a>
             <a class="feature-card dark wide" href="ai-match.html"><strong>AI 搭配</strong><span>把模糊需求生成 3 款推荐。</span><small>AI</small></a>
           </div>
         </section>
@@ -71,32 +71,14 @@
         <section class="section">
           <div class="section-head">
             <h2 class="section-title serif">本周热卖</h2>
-            <a class="link-small" href="catalog.html">查看全部</a>
+            <a class="link-small" href="catalog.html#advanced" data-hot-all>查看全部</a>
           </div>
-          <div class="segmented" data-choice-group>
-            <button class="segment active" data-choice aria-pressed="true">礼品入门</button>
-            <button class="segment" data-choice aria-pressed="false">标准礼盒</button>
-            <button class="segment" data-choice aria-pressed="false">高端陈列</button>
-            <button class="segment" data-choice aria-pressed="false">节日限定</button>
+          <div class="segmented" data-hot-tabs>
+            <button class="segment active" type="button" data-hot-tab="advanced" aria-pressed="true">进阶系列</button>
+            <button class="segment" type="button" data-hot-tab="artisan" aria-pressed="false">匠作系列</button>
+            <button class="segment" type="button" data-hot-tab="festival" aria-pressed="false">节日系列</button>
           </div>
-          <div class="product-row" style="margin-top: 12px;">
-            <a class="product-card" href="product.html">
-              <div class="product-media photo-media contain"><img src="assets/product-berry-candle.png" alt="莓红象牙色德国手工雕刻香薰蜡烛"></div>
-              <div class="product-body">
-                <h3 class="product-name">莓果洛可可 · 中号</h3>
-                <p class="product-desc">生日礼物 / 客厅陈列</p>
-                <div class="price-line">¥328 <small>起</small></div>
-              </div>
-            </a>
-            <a class="product-card" href="product.html">
-              <div class="product-media photo-media"><img src="assets/gift-box-candle.png" alt="象牙金蓝雕刻蜡烛礼盒场景"></div>
-              <div class="product-body">
-                <h3 class="product-name">晨雾金蓝 · 礼盒</h3>
-                <p class="product-desc">贺卡 / 礼盒升级</p>
-                <div class="price-line">¥528 <small>起</small></div>
-              </div>
-            </a>
-          </div>
+          <div class="product-row hot-product-row" data-hot-products style="margin-top: 12px;"></div>
         </section>
 
       </div>
