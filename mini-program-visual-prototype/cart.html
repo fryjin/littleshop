@@ -35,7 +35,7 @@
                 <button class="config-toggle" type="button" data-cart-config-toggle aria-expanded="false">修改配置</button>
                 <div class="qty-row">
                   <div class="price-line">价格待确认</div>
-                  <div class="qty-control" aria-label="数量选择"><button aria-label="减少数量">−</button><span>1</span><button aria-label="增加数量">+</button></div>
+                  <div class="qty-control" aria-label="数量选择" data-cart-quantity-control><button type="button" aria-label="减少数量" data-cart-quantity-minus>−</button><span data-cart-quantity>1</span><button type="button" aria-label="增加数量" data-cart-quantity-plus>+</button></div>
                 </div>
               </div>
             </article>
@@ -82,7 +82,7 @@
           <div class="info-card address-card" data-cart-address>
             <div class="address-head">
               <h3>收货地址</h3>
-              <a class="link-small" href="address.html">管理</a>
+              <a class="link-small" href="address.html?from=cart">管理</a>
             </div>
             <button class="address-current" type="button" data-cart-address-toggle aria-expanded="false">
               <span data-cart-address-summary>请选择收货地址</span>

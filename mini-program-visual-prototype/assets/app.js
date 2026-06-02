@@ -144,6 +144,7 @@
     ["功能区", "Tools"],
     ["渠道与服务", "Channel & Service"],
     ["申请批发身份", "Apply for wholesale"],
+    ["查看渠道报价", "View channel quote"],
     ["进入拿样、报价和素材支持流程。", "Enter sample, quotation and asset support flows."],
     ["拿样、报价、素材", "Samples, quotes, assets"],
     ["拿样包", "Sample Kit"],
@@ -155,12 +156,17 @@
     ["素材下载", "Assets"],
     ["商品图、文案和海报素材。", "Product images, copy and poster assets."],
     ["图片、文案、海报", "Images, copy, posters"],
+    ["申请后开放", "Apply to unlock"],
+    ["渠道素材已开放", "Channel assets unlocked"],
     ["门店陈列", "Store Display"],
     ["按面积和预算规划上架。", "Plan display by area and budget."],
     ["上架方案", "Display plan"],
     ["客服售后", "Support"],
     ["订单、破损和包装问题入口。", "Orders, damage and packaging support."],
     ["订单与破损处理", "Orders and damage"],
+    ["已通过渠道身份，可直接查看报价规则", "Wholesale access approved. View quote rules directly"],
+    ["返回购物车", "Back to cart"],
+    ["继续下单", "Continue checkout"],
     ["已加入购物车，可继续挑选其他商品", "Added to cart. You can keep browsing."],
     ["选择包装", "Choose packaging"],
     ["加入购物车", "Add to cart"],
@@ -406,18 +412,15 @@
 
   const sizeSelector = document.querySelector("[data-size-selector]");
   const sizeSummary = document.querySelector("[data-size-summary]");
-  const sizeUsage = document.querySelector("[data-size-usage]");
   const renderSizeSummary = () => {
     if (!sizeSelector || !sizeSummary) return;
     const selected = sizeSelector.querySelector("[data-choice][aria-pressed='true']");
     if (!selected) return;
     const name = selected.dataset.sizeName || selected.querySelector("strong")?.textContent || "";
     const measure = selected.dataset.sizeMeasure || selected.querySelector("span")?.textContent || "";
-    const usage = selected.dataset.sizeUsage || "";
     const lang = currentLang();
     const normalizedMeasure = lang === "en" ? String(measure).replace("约 ", "approx. ") : measure;
     sizeSummary.textContent = (lang === "en" ? "Current: " : "当前：") + name + " · " + normalizedMeasure;
-    if (sizeUsage) sizeUsage.textContent = usage;
   };
   if (sizeSelector && sizeSummary) {
     window.__renderSizeSummary = renderSizeSummary;
@@ -906,6 +909,10 @@
   const updateFragranceDetail = (button) => {
     const root = document.querySelector("[data-fragrance-selector]");
     if (!root || !button) return;
+    const detail = root.querySelector("[data-fragrance-detail]");
+    const unscented = button.dataset.fragranceMode === "unscented";
+    if (detail) detail.hidden = unscented;
+    if (unscented) return;
     const setText = (selector, value) => {
       const node = root.querySelector(selector);
       if (node) node.textContent = value || "";
@@ -916,15 +923,6 @@
     setText("[data-fragrance-middle-text]", button.dataset.fragranceMiddle);
     setText("[data-fragrance-base-text]", button.dataset.fragranceBase);
     setText("[data-fragrance-scene-text]", button.dataset.fragranceScene);
-    const notes = root.querySelector("[data-fragrance-notes]");
-    const special = root.querySelector("[data-fragrance-special]");
-    const specialText = root.querySelector("[data-fragrance-special-text]");
-    const unscented = button.dataset.fragranceMode === "unscented";
-    if (notes) notes.hidden = unscented;
-    if (special) special.hidden = !unscented;
-    if (specialText && unscented) {
-      specialText.textContent = [button.dataset.fragranceTop, button.dataset.fragranceMiddle, button.dataset.fragranceBase].filter(Boolean).join("；");
-    }
   };
 
   const fragranceSelector = document.querySelector("[data-fragrance-selector]");
@@ -938,17 +936,43 @@
 
   const carvingSelector = document.querySelector("[data-carving-selector]");
   const carvingSummary = document.querySelector("[data-carving-summary]");
-  const carvingUsage = document.querySelector("[data-carving-usage]");
+  const carvingPreview = document.querySelector("[data-carving-preview]");
+  const carvingPreviewImage = document.querySelector("[data-carving-preview-image]");
+  const carvingPreviewTitle = document.querySelector("[data-carving-preview-title]");
   const updateCarvingSummary = () => {
     if (!carvingSelector) return;
     const selected = carvingSelector.querySelector("[data-choice][aria-pressed='true']");
     if (!selected) return;
     if (carvingSummary) carvingSummary.textContent = "当前：" + (selected.dataset.carvingName || selected.querySelector("strong")?.textContent || "");
-    if (carvingUsage) carvingUsage.textContent = selected.dataset.carvingUsage || "";
+  };
+  const openCarvingPreview = (button) => {
+    if (!carvingPreview || !button) return;
+    const title = button.dataset.carvingName || button.querySelector("strong")?.textContent || "";
+    if (carvingPreviewImage && button.dataset.carvingImage) {
+      carvingPreviewImage.src = button.dataset.carvingImage;
+      carvingPreviewImage.alt = title + "雕花大图预览";
+    }
+    if (carvingPreviewTitle) carvingPreviewTitle.textContent = title;
+    carvingPreview.hidden = false;
+  };
+  const closeCarvingPreview = () => {
+    if (carvingPreview) carvingPreview.hidden = true;
   };
   if (carvingSelector) {
-    carvingSelector.addEventListener("click", updateCarvingSummary);
+    carvingSelector.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-choice]");
+      updateCarvingSummary();
+      if (button) openCarvingPreview(button);
+    });
     updateCarvingSummary();
+  }
+  if (carvingPreview) {
+    carvingPreview.addEventListener("click", (event) => {
+      if (event.target === carvingPreview || event.target.closest("[data-carving-close]")) closeCarvingPreview();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeCarvingPreview();
+    });
   }
 
   const packageRoot = document.querySelector("[data-package-options]");
@@ -1018,6 +1042,25 @@
       cartConfig.toggleAttribute("hidden", !nextOpen);
       cartToggle.setAttribute("aria-expanded", String(nextOpen));
       cartToggle.textContent = translateString(nextOpen ? "收起配置" : "修改配置");
+    });
+  }
+
+  const cartQuantity = document.querySelector("[data-cart-quantity]");
+  const cartQuantityControl = document.querySelector("[data-cart-quantity-control]");
+  const renderCartQuantity = () => {
+    if (!cartQuantity) return;
+    const count = Math.max(1, cartCount() || 1);
+    cartQuantity.textContent = String(count);
+  };
+  if (cartQuantity) {
+    if (!cartCount()) setCartCount(1);
+    renderCartQuantity();
+  }
+  if (cartQuantityControl) {
+    cartQuantityControl.addEventListener("click", (event) => {
+      if (event.target.closest("[data-cart-quantity-minus]")) setCartCount(Math.max(1, cartCount() - 1));
+      if (event.target.closest("[data-cart-quantity-plus]")) setCartCount(cartCount() + 1);
+      renderCartQuantity();
     });
   }
 
@@ -1316,6 +1359,46 @@
     });
   }
   initLanguageControls();
+
+  const channelPrimary = document.querySelector("[data-channel-primary]");
+  const channelAsset = document.querySelector("[data-channel-asset]");
+  if (channelPrimary) {
+    const params = new URLSearchParams(window.location.search);
+    const approved = params.get("channel") === "approved" || window.localStorage.getItem("waxAtelierChannelStatus") === "approved";
+    if (approved) {
+      channelPrimary.href = channelPrimary.dataset.approvedHref || "quotation.html";
+      const title = channelPrimary.querySelector("[data-channel-title]");
+      const desc = channelPrimary.querySelector("[data-channel-desc]");
+      if (title) title.textContent = "查看渠道报价";
+      if (desc) desc.textContent = "已通过渠道身份，可直接查看报价规则";
+      if (channelAsset) {
+        channelAsset.href = channelAsset.dataset.approvedHref || "assets-download.html";
+        channelAsset.classList.remove("locked");
+        const assetDesc = channelAsset.querySelector("[data-channel-asset-desc]");
+        if (assetDesc) assetDesc.textContent = "渠道素材已开放";
+      }
+    } else if (channelAsset) {
+      channelAsset.href = channelAsset.dataset.lockedHref || "wholesale.html";
+    }
+  }
+
+  const addressFromCart = new URLSearchParams(window.location.search).get("from") === "cart";
+  if (addressFromCart && document.body.dataset.page === "mine") {
+    const back = document.querySelector(".wx-header .back-link");
+    if (back) {
+      back.href = "cart.html";
+      back.setAttribute("aria-label", "返回购物车");
+    }
+    const addressSection = document.querySelector(".address-scroll .section");
+    if (addressSection && !addressSection.querySelector("[data-address-return]")) {
+      const link = document.createElement("a");
+      link.className = "address-return-link";
+      link.href = "cart.html";
+      link.dataset.addressReturn = "";
+      link.textContent = "继续下单";
+      addressSection.append(link);
+    }
+  }
   applyLanguage();
   updateCartBadges();
 })();

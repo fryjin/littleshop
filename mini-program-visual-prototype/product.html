@@ -23,7 +23,7 @@
         </div>
       </header>
 
-      <div class="screen-scroll has-cta">
+      <div class="screen-scroll has-cta product-scroll">
         <section class="detail-gallery" data-gallery-carousel>
           <div class="gallery-stage photo-stage">
             <div class="gallery-track" data-gallery-track>
@@ -60,12 +60,11 @@
             <span class="section-note" data-size-summary>当前：M · 约 7 x 10 cm</span>
           </div>
           <div class="size-compact-row" data-choice-group data-size-selector>
-            <button class="size-pill" data-choice data-size-name="S" data-size-measure="约 6 x 8 cm" data-size-usage="轻量小礼，适合答谢和小件心意。" aria-pressed="false"><strong>S</strong><span>约 6 x 8 cm</span></button>
-            <button class="size-pill" data-choice data-size-name="M" data-size-measure="约 7 x 10 cm" data-size-usage="推荐送礼，适合生日、答谢和常规礼品场景。" aria-pressed="true"><strong>M</strong><span>约 7 x 10 cm</span></button>
-            <button class="size-pill" data-choice data-size-name="L" data-size-measure="约 8 x 12 cm" data-size-usage="陈列更稳，适合乔迁、长辈和重要关系。" aria-pressed="false"><strong>L</strong><span>约 8 x 12 cm</span></button>
-            <button class="size-pill" data-choice data-size-name="XL" data-size-measure="约 10 x 15 cm" data-size-usage="空间礼，适合高端陈列或多件组合。" aria-pressed="false"><strong>XL</strong><span>约 10 x 15 cm</span></button>
+            <button class="size-pill" data-choice data-size-name="S" data-size-measure="约 6 x 8 cm" aria-pressed="false"><strong>S</strong><span>约 6 x 8 cm</span></button>
+            <button class="size-pill" data-choice data-size-name="M" data-size-measure="约 7 x 10 cm" aria-pressed="true"><strong>M</strong><span>约 7 x 10 cm</span></button>
+            <button class="size-pill" data-choice data-size-name="L" data-size-measure="约 8 x 12 cm" aria-pressed="false"><strong>L</strong><span>约 8 x 12 cm</span></button>
+            <button class="size-pill" data-choice data-size-name="XL" data-size-measure="约 10 x 15 cm" aria-pressed="false"><strong>XL</strong><span>约 10 x 15 cm</span></button>
           </div>
-          <p class="size-summary-card" data-size-usage>推荐送礼，适合生日、答谢和常规礼品场景。</p>
         </section>
 
         <section class="option-block fragrance-block" data-fragrance-selector>
@@ -88,10 +87,6 @@
               <div><dt>中调</dt><dd data-fragrance-middle-text>玫瑰木、天竺葵</dd></div>
               <div><dt>后调</dt><dd data-fragrance-base-text>琥珀、柔木</dd></div>
             </dl>
-            <div class="fragrance-special" data-fragrance-special hidden>
-              <strong>无香说明</strong>
-              <span data-fragrance-special-text>不添加香精，不干扰空间气味，适合敏感人群或商业陈列。</span>
-            </div>
             <p data-fragrance-scene-text>适合生日、感谢和纪念日礼。</p>
           </div>
         </section>
@@ -102,20 +97,19 @@
             <span class="section-note" data-carving-summary>当前：经典卷边</span>
           </div>
           <div class="carving-preview-grid" data-choice-group data-carving-selector>
-            <button class="carving-card" data-choice data-carving-name="经典卷边" data-carving-usage="层次稳妥，适合大多数礼品场景。" aria-pressed="true">
+            <button class="carving-card" data-choice data-carving-name="经典卷边" data-carving-image="assets/detail/detail-macro.png" aria-pressed="true">
               <span class="carving-thumb"><img src="assets/detail/detail-macro.png" alt="经典卷边雕花预览"></span>
-              <strong>经典卷边</strong><span>稳妥礼品</span>
+              <strong>经典卷边</strong>
             </button>
-            <button class="carving-card" data-choice data-carving-name="花瓣层叠" data-carving-usage="更柔和，适合生日和婚礼氛围。" aria-pressed="false">
+            <button class="carving-card" data-choice data-carving-name="花瓣层叠" data-carving-image="assets/detail/detail-angle.png" aria-pressed="false">
               <span class="carving-thumb"><img src="assets/detail/detail-angle.png" alt="花瓣层叠雕花预览"></span>
-              <strong>花瓣层叠</strong><span>柔和仪式</span>
+              <strong>花瓣层叠</strong>
             </button>
-            <button class="carving-card" data-choice data-carving-name="宫廷褶皱" data-carving-usage="视觉更强，适合陈列和高端礼盒。" aria-pressed="false">
+            <button class="carving-card" data-choice data-carving-name="宫廷褶皱" data-carving-image="assets/detail/detail-giftbox.png" aria-pressed="false">
               <span class="carving-thumb"><img src="assets/detail/detail-giftbox.png" alt="宫廷褶皱雕花预览"></span>
-              <strong>宫廷褶皱</strong><span>陈列感强</span>
+              <strong>宫廷褶皱</strong>
             </button>
           </div>
-          <p class="carving-summary" data-carving-usage>层次稳妥，适合大多数礼品场景。</p>
         </section>
 
         <section class="option-block" data-package-options data-package-series="advanced">
@@ -150,10 +144,25 @@
           <a class="btn primary" href="cart.html">查看购物车</a>
         </div>
       </div>
-      <div class="sticky-cta">
+      <div class="carving-large-preview" data-carving-preview hidden>
+        <button class="carving-preview-close" type="button" data-carving-close aria-label="关闭雕花预览">×</button>
+        <div class="carving-preview-card">
+          <img src="assets/detail/detail-macro.png" alt="雕花大图预览" data-carving-preview-image>
+          <strong data-carving-preview-title>经典卷边</strong>
+          <span>雕花细节预览</span>
+        </div>
+      </div>
+      <div class="sticky-cta product-cta">
         <a class="btn ghost" href="service.html">问搭配顾问</a>
         <button class="btn primary" type="button" data-product-add><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14"/><path d="M12 5v14"/></svg>加入购物车</button>
       </div>
+      <nav class="tabbar" aria-label="底部导航">
+        <a class="tab-item" data-tab="home" href="home.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10"/></svg><span>首页</span></a>
+        <a class="tab-item" data-tab="gift" href="gift.html#scene"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 12v8H4v-8"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/></svg><span>送礼</span></a>
+        <a class="tab-item active" data-tab="catalog" href="catalog.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h7v7H4z"/><path d="M13 4h7v7h-7z"/><path d="M4 13h7v7H4z"/><path d="M13 13h7v7h-7z"/></svg><span>商品</span></a>
+        <a class="tab-item" data-tab="cart" href="cart.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/><path d="M3 4h2l3 12h10l3-8H7"/></svg><span>购物车</span></a>
+        <a class="tab-item" data-tab="mine" href="mine.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 22a8 8 0 0 1 16 0"/></svg><span>我的</span></a>
+      </nav>
       <div class="toast" data-toast-host role="status" aria-live="polite"></div>
     </section>
   </main>

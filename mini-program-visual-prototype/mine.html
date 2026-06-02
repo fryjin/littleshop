@@ -43,11 +43,13 @@
             <h2 class="section-title serif">功能区</h2>
             <span class="section-note">渠道与服务</span>
           </div>
-          <div class="mine-action-grid">
-            <a class="mine-action-card featured" href="wholesale.html"><span class="mine-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 20V8l6-4 6 4v12"/><path d="M9 20v-7h6v7"/><path d="M4 20h16"/></svg></span><strong>申请批发身份</strong><span>拿样、报价、素材</span></a>
-            <a class="mine-action-card" href="sample.html"><span class="mine-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16v13H4z"/><path d="m8 7 4-4 4 4"/><path d="M8 12h8"/></svg></span><strong>拿样包</strong><span>先试卖再进货</span></a>
-            <a class="mine-action-card" href="quotation.html"><span class="mine-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 3h12v18H6z"/><path d="M9 7h6"/><path d="M9 11h6"/><path d="M9 15h3"/></svg></span><strong>渠道报价</strong><span>申请后查看规则</span></a>
-            <a class="mine-action-card" href="assets-download.html"><span class="mine-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg></span><strong>素材下载</strong><span>图片、文案、海报</span></a>
+          <div class="mine-action-grid compact-flow">
+            <a class="mine-action-card featured channel-primary" href="wholesale.html" data-channel-primary data-apply-href="wholesale.html" data-approved-href="quotation.html">
+              <span class="mine-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 20V8l6-4 6 4v12"/><path d="M9 20v-7h6v7"/><path d="M4 20h16"/></svg></span>
+              <strong data-channel-title>申请批发身份</strong>
+              <span data-channel-desc>拿样、报价、素材</span>
+            </a>
+            <a class="mine-action-card locked" href="wholesale.html" data-channel-asset data-locked-href="wholesale.html" data-approved-href="assets-download.html"><span class="mine-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg></span><strong>素材下载</strong><span data-channel-asset-desc>申请后开放</span></a>
             <a class="mine-action-card" href="address.html"><span class="mine-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21s7-4.8 7-11a7 7 0 0 0-14 0c0 6.2 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><strong>地址管理</strong><span>默认地址、多地址</span></a>
             <a class="mine-action-card" href="service.html"><span class="mine-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 10a6 6 0 1 0-12 0v4"/><path d="M6 14H4v-4h2"/><path d="M18 14h2v-4h-2"/><path d="M13 19h-2a3 3 0 0 1-3-3"/></svg></span><strong>客服售后</strong><span>订单与破损处理</span></a>
           </div>
