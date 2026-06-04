@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AI 搭配推荐 · 香薰雕刻蜡烛</title>
+  <title>搭配推荐 · 香薰雕刻蜡烛</title>
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body data-page="ai-match">
   <main class="prototype-page">
-    <section class="phone-shell" aria-label="AI 搭配推荐页面视觉稿">
+    <section class="phone-shell" aria-label="搭配推荐页面视觉稿">
       <div class="wx-status"><span>11:26</span><span class="wx-dots"><span></span><span></span><span></span></span></div>
       <header class="wx-header">
         <a class="icon-button" href="home.html" aria-label="返回首页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"/></svg></a>
         <div>
-          <h1>AI 搭配推荐</h1>
+          <h1>搭配推荐</h1>
           <span class="subtle-title">预算 · 收礼人 · 场景</span>
         </div>
         <div class="capsule" aria-label="微信胶囊按钮">
@@ -23,59 +23,96 @@
       </header>
 
       <div class="screen-scroll has-cta">
-        <section class="growth-hero">
-          <p class="eyebrow">AI GIFT MATCH</p>
-          <h2>把模糊的送礼需求，变成三款可解释的推荐。</h2>
-          <p>视觉稿阶段只演示推荐结构，真实 AI 能力后续再接入。</p>
-          <div class="hero-stat-row">
-            <div class="hero-stat"><strong>3 款</strong><span>推荐结果</span></div>
-            <div class="hero-stat"><strong>4 项</strong><span>输入偏好</span></div>
-            <div class="hero-stat"><strong>顾问</strong><span>兜底确认</span></div>
+        <section class="section ai-brief-section">
+          <div class="prompt-card ai-brief-card" data-ai-match-form>
+            <div class="section-head">
+              <div>
+                <h2 class="section-title">送礼条件</h2>
+                <span class="section-note">选几项就能看结果</span>
+              </div>
+            </div>
+            <div class="ai-brief-summary" data-ai-summary hidden>
+              <div>
+                <span>已选条件</span>
+                <strong data-ai-summary-text>客户 · ¥199 内 · 生日</strong>
+              </div>
+              <button class="link-button" type="button" data-ai-edit>修改</button>
+            </div>
+            <div class="ai-brief-fields" data-ai-fields>
+              <div class="ai-field-grid">
+                <label class="mini-field"><span>收礼关系</span><select data-ai-input data-ai-relation aria-label="收礼关系"><option value="">请选择</option><option>朋友</option><option>同事</option><option>长辈</option><option>客户</option></select></label>
+                <label class="mini-field"><span>预算</span><select data-ai-input data-ai-budget aria-label="预算"><option value="">请选择</option><option>¥199 内</option><option>¥200-399</option><option>¥400-699</option><option>¥700+</option></select></label>
+              </div>
+              <div class="ai-chip-row" data-choice-group="multi">
+                <button class="segment" type="button" data-choice data-ai-chip aria-pressed="false">生日</button>
+                <button class="segment" type="button" data-choice data-ai-chip aria-pressed="false">乔迁</button>
+                <button class="segment" type="button" data-choice data-ai-chip aria-pressed="false">婚礼</button>
+                <button class="segment" type="button" data-choice data-ai-chip aria-pressed="false">门店</button>
+              </div>
+              <textarea data-ai-input aria-label="送礼补充说明" placeholder="补充色系、香型、贺卡或避雷点"></textarea>
+            </div>
           </div>
         </section>
 
-        <section class="section">
-          <div class="prompt-card">
-            <div class="section-head" style="margin-bottom: 8px;">
-              <h2 class="section-title">描述你的送礼场景</h2>
-            </div>
-            <textarea aria-label="送礼场景描述">送给女性朋友，生日礼物，预算 300-500，喜欢红色但不要太张扬。</textarea>
-            <div class="segmented" data-choice-group style="margin-top: 12px;">
-              <button class="segment active" data-choice aria-pressed="true">生日</button>
-              <button class="segment" data-choice aria-pressed="false">乔迁</button>
-              <button class="segment" data-choice aria-pressed="false">婚礼</button>
-              <button class="segment" data-choice aria-pressed="false">门店</button>
-            </div>
+        <section class="section" data-ai-empty>
+          <div class="ai-empty-state">
+            <strong>选好条件后显示推荐</strong>
+            <span>先不用写很长，几个关键词就够。</span>
           </div>
         </section>
 
-        <section class="section">
+        <section class="section" data-ai-results hidden>
           <div class="section-head">
             <h2 class="section-title serif">推荐结果</h2>
-            <span class="section-note">静态生成示意</span>
+            <span class="section-note">可直接加购</span>
           </div>
+          <div class="recommend-result-stack">
           <article class="ai-result">
-            <img src="assets/product-berry-candle.png" alt="AI 推荐的莓果洛可可蜡烛">
+            <img src="assets/product-berry-candle.png" alt="推荐的莓果洛可可蜡烛">
             <div>
-              <div class="tag-row"><span class="tag berry">最匹配</span><span class="tag">礼盒</span></div>
+              <div class="tag-row"><span class="tag berry">第一推荐</span><span class="tag">礼盒</span></div>
               <h3>莓果洛可可 · 中号礼盒</h3>
-              <p>红色足够有仪式感，象牙和金色会压住张扬感，适合生日赠礼。</p>
+              <p>红色有仪式感，象牙和金色让整体更稳。</p>
               <div class="price-line">¥328 <small>中号起</small></div>
+              <div class="ai-result-actions">
+                <button class="mini-cart-button" type="button" data-recommend-add-cart>加入购物车</button>
+                <a class="link-button" href="cart.html">去结算</a>
+              </div>
             </div>
           </article>
-        </section>
-
-        <section class="section">
-          <div class="insight-list">
-            <div class="mini-step"><b>1</b><div><strong>为什么推荐它</strong><span>预算匹配、色系明确、礼盒可选，客服能继续追问贺卡内容。</span></div></div>
-            <div class="mini-step"><b>2</b><div><strong>备选方向</strong><span>如果希望更温和，可切换为金蓝象牙礼盒。</span></div></div>
+          <article class="ai-result">
+            <img src="assets/gift-box-candle.png" alt="推荐的晨雾金蓝礼盒">
+            <div>
+              <div class="tag-row"><span class="tag">第二推荐</span><span class="tag">礼盒</span></div>
+              <h3>晨雾金蓝 · 礼盒组合</h3>
+              <p>色调更轻，适合怕红色太抢眼的关系。</p>
+              <div class="price-line">¥528 <small>礼盒款</small></div>
+              <div class="ai-result-actions">
+                <button class="mini-cart-button" type="button" data-recommend-add-cart>加入购物车</button>
+                <a class="link-button" href="cart.html">去结算</a>
+              </div>
+            </div>
+          </article>
+          <article class="ai-result">
+            <img src="assets/catalog/advanced-02.png" alt="推荐的森林松绿蜡烛">
+            <div>
+              <div class="tag-row"><span class="tag">第三推荐</span><span class="tag">陈列</span></div>
+              <h3>森林松绿 · 中号陈列款</h3>
+              <p>更适合乔迁、书房和日常空间礼。</p>
+              <div class="price-line">阶梯价 <small>按数量</small></div>
+              <div class="ai-result-actions">
+                <button class="mini-cart-button" type="button" data-recommend-add-cart>加入购物车</button>
+                <a class="link-button" href="cart.html">去结算</a>
+              </div>
+            </div>
+          </article>
           </div>
         </section>
       </div>
 
       <div class="sticky-cta">
         <a class="btn ghost" href="service.html">问顾问</a>
-        <button class="btn primary" data-toast="已模拟生成：已更新三款搭配推荐">生成推荐</button>
+        <button class="btn primary" data-ai-generate data-toast="已更新推荐" disabled>查看推荐</button>
       </div>
       <div class="toast" data-toast-host role="status" aria-live="polite"></div>
     </section>

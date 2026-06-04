@@ -2,6 +2,7 @@
   const page = document.body.dataset.page;
   const toast = document.querySelector("[data-toast-host]");
   const CART_KEY = "waxAtelierCartCount";
+  const CART_ITEMS_KEY = "waxAtelierCartItems";
   const LANG_KEY = "waxAtelierLang";
   const ADDRESS_DEFAULT_KEY = "waxAtelierDefaultAddress";
   const ADDRESS_CART_KEY = "waxAtelierCartAddress";
@@ -54,11 +55,21 @@
     ["婚礼批采", "Wedding Bulk"],
     ["桌礼、伴手礼和迎宾区方案。", "Table gifts, favors and welcome-area plans."],
     ["看方案", "View plan"],
-    ["AI 搭配", "AI Match"],
-    ["把模糊需求生成 3 款推荐。", "Turn a loose brief into three recommendations."],
+    ["搭配推荐", "Gift Match"],
+    ["根据需求给 3 款推荐。", "Three picks from your brief."],
+    ["推荐", "Picks"],
     ["未来页面入口", "Future entries"],
     ["进阶场景", "Advanced Scenarios"],
     ["零售价待确认", "Retail price pending"],
+    ["阶梯价 ¥268 起", "Tiered from ¥268"],
+    ["阶梯价 ¥498 起", "Tiered from ¥498"],
+    ["阶梯价 ¥328 起", "Tiered from ¥328"],
+    ["阶梯价格", "Tiered pricing"],
+    ["同系列累计数量越多，单件价越低。", "The more you add in the same series, the lower the unit price."],
+    ["当前阶梯价", "Current tier price"],
+    ["再加 2 件进入 3 件档，单件 ¥248。", "Add 2 more to reach the 3-piece tier at ¥248 each."],
+    ["继续加购可进入下一档。", "Add more to reach the next tier."],
+    ["已是当前最高优惠档。", "Current best tier reached."],
     ["商品详情", "Product Details"],
     ["下单前检查配置", "Review before checkout"],
     ["M 号", "Size M"],
@@ -122,7 +133,7 @@
     ["运费", "Shipping"],
     ["应付合计", "Total due"],
     ["提交确认", "Submit for confirmation"],
-    ["已模拟提交，稍后确认最终价格", "Submitted in preview. Final price will be confirmed later."],
+    ["已提交确认，稍后核对价格", "Submitted. Price will be checked later."],
     ["我的 · 香薰雕刻蜡烛", "Account · Carved Scented Candles"],
     ["订单 · 会员 · 售后", "Orders · Member · Support"],
     ["礼盒会员", "Gift-box Member"],
@@ -157,6 +168,31 @@
     ["商品图、文案和海报素材。", "Product images, copy and poster assets."],
     ["图片、文案、海报", "Images, copy, posters"],
     ["申请后开放", "Apply to unlock"],
+    ["可用券、领券", "Available coupons, claim more"],
+    ["发票管理", "Invoices"],
+    ["抬头、记录", "Titles, records"],
+    ["政策协议", "Policies"],
+    ["购买、隐私", "Purchase, privacy"],
+    ["发票管理 · 香薰雕刻蜡烛", "Invoices · Carved Scented Candles"],
+    ["抬头 · 记录 · 说明", "Titles · Records · Notes"],
+    ["常用抬头", "Saved invoice titles"],
+    ["新增抬头", "Add title"],
+    ["开票记录", "Invoice records"],
+    ["开票说明", "Invoice notes"],
+    ["政策协议 · 香薰雕刻蜡烛", "Policies · Carved Scented Candles"],
+    ["购买 · 售后 · 隐私", "Purchase · After-sales · Privacy"],
+    ["购买须知", "Purchase notes"],
+    ["售后说明", "After-sales notes"],
+    ["隐私协议", "Privacy policy"],
+    ["渠道申请说明", "Channel application notes"],
+    ["积分商城", "Points shop"],
+    ["余额 · 明细 · 商城", "Balance · History · Shop"],
+    ["当前积分", "Current points"],
+    ["本月累计", "Earned this month"],
+    ["本月使用", "Used this month"],
+    ["积分累计", "Points earned"],
+    ["积分消费", "Points spent"],
+    ["进入积分商城", "Enter points shop"],
     ["渠道素材已开放", "Channel assets unlocked"],
     ["门店陈列", "Store Display"],
     ["按面积和预算规划上架。", "Plan display by area and budget."],
@@ -188,6 +224,67 @@
     ["无香说明", "Unscented note"],
     ["不添加香精，不干扰空间气味，适合敏感人群或商业陈列。", "No fragrance is added, so it will not interfere with room scent and suits sensitive users or commercial display."],
     ["适合生日、感谢和纪念日礼。", "Good for birthday, thanks and anniversaries."],
+    ["先选择预算区间。确认金额后，再给出对应款式、尺寸、包装和下一步建议。", "Choose a budget first. After confirming the range, we suggest products, size, packaging and next steps."],
+    ["自定义预算", "Custom budget"],
+    ["输入大致范围后再推荐。", "Enter a rough range before recommendations."],
+    ["最低预算", "Minimum budget"],
+    ["最高预算", "Maximum budget"],
+    ["例如 200", "e.g. 200"],
+    ["例如 500", "e.g. 500"],
+    ["查看推荐", "View recommendations"],
+    ["当前预算", "Current budget"],
+    ["修改", "Edit"],
+    ["预算 · 场景 · 节日", "Budget · Occasion · Festival"],
+    ["预算", "Budget"],
+    ["不限", "Any"],
+    ["¥199 内", "Under ¥199"],
+    ["¥200-399", "¥200-399"],
+    ["¥400-699", "¥400-699"],
+    ["¥700+", "¥700+"],
+    ["场景", "Occasion"],
+    ["重要关系", "Important"],
+    ["企业节点", "Business"],
+    ["推荐商品", "Recommended"],
+    ["默认按热度排序，筛选后只保留相关款式。", "Sorted by popularity; filters move matching items up."],
+    ["自定义", "Custom"],
+    ["拖动区间后刷新推荐", "Drag the range to refresh picks"],
+    ["应用预算", "Apply budget"],
+    ["关闭预算选择", "Close budget picker"],
+    ["关闭", "Close"],
+    ["送礼条件", "Gift Conditions"],
+    ["选几项就能看结果", "Pick a few items to see results"],
+    ["已选条件", "Selected"],
+    ["选好条件后显示推荐", "Recommendations appear after selection"],
+    ["先不用写很长，几个关键词就够。", "A few keywords are enough."],
+    ["可直接加购", "Can add directly"],
+    ["第一推荐", "Top pick"],
+    ["第二推荐", "Second pick"],
+    ["第三推荐", "Third pick"],
+    ["去结算", "Checkout"],
+    ["填写送礼需求", "Fill in gifting needs"],
+    ["先给几个关键词，再生成推荐", "Add a few cues before generating picks"],
+    ["收礼关系", "Recipient relation"],
+    ["朋友", "Friend"],
+    ["同事", "Colleague"],
+    ["长辈", "Elder"],
+    ["客户", "Client"],
+    ["请选择", "Select"],
+    ["偏好 / 避雷", "Preferences / avoid"],
+    ["例如：送给女性朋友，生日礼物，喜欢红色但不要太张扬。", "e.g. A birthday gift for a female friend; she likes red but not too bold."],
+    ["例如：偏浅色、不要太甜、希望带贺卡", "e.g. light tones, not too sweet, include a card"],
+    ["填写需求后生成 3 款推荐", "Fill in needs to generate 3 picks"],
+    ["推荐会按预算、关系、场景和色系偏好展开，结果仍由顾问确认。", "Recommendations will use budget, relation, occasion and color preferences; a consultant still confirms the result."],
+    ["先选使用场景，再填写数量、预算和日期。批量价格由顾问按数量、包装和交期确认。", "Choose the wedding use case first, then add quantity, budget and date. Bulk pricing is confirmed by quantity, packaging and lead time."],
+    ["可多选使用场景，再填写数量、预算和日期。价格按数量、包装和交期确认。", "Select one or more uses, then add quantity, budget and date. Pricing is confirmed by quantity, packaging and lead time."],
+    ["查看购物车", "View cart"],
+    ["已提交采购需求", "Purchase request submitted"],
+    ["先收集色系、香型和贺卡语气，不直接承诺生产周期和价格，最终由顾问确认可行性。", "Collect color, scent and card tone first. Production timing and price are confirmed by a consultant."],
+    ["先选色系，再选香型，最后写贺卡和日期。提交后由顾问确认细节和交期。", "Choose colors, then scent, then card and date. A consultant confirms details and timing."],
+    ["选色系", "Choose colors"],
+    ["选香型", "Choose scent"],
+    ["参考预算。具体价格按尺寸、色层、包装和交期确认。", "Reference budget. Final price depends on size, color layers, packaging and timing."],
+    ["先看推荐", "See picks first"],
+    ["已提交定制需求", "Custom request submitted"],
     ["象牙花冠", "Ivory Corolla"],
     ["森林松绿", "Forest Pine"],
     ["玫瑰粉雾", "Rose Mist"],
@@ -349,6 +446,8 @@
         if (window.__renderAddresses) window.__renderAddresses();
         if (window.__renderCartAddress) window.__renderCartAddress();
         if (window.__renderSizeSummary) window.__renderSizeSummary();
+        if (window.__renderGiftResults) window.__renderGiftResults();
+        if (window.__renderCartItems) window.__renderCartItems();
         applyLanguage();
       });
     });
@@ -363,11 +462,84 @@
   };
 
   const cartCount = () => Number(window.sessionStorage.getItem(CART_KEY) || 0);
+  const defaultCartItem = () => ({
+    code: "AD-07",
+    series: "advanced",
+    seriesLabel: "进阶",
+    name: "莓果洛可可",
+    title: "莓果洛可可 · 手工雕刻香薰蜡烛",
+    image: "assets/detail/detail-hero.png",
+    size: "M · 约 7 x 10 cm",
+    scent: "玫瑰木：红莓 / 玫瑰木 / 琥珀",
+    carving: "经典卷边",
+    packaging: "礼盒包装 +20",
+    extra: "空白贺卡",
+    price: 268,
+    qty: 1,
+  });
+  const cartItemFromElement = (element) => {
+    const card = element ? element.closest("article, .catalog-product-card, .gift-result-card, .ai-result") : null;
+    const image = element?.dataset.cartImage || card?.querySelector("img")?.getAttribute("src") || defaultCartItem().image;
+    const heading = card?.querySelector("h3")?.textContent?.trim() || element?.dataset.cartTitle || defaultCartItem().title;
+    const titleParts = heading.split("·").map((part) => part.trim()).filter(Boolean);
+    const code = element?.dataset.cartCode || titleParts[0] || defaultCartItem().code;
+    const name = element?.dataset.cartName || titleParts[1] || titleParts[0] || defaultCartItem().name;
+    const priceText = card?.querySelector(".price-line")?.textContent || "";
+    const priceMatch = priceText.match(/¥\s*(\d+)|楼\s*(\d+)/);
+    const price = Number(element?.dataset.cartPrice || priceMatch?.[1] || priceMatch?.[2] || defaultCartItem().price);
+    return {
+      code,
+      series: element?.dataset.cartSeries || element?.dataset.seriesKey || "advanced",
+      seriesLabel: element?.dataset.cartSeriesLabel || "推荐",
+      name,
+      title: element?.dataset.cartTitle || heading,
+      image,
+      size: element?.dataset.cartSize || "M · 约 7 x 10 cm",
+      scent: element?.dataset.cartScent || "玫瑰木：红莓 / 玫瑰木 / 琥珀",
+      carving: element?.dataset.cartCarving || "经典卷边",
+      packaging: element?.dataset.cartPackaging || "精品包装",
+      extra: element?.dataset.cartExtra || "空白贺卡",
+      price,
+      qty: 1,
+    };
+  };
+  const cartItems = () => {
+    try {
+      const items = JSON.parse(window.sessionStorage.getItem(CART_ITEMS_KEY) || "[]");
+      return Array.isArray(items) ? items.filter(Boolean) : [];
+    } catch (error) {
+      return [];
+    }
+  };
+  const setCartItems = (items) => {
+    const nextItems = Array.isArray(items) ? items : [];
+    window.sessionStorage.setItem(CART_ITEMS_KEY, JSON.stringify(nextItems));
+    const count = nextItems.reduce((sum, item) => sum + Number(item.qty || 0), 0);
+    window.sessionStorage.setItem(CART_KEY, String(Math.max(0, count)));
+    updateCartBadges();
+    if (window.__renderCartItems) window.__renderCartItems();
+  };
   const setCartCount = (count) => {
     window.sessionStorage.setItem(CART_KEY, String(Math.max(0, count)));
     updateCartBadges();
   };
-  const addCartItem = () => setCartCount(cartCount() + 1);
+  const addCartItem = (item) => {
+    const nextItem = Object.assign(defaultCartItem(), item || {});
+    const items = cartItems();
+    if (!items.length && cartCount() > 0) {
+      const seed = defaultCartItem();
+      seed.qty = cartCount();
+      items.push(seed);
+    }
+    const key = [nextItem.series, nextItem.code, nextItem.name, nextItem.packaging].join("|");
+    const existing = items.find((entry) => [entry.series, entry.code, entry.name, entry.packaging].join("|") === key);
+    if (existing) {
+      existing.qty = Number(existing.qty || 1) + 1;
+    } else {
+      items.push(nextItem);
+    }
+    setCartItems(items);
+  };
 
   const updateCartBadges = () => {
     document.querySelectorAll(".tab-item[data-tab='cart']").forEach((item) => {
@@ -489,6 +661,185 @@
     renderHomeHot();
   }
 
+  const giftHub = document.querySelector("[data-gift-hub]");
+  if (giftHub) {
+    const giftResults = giftHub.querySelector("[data-gift-results]");
+    const giftCount = giftHub.querySelector("[data-gift-result-count]");
+    const rangeSheet = document.querySelector("[data-gift-range-sheet]");
+    const rangeMin = document.querySelector("[data-gift-range-min]");
+    const rangeMax = document.querySelector("[data-gift-range-max]");
+    const rangeLabel = document.querySelector("[data-gift-range-label]");
+    const state = { budget: "all", scene: "all", festival: "all" };
+    const giftProducts = [
+      {
+        code: "AD-01",
+        name: "象牙花冠",
+        title: "象牙花冠 · 进阶礼品款",
+        meta: "生日答谢 · 精品包装",
+        image: "assets/catalog/advanced-01.png",
+        series: "advanced",
+        seriesLabel: "进阶",
+        budget: ["under199", "mid399"],
+        scene: ["birthday"],
+        festival: ["all"],
+        heat: 98,
+        price: 268,
+      },
+      {
+        code: "AD-02",
+        name: "森林松绿",
+        title: "森林松绿 · 日常陈列款",
+        meta: "乔迁日常 · 精品包装",
+        image: "assets/catalog/advanced-02.png",
+        series: "advanced",
+        seriesLabel: "进阶",
+        budget: ["mid399", "high699"],
+        scene: ["housewarming"],
+        festival: ["yearend"],
+        heat: 94,
+        price: 268,
+      },
+      {
+        code: "AR-01",
+        name: "莓红鎏金",
+        title: "莓红鎏金 · 匠作礼盒",
+        meta: "重要关系 · 礼盒默认",
+        image: "assets/catalog/artisan-01.png",
+        series: "artisan",
+        seriesLabel: "匠作",
+        budget: ["high699", "over700"],
+        scene: ["important", "business"],
+        festival: ["spring", "romance"],
+        heat: 92,
+        price: 498,
+      },
+      {
+        code: "FS-01",
+        name: "暖金节庆",
+        title: "暖金节庆 · 节日系列",
+        meta: "春节中秋 · 包装手选",
+        image: "assets/catalog/festival-01.png",
+        series: "festival",
+        seriesLabel: "节日",
+        budget: ["mid399", "high699"],
+        scene: ["business", "important"],
+        festival: ["spring", "midautumn"],
+        heat: 89,
+        price: 328,
+      },
+      {
+        code: "AR-02",
+        name: "雾蓝花冠",
+        title: "雾蓝花冠 · 空间礼盒",
+        meta: "高端陈列 · 礼盒默认",
+        image: "assets/catalog/artisan-02.png",
+        series: "artisan",
+        seriesLabel: "匠作",
+        budget: ["high699", "over700"],
+        scene: ["housewarming", "important"],
+        festival: ["yearend"],
+        heat: 86,
+        price: 498,
+      },
+    ];
+    const scoreGiftProduct = (item) => {
+      let score = item.heat;
+      if (state.budget !== "all") score += item.budget.includes(state.budget) ? 30 : -18;
+      if (state.scene !== "all") score += item.scene.includes(state.scene) ? 30 : -18;
+      if (state.festival !== "all") score += item.festival.includes(state.festival) ? 30 : -18;
+      return score;
+    };
+    const setGiftFilter = (type, value, label) => {
+      state[type] = value || "all";
+      giftHub.querySelectorAll("[data-gift-filter='" + type + "']").forEach((button) => {
+        const active = button.dataset.filterValue === state[type];
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+      if (type === "budget" && label) {
+        const custom = giftHub.querySelector("[data-gift-custom-budget]");
+        if (custom) custom.textContent = label;
+      }
+      renderGiftResults();
+    };
+    const renderGiftResults = () => {
+      if (!giftResults) return;
+      const ranked = giftProducts
+        .map((item) => Object.assign({ score: scoreGiftProduct(item) }, item))
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 5);
+      giftResults.innerHTML = "";
+      ranked.forEach((item, index) => {
+        const article = document.createElement("article");
+        article.className = "gift-result-card";
+        article.innerHTML =
+          '<a class="gift-result-link" href="product.html?series=' + encodeURIComponent(item.series) + '&code=' + encodeURIComponent(item.code) + '">' +
+          '<img src="' + item.image + '" alt="' + item.name + '雕刻蜡烛">' +
+          '<span class="gift-result-body"><span class="gift-rank">TOP ' + (index + 1) + '</span>' +
+          '<strong>' + item.code + ' · ' + item.name + '</strong>' +
+          '<em>' + item.meta + '</em><b>阶梯价 ¥' + item.price + ' 起</b></span></a>' +
+          '<button class="catalog-product-action gift-result-add" type="button" aria-label="加入购物车" data-gift-add data-cart-code="' + item.code + '" data-cart-series="' + item.series + '" data-cart-series-label="' + item.seriesLabel + '" data-cart-name="' + item.name + '" data-cart-title="' + item.title + '" data-cart-image="' + item.image + '" data-cart-size="S/M/L/XL" data-cart-scent="玫瑰木：红莓 / 玫瑰木 / 琥珀" data-cart-packaging="' + item.meta.split("·").pop().trim() + '" data-cart-price="' + item.price + '">+</button>';
+        giftResults.append(article);
+      });
+      if (giftCount) giftCount.textContent = ranked.length + " 款";
+      applyLanguage(giftResults);
+    };
+    window.__renderGiftResults = renderGiftResults;
+    const normalizeRange = () => {
+      if (!rangeMin || !rangeMax || !rangeLabel) return;
+      let min = Number(rangeMin.value || 0);
+      let max = Number(rangeMax.value || 0);
+      if (min > max) {
+        const swap = min;
+        min = max;
+        max = swap;
+      }
+      rangeLabel.textContent = "¥" + min + " - ¥" + max;
+    };
+    const rangeToBudget = () => {
+      const max = Number(rangeMax ? rangeMax.value : 0);
+      if (max <= 199) return "under199";
+      if (max <= 399) return "mid399";
+      if (max <= 699) return "high699";
+      return "over700";
+    };
+    giftHub.addEventListener("click", (event) => {
+      const customBudget = event.target.closest("[data-gift-custom-budget]");
+      if (customBudget && rangeSheet) {
+        rangeSheet.hidden = false;
+        normalizeRange();
+        return;
+      }
+      const filter = event.target.closest("[data-gift-filter]");
+      if (filter) {
+        setGiftFilter(filter.dataset.giftFilter, filter.dataset.filterValue);
+      }
+      const add = event.target.closest("[data-gift-add]");
+      if (add) {
+        event.preventDefault();
+        addCartItem(cartItemFromElement(add));
+        showToast("已加入购物车，可继续挑选其他商品");
+      }
+    });
+    document.querySelectorAll("[data-gift-range-close]").forEach((button) => {
+      button.addEventListener("click", () => {
+        if (rangeSheet) rangeSheet.hidden = true;
+      });
+    });
+    [rangeMin, rangeMax].forEach((range) => {
+      if (range) range.addEventListener("input", normalizeRange);
+    });
+    document.querySelector("[data-gift-range-apply]")?.addEventListener("click", () => {
+      normalizeRange();
+      setGiftFilter("budget", rangeToBudget(), rangeLabel ? rangeLabel.textContent : "自定义");
+      if (rangeSheet) rangeSheet.hidden = true;
+    });
+    const hash = window.location.hash.slice(1);
+    if (hash === "budget") setGiftFilter("budget", "mid399");
+    else if (hash === "festival") setGiftFilter("festival", "spring");
+    else renderGiftResults();
+  }
+
   const giftTabs = Array.from(document.querySelectorAll("[data-gift-tab]"));
   const giftPanels = Array.from(document.querySelectorAll("[data-gift-panel]"));
   const validGiftTabs = giftTabs.map((tab) => tab.dataset.giftTab);
@@ -519,23 +870,151 @@
 
   const budgetPicker = document.querySelector("[data-budget-picker]");
   if (budgetPicker) {
-    const empty = document.querySelector("[data-budget-empty]");
+    const intro = document.querySelector("[data-budget-intro]");
+    const initial = document.querySelector("[data-budget-initial]");
+    const toolbar = document.querySelector("[data-budget-toolbar]");
+    const current = document.querySelector("[data-budget-current]");
+    const edit = document.querySelector("[data-budget-edit]");
+    const customBox = document.querySelector("[data-custom-budget]");
+    const minInput = document.querySelector("[data-budget-min]");
+    const maxInput = document.querySelector("[data-budget-max]");
+    const customConfirm = document.querySelector("[data-custom-budget-confirm]");
     const panels = Array.from(document.querySelectorAll("[data-budget-panel]"));
-    const showBudgetPanel = (name) => {
-      let hasMatch = false;
+    const budgetLabels = {
+      under199: "¥199 内",
+      mid399: "¥200-399",
+      high699: "¥400-699",
+      over700: "¥700+",
+      custom: "预算不确定",
+    };
+    const hideBudgetPanels = () => {
       panels.forEach((panel) => {
-        const active = panel.dataset.budgetPanel === name;
-        panel.classList.toggle("active", active);
-        if (active) hasMatch = true;
+        panel.classList.remove("active");
       });
-      if (empty) empty.classList.toggle("is-hidden", hasMatch);
+    };
+    const setBudgetEditing = (editing) => {
+      if (initial) initial.hidden = !editing;
+      if (intro) intro.hidden = !editing;
+      if (toolbar) toolbar.hidden = editing;
+      if (editing) hideBudgetPanels();
+    };
+    const showBudgetPanel = (name, label) => {
+      if (name === "range") {
+        if (customBox) customBox.hidden = false;
+        if (toolbar) toolbar.hidden = true;
+        hideBudgetPanels();
+        return;
+      }
+      const nextName = budgetLabels[name] ? name : "custom";
+      if (customBox) customBox.hidden = true;
+      if (current) current.textContent = label || budgetLabels[nextName];
+      panels.forEach((panel) => {
+        panel.classList.toggle("active", panel.dataset.budgetPanel === nextName);
+      });
+      setBudgetEditing(false);
+    };
+    const budgetFromCustomRange = () => {
+      const max = Number(maxInput ? maxInput.value : "");
+      if (!max) return "custom";
+      if (max <= 199) return "under199";
+      if (max <= 399) return "mid399";
+      if (max <= 699) return "high699";
+      return "over700";
+    };
+    const customBudgetLabel = () => {
+      const min = minInput ? minInput.value.trim() : "";
+      const max = maxInput ? maxInput.value.trim() : "";
+      if (min && max) return "¥" + min + "-" + max;
+      if (max) return "¥" + max + " 内";
+      return "预算不确定";
     };
 
     budgetPicker.addEventListener("click", (event) => {
       const target = event.target.closest("[data-budget-option]");
-      if (target) showBudgetPanel(target.dataset.budgetOption);
+      if (target) showBudgetPanel(target.dataset.budgetOption, target.dataset.budgetLabel);
     });
-    showBudgetPanel("");
+    if (customConfirm) {
+      customConfirm.addEventListener("click", () => {
+        showBudgetPanel(budgetFromCustomRange(), customBudgetLabel());
+      });
+    }
+    if (edit) {
+      edit.addEventListener("click", () => {
+        setBudgetEditing(true);
+        if (customBox) customBox.hidden = true;
+      });
+    }
+    setBudgetEditing(true);
+  }
+
+  const aiForm = document.querySelector("[data-ai-match-form]");
+  if (aiForm) {
+    const aiInputs = Array.from(aiForm.querySelectorAll("[data-ai-input]"));
+    const aiChips = Array.from(aiForm.querySelectorAll("[data-ai-chip]"));
+    const aiResults = Array.from(document.querySelectorAll("[data-ai-results]"));
+    const aiEmpty = document.querySelector("[data-ai-empty]");
+    const aiGenerate = document.querySelector("[data-ai-generate]");
+    const aiFields = aiForm.querySelector("[data-ai-fields]");
+    const aiSummary = aiForm.querySelector("[data-ai-summary]");
+    const aiSummaryText = aiForm.querySelector("[data-ai-summary-text]");
+    const aiEdit = aiForm.querySelector("[data-ai-edit]");
+    let generated = false;
+    const hasAiBrief = () => {
+      const hasField = aiInputs.some((input) => input.value.trim().length > 0);
+      const hasChip = aiChips.some((chip) => chip.getAttribute("aria-pressed") === "true");
+      return hasField || hasChip;
+    };
+    const setAiResultsVisible = (visible) => {
+      aiResults.forEach((section) => {
+        section.hidden = !visible;
+      });
+      if (aiEmpty) aiEmpty.hidden = visible;
+    };
+    const renderAiSummary = () => {
+      const relation = aiForm.querySelector("[data-ai-relation]")?.value || "关系未选";
+      const budget = aiForm.querySelector("[data-ai-budget]")?.value || "预算未选";
+      const occasions = aiChips
+        .filter((chip) => chip.getAttribute("aria-pressed") === "true")
+        .map((chip) => chip.textContent.trim())
+        .join("、") || "场景未选";
+      if (aiSummaryText) aiSummaryText.textContent = relation + " · " + budget + " · " + occasions;
+    };
+    const setAiEditing = (editing) => {
+      aiForm.classList.toggle("is-collapsed", !editing);
+      if (aiFields) aiFields.hidden = !editing;
+      if (aiSummary) aiSummary.hidden = editing;
+      if (editing) {
+        generated = false;
+        setAiResultsVisible(false);
+      } else {
+        renderAiSummary();
+      }
+    };
+    const updateAiState = () => {
+      const ready = hasAiBrief();
+      if (aiGenerate) aiGenerate.disabled = !ready;
+      if (!generated) setAiResultsVisible(false);
+    };
+    aiForm.addEventListener("input", updateAiState);
+    aiForm.addEventListener("change", updateAiState);
+    aiForm.addEventListener("click", () => {
+      window.setTimeout(updateAiState, 0);
+    });
+    if (aiGenerate) {
+      aiGenerate.addEventListener("click", () => {
+        if (!hasAiBrief()) {
+          updateAiState();
+          return;
+        }
+        generated = true;
+        setAiResultsVisible(true);
+        setAiEditing(false);
+        const firstResult = aiResults.find((section) => !section.hidden);
+        if (firstResult) window.requestAnimationFrame(() => firstResult.scrollIntoView({ behavior: "smooth", block: "start" }));
+      });
+    }
+    if (aiEdit) aiEdit.addEventListener("click", () => setAiEditing(true));
+    updateAiState();
   }
 
   const catalogImages = {
@@ -673,6 +1152,16 @@
       action.dataset.cardAction = actionMode;
       action.dataset.cardHref = href;
       action.dataset.seriesKey = seriesKey;
+      action.dataset.cartCode = code;
+      action.dataset.cartSeries = seriesKey;
+      action.dataset.cartSeriesLabel = seriesName.replace("系列", "");
+      action.dataset.cartName = tone;
+      action.dataset.cartTitle = tone + " · " + seriesName + "雕刻香薰蜡烛";
+      action.dataset.cartImage = image;
+      action.dataset.cartSize = sizeLabel;
+      action.dataset.cartScent = seriesKey === "festival" ? "节日香型：下单前确认" : "玫瑰木：红莓 / 玫瑰木 / 琥珀";
+      action.dataset.cartPackaging = packageLabel;
+      action.dataset.cartPrice = seriesKey === "artisan" ? "498" : (seriesKey === "festival" ? "328" : "268");
 
       card.append(link, action);
       fragment.append(card);
@@ -761,7 +1250,7 @@
       event.preventDefault();
       event.stopPropagation();
       if (button.dataset.cardAction === "add") {
-        addCartItem();
+        addCartItem(cartItemFromElement(button));
         showToast("已加入购物车，可继续挑选其他商品");
         return;
       }
@@ -837,6 +1326,24 @@
     },
   };
 
+  const tierPrices = {
+    advanced: {
+      title: "阶梯价 ¥268 起",
+      note: "同系列累计数量越多，单件价越低。",
+      rows: [["1-2 件", "¥268 / 件"], ["3-5 件", "¥248 / 件"], ["6 件起", "¥228 / 件"]]
+    },
+    artisan: {
+      title: "阶梯价 ¥498 起",
+      note: "匠作系列默认礼盒包装，按数量进入阶梯价。",
+      rows: [["1-2 件", "¥598 / 件"], ["3-5 件", "¥548 / 件"], ["6 件起", "¥498 / 件"]]
+    },
+    festival: {
+      title: "阶梯价 ¥328 起",
+      note: "节日系列需先确认包装，再按数量计算。",
+      rows: [["1-2 件", "¥388 / 件"], ["3-5 件", "¥358 / 件"], ["6 件起", "¥328 / 件"]]
+    }
+  };
+
   const renderProductDetail = () => {
     const root = document.querySelector("[data-fragrance-selector]");
     if (!root) return;
@@ -859,6 +1366,15 @@
     if (specs) specs.innerHTML = "<span>系列：" + data.label + "</span><span>颜色：" + code + " " + tone + "</span><span>销售：零售可购</span>";
     const back = document.querySelector("[data-product-back]");
     if (back) back.href = "catalog.html#" + series;
+    const tier = tierPrices[series] || tierPrices.advanced;
+    const productPrice = document.querySelector("[data-product-price]");
+    if (productPrice) productPrice.innerHTML = tier.title + " <small>按系列、尺寸和数量</small>";
+    const tierNote = document.querySelector("[data-tier-note]");
+    if (tierNote) tierNote.textContent = tier.note;
+    const tierTable = document.querySelector("[data-tier-table]");
+    if (tierTable) {
+      tierTable.innerHTML = tier.rows.map((row) => "<div><span>" + row[0] + "</span><strong>" + row[1] + "</strong></div>").join("");
+    }
 
     const note = document.querySelector("[data-fragrance-count]");
     if (note) note.textContent = data.fragranceNote;
@@ -994,11 +1510,27 @@
   const addPanel = document.querySelector("[data-add-cart-panel]");
   if (productAdd) {
     productAdd.addEventListener("click", () => {
-      addCartItem();
+      const item = defaultCartItem();
+      const title = document.querySelector("[data-product-title]")?.textContent?.trim();
+      const subtitle = document.querySelector("[data-product-subtitle]")?.textContent?.trim() || "";
+      const code = document.querySelector("[data-product-code]")?.textContent?.trim() || subtitle.split(/\s+/)[0];
+      const image = document.querySelector("[data-gallery-track] img")?.getAttribute("src");
+      if (title) item.title = title;
+      if (code) item.code = code;
+      if (image) item.image = image;
+      addCartItem(item);
       showToast("已加入购物车，可继续挑选其他商品");
       if (addPanel) addPanel.hidden = false;
     });
   }
+
+  document.querySelectorAll("[data-recommend-add-cart]").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      addCartItem(cartItemFromElement(button));
+      showToast("已加入购物车，可继续挑选其他商品");
+    });
+  });
 
   const carousel = document.querySelector("[data-gallery-carousel]");
   if (carousel) {
@@ -1034,33 +1566,95 @@
     goTo(0, false);
   }
 
-  const cartToggle = document.querySelector("[data-cart-config-toggle]");
-  const cartConfig = document.querySelector("[data-cart-config]");
-  if (cartToggle && cartConfig) {
-    cartToggle.addEventListener("click", () => {
-      const nextOpen = cartConfig.hasAttribute("hidden");
-      cartConfig.toggleAttribute("hidden", !nextOpen);
-      cartToggle.setAttribute("aria-expanded", String(nextOpen));
-      cartToggle.textContent = translateString(nextOpen ? "收起配置" : "修改配置");
-    });
-  }
-
-  const cartQuantity = document.querySelector("[data-cart-quantity]");
-  const cartQuantityControl = document.querySelector("[data-cart-quantity-control]");
-  const renderCartQuantity = () => {
-    if (!cartQuantity) return;
-    const count = Math.max(1, cartCount() || 1);
-    cartQuantity.textContent = String(count);
+  const cartListRoot = document.querySelector("[data-cart-list]");
+  const cartTierPrice = document.querySelector("[data-cart-tier-price]");
+  const cartTierNote = document.querySelector("[data-cart-tier-note]");
+  const cartSubtotal = document.querySelector("[data-cart-subtotal]");
+  const cartTotal = document.querySelector("[data-cart-total]");
+  const cartTierMap = {
+    advanced: [268, 248, 228],
+    artisan: [498, 468, 438],
+    festival: [328, 308, 288],
   };
-  if (cartQuantity) {
-    if (!cartCount()) setCartCount(1);
-    renderCartQuantity();
-  }
-  if (cartQuantityControl) {
-    cartQuantityControl.addEventListener("click", (event) => {
-      if (event.target.closest("[data-cart-quantity-minus]")) setCartCount(Math.max(1, cartCount() - 1));
-      if (event.target.closest("[data-cart-quantity-plus]")) setCartCount(cartCount() + 1);
-      renderCartQuantity();
+  const cartSeriesCount = (items, series) => items
+    .filter((item) => item.series === series)
+    .reduce((sum, item) => sum + Number(item.qty || 0), 0);
+  const cartUnitPrice = (item, items) => {
+    const base = Number(item.price || 0);
+    if (base >= 900) return base;
+    const tiers = cartTierMap[item.series] || [base || 268, base || 248, base || 228];
+    const count = cartSeriesCount(items, item.series);
+    if (count >= 6) return tiers[2];
+    if (count >= 3) return tiers[1];
+    return tiers[0];
+  };
+  const cartPackageFee = (item) => {
+    const match = String(item.packaging || "").match(/\+(\d+)/);
+    return match ? Number(match[1]) : 0;
+  };
+  const cartTierHint = (item, items) => {
+    if (Number(item.price || 0) >= 900) return "按采购数量确认，先加入购物车留档。";
+    const count = cartSeriesCount(items, item.series);
+    const tiers = cartTierMap[item.series] || cartTierMap.advanced;
+    if (count < 3) return "同系列再加 " + (3 - count) + " 件，进入 ¥" + tiers[1] + " 档。";
+    if (count < 6) return "同系列再加 " + (6 - count) + " 件，进入 ¥" + tiers[2] + " 档。";
+    return "已是当前最高优惠档。";
+  };
+  const visibleCartItems = () => {
+    const items = cartItems();
+    if (items.length) return items;
+    const fallback = defaultCartItem();
+    fallback.qty = Math.max(1, cartCount() || 1);
+    return [fallback];
+  };
+  const renderCartItems = () => {
+    if (!cartListRoot) return;
+    const items = visibleCartItems();
+    cartListRoot.innerHTML = "";
+    let subtotal = 0;
+    let packageTotal = 0;
+    items.forEach((item, index) => {
+      const qty = Math.max(1, Number(item.qty || 1));
+      const unit = cartUnitPrice(item, items);
+      const packageFee = cartPackageFee(item) * qty;
+      subtotal += unit * qty;
+      packageTotal += packageFee;
+      const article = document.createElement("article");
+      article.className = "cart-item";
+      article.innerHTML =
+        '<div class="product-media photo-media cart-thumb"><img src="' + item.image + '" alt="' + item.name + '"></div>' +
+        '<div class="cart-info"><div class="tag-row"><span class="tag berry">' + item.seriesLabel + '</span><span class="tag">' + item.code + '</span></div>' +
+        '<h3>' + item.title + '</h3>' +
+        '<p class="cart-meta-list">' + item.size + '<br>' + item.scent + '<br>' + item.carving + ' · ' + item.packaging + ' · ' + item.extra + '</p>' +
+        '<button class="config-toggle" type="button" data-toast="配置修改为静态入口，后续接入表单">修改配置</button>' +
+        '<div class="qty-row"><div><div class="price-line">当前阶梯价 ¥' + unit + ' / 件</div><div class="cart-tier-note">' + cartTierHint(item, items) + '</div></div>' +
+        '<div class="qty-control" aria-label="数量选择"><button type="button" aria-label="减少数量" data-cart-item-minus="' + index + '">−</button><span>' + qty + '</span><button type="button" aria-label="增加数量" data-cart-item-plus="' + index + '">+</button></div></div></div>';
+      cartListRoot.append(article);
+    });
+    if (cartTierPrice) cartTierPrice.textContent = "当前阶梯价按商品分别计算";
+    if (cartTierNote) cartTierNote.textContent = items.length > 1 ? "已展示全部加购商品。" : cartTierHint(items[0], items);
+    if (cartSubtotal) cartSubtotal.textContent = "¥" + subtotal;
+    if (cartTotal) cartTotal.textContent = "¥" + (subtotal + packageTotal);
+    applyLanguage(cartListRoot);
+  };
+  if (cartListRoot) {
+    window.__renderCartItems = renderCartItems;
+    renderCartItems();
+    cartListRoot.addEventListener("click", (event) => {
+      const minus = event.target.closest("[data-cart-item-minus]");
+      const plus = event.target.closest("[data-cart-item-plus]");
+      const toastButton = event.target.closest("[data-toast]");
+      if (toastButton && !minus && !plus) {
+        showToast(toastButton.dataset.toast);
+        return;
+      }
+      if (!minus && !plus) return;
+      const items = cartItems().length ? cartItems() : visibleCartItems();
+      const index = Number((minus || plus).dataset.cartItemMinus || (minus || plus).dataset.cartItemPlus);
+      if (!items[index]) return;
+      const delta = plus ? 1 : -1;
+      items[index].qty = Math.max(1, Number(items[index].qty || 1) + delta);
+      setCartItems(items);
     });
   }
 
@@ -1331,7 +1925,7 @@
     renderDestinations();
   }
 
-  document.querySelectorAll(".btn, .quick-item, .choice-card, .size-pill, .carving-card, .segment, .tab-item, .feature-card, .coupon-card, .download-card, .activity-card, .sample-package, .round-action, .step-card, .gift-tab, .series-card, .catalog-product-link, .catalog-product-action, .decision-card, .budget-row, .festival-card, .fragrance-pill, .config-toggle, .filter-chip, .language-toggle, .mine-action-card, .destination-select, .destination-option, .address-current, .cart-address-option, .address-actions button, .link-button").forEach((item) => {
+  document.querySelectorAll(".btn, .quick-item, .choice-card, .size-pill, .carving-card, .segment, .tab-item, .feature-card, .coupon-card, .download-card, .activity-card, .sample-package, .round-action, .mini-cart-button, .points-mall-card, .step-card, .gift-tab, .gift-filter-chip, .range-backdrop, .series-card, .catalog-product-link, .catalog-product-action, .decision-card, .budget-row, .festival-card, .fragrance-pill, .config-toggle, .filter-chip, .language-toggle, .mine-action-card, .destination-select, .destination-option, .address-current, .cart-address-option, .address-actions button, .link-button").forEach((item) => {
     item.addEventListener("pointerdown", () => item.classList.add("tap-active"));
     item.addEventListener("pointerup", () => item.classList.remove("tap-active"));
     item.addEventListener("pointerleave", () => item.classList.remove("tap-active"));
@@ -1397,6 +1991,14 @@
       link.dataset.addressReturn = "";
       link.textContent = "继续下单";
       addressSection.append(link);
+    }
+  }
+  const memberFromCoupons = new URLSearchParams(window.location.search).get("from") === "coupons";
+  if (memberFromCoupons && document.body.dataset.page === "member") {
+    const back = document.querySelector(".wx-header a");
+    if (back) {
+      back.href = "coupons.html";
+      back.setAttribute("aria-label", "返回复购券");
     }
   }
   applyLanguage();

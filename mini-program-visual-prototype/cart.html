@@ -25,7 +25,7 @@
 
       <div class="screen-scroll has-cta cart-scroll">
         <section class="section cart-section">
-          <div class="cart-list">
+          <div class="cart-list" data-cart-list>
             <article class="cart-item">
               <div class="product-media photo-media cart-thumb"><img src="assets/detail/detail-hero.png" alt="购物车中的莓红雕刻蜡烛"></div>
               <div class="cart-info">
@@ -34,7 +34,10 @@
                 <p class="cart-meta-list">M · 约 7 x 10 cm<br>玫瑰木：红莓 / 玫瑰木 / 琥珀<br>经典卷边 · 礼盒包装 +20 · 空白贺卡</p>
                 <button class="config-toggle" type="button" data-cart-config-toggle aria-expanded="false">修改配置</button>
                 <div class="qty-row">
-                  <div class="price-line">价格待确认</div>
+                  <div>
+                    <div class="price-line" data-cart-tier-price>当前阶梯价 ¥268 / 件</div>
+                    <div class="cart-tier-note" data-cart-tier-note>再加 2 件进入 3 件档，单件 ¥248。</div>
+                  </div>
                   <div class="qty-control" aria-label="数量选择" data-cart-quantity-control><button type="button" aria-label="减少数量" data-cart-quantity-minus>−</button><span data-cart-quantity>1</span><button type="button" aria-label="增加数量" data-cart-quantity-plus>+</button></div>
                 </div>
               </div>
@@ -119,18 +122,32 @@
         </section>
 
         <section class="section">
+          <div class="info-card tier-price-card compact">
+            <div class="tier-card-head">
+              <h3>阶梯价格</h3>
+              <span>进阶系列</span>
+            </div>
+            <div class="tier-table">
+              <div><span>1-2 件</span><strong>¥268 / 件</strong></div>
+              <div><span>3-5 件</span><strong>¥248 / 件</strong></div>
+              <div><span>6 件起</span><strong>¥228 / 件</strong></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
           <div class="info-card">
             <h3>订单金额</h3>
-            <div class="summary-row"><span>商品小计</span><strong>待确认</strong></div>
+            <div class="summary-row"><span>商品小计</span><strong data-cart-subtotal>¥268 × 1</strong></div>
             <div class="summary-row"><span>礼盒升级</span><strong>+¥20</strong></div>
             <div class="summary-row"><span>运费</span><strong data-shipping-fee>¥0</strong></div>
-            <div class="summary-row"><span>应付合计</span><strong style="color: var(--rose); font-size: 18px;">待确认</strong></div>
+            <div class="summary-row"><span>应付合计</span><strong data-cart-total style="color: var(--rose); font-size: 18px;">¥288</strong></div>
           </div>
         </section>
       </div>
 
       <div class="sticky-cta single cart-submit-bar">
-        <button class="btn primary" data-toast="已模拟提交，稍后确认最终价格">提交确认</button>
+        <button class="btn primary" data-toast="已提交确认，稍后核对价格">提交确认</button>
       </div>
       <nav class="tabbar" aria-label="底部导航">
         <a class="tab-item" data-tab="home" href="home.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10"/></svg><span>首页</span></a>

@@ -23,37 +23,47 @@
       </header>
 
       <div class="screen-scroll has-cta">
-        <section class="growth-hero light">
-          <p class="eyebrow" style="color: var(--berry);">WEDDING GIFTING</p>
-          <h2>让婚礼伴手礼，拥有能被带回家的陈列价值。</h2>
-          <p>面向婚庆、花艺和新人采购，先选择数量、预算和色系，再由顾问确认报价。</p>
-          <div class="hero-stat-row">
-            <div class="hero-stat"><strong>30+</strong><span>建议数量</span></div>
-            <div class="hero-stat"><strong>3 档</strong><span>婚礼场景</span></div>
-            <div class="hero-stat"><strong>顾问</strong><span>确认报价</span></div>
-          </div>
-        </section>
-
         <section class="section">
-          <div class="section-head">
-            <h2 class="section-title serif">婚礼方案</h2>
-          </div>
-          <div class="choice-grid" data-choice-group>
-            <button class="choice-card" data-choice aria-pressed="true"><strong>桌礼点缀</strong><span>每桌 1-2 支，强调仪式感和拍照效果。</span></button>
+          <p class="panel-hint">可多选使用场景，再填写数量、预算和日期。价格按数量、包装和交期确认。</p>
+          <div class="choice-grid" data-choice-group="multi">
+            <button class="choice-card" data-choice aria-pressed="false"><strong>桌礼点缀</strong><span>每桌 1-2 支，强调仪式感和拍照效果。</span></button>
             <button class="choice-card" data-choice aria-pressed="false"><strong>宾客伴手礼</strong><span>小号或中号组合，适合统一包装和贺卡。</span></button>
             <button class="choice-card" data-choice aria-pressed="false"><strong>迎宾区陈列</strong><span>大尺寸与成套色系，形成入口视觉焦点。</span></button>
           </div>
         </section>
 
         <section class="section">
-          <div class="activity-card">
-            <div>
-              <div class="tag-row"><span class="tag berry">推荐色系</span><span class="tag">婚礼</span></div>
-              <h3>象牙金蓝 · 伴手礼组合</h3>
-              <p>更温和稳妥，适合白金、蓝金和花艺场景。</p>
-              <div class="price-line">¥3300 <small>/ 60 支参考</small></div>
-            </div>
-            <img src="assets/gift-box-candle.png" alt="婚礼批量采购礼盒组合">
+          <div class="recommend-result-stack wedding-result-stack">
+            <article class="ai-result wedding-result-card">
+              <img src="assets/gift-box-candle.png" alt="象牙金蓝伴手礼组合">
+              <div>
+                <div class="tag-row"><span class="tag berry">推荐一</span><span class="tag">伴手礼</span></div>
+                <h3>象牙金蓝 · 伴手礼组合</h3>
+                <p>温和稳妥，适合白金、蓝金和花艺场景。</p>
+                <div class="price-line">¥3300 <small>/ 60 支参考</small></div>
+                <button class="catalog-product-action wedding-add-button" type="button" data-recommend-add-cart data-cart-series="wedding" data-cart-series-label="婚礼" data-cart-packaging="批量包装待确认" data-cart-extra="顾问核对" data-cart-price="3300" aria-label="加入购物车">+</button>
+              </div>
+            </article>
+            <article class="ai-result wedding-result-card">
+              <img src="assets/product-berry-candle.png" alt="莓果洛可可桌礼点缀">
+              <div>
+                <div class="tag-row"><span class="tag">推荐二</span><span class="tag">桌礼</span></div>
+                <h3>莓果洛可可 · 桌礼点缀</h3>
+                <p>仪式感更强，适合主桌、签到台和拍照区。</p>
+                <div class="price-line">¥4200 <small>/ 60 支参考</small></div>
+                <button class="catalog-product-action wedding-add-button" type="button" data-recommend-add-cart data-cart-series="wedding" data-cart-series-label="婚礼" data-cart-packaging="批量包装待确认" data-cart-extra="顾问核对" data-cart-price="4200" aria-label="加入购物车">+</button>
+              </div>
+            </article>
+            <article class="ai-result wedding-result-card">
+              <img src="assets/catalog/advanced-02.png" alt="森林松绿迎宾陈列">
+              <div>
+                <div class="tag-row"><span class="tag">推荐三</span><span class="tag">迎宾区</span></div>
+                <h3>森林松绿 · 迎宾陈列</h3>
+                <p>更适合户外、森系和绿白花艺场景。</p>
+                <div class="price-line">顾问确认 <small>按数量</small></div>
+                <button class="catalog-product-action wedding-add-button" type="button" data-recommend-add-cart data-cart-series="wedding" data-cart-series-label="婚礼" data-cart-packaging="批量包装待确认" data-cart-extra="顾问核对" data-cart-price="3300" aria-label="加入购物车">+</button>
+              </div>
+            </article>
           </div>
         </section>
 
@@ -67,8 +77,8 @@
       </div>
 
       <div class="sticky-cta">
-        <a class="btn ghost" href="quotation.html">看批量报价</a>
-        <button class="btn primary" data-toast="已模拟提交：顾问将确认婚礼批量方案">提交采购咨询</button>
+        <a class="btn ghost" href="cart.html">查看购物车</a>
+        <button class="btn primary" data-toast="已提交采购需求">提交采购咨询</button>
       </div>
       <div class="toast" data-toast-host role="status" aria-live="polite"></div>
     </section>
