@@ -77,7 +77,7 @@
 
         <!-- 头部导航 -->
         <header class="pt-10 pb-2 px-4 flex justify-between items-center sticky top-0 z-10 bg-brand-stone/95 border-b border-gray-200/50">
-            <div class="w-8 flex items-center cursor-pointer" onclick="history.back()">
+            <div class="w-8 flex items-center cursor-pointer" onclick="goBack('发票管理.html')">
                 <i data-lucide="chevron-left" class="w-6 h-6 text-brand-text"></i>
             </div>
             <h1 class="text-lg font-bold font-serif">申请发票</h1>
@@ -311,9 +311,10 @@
 
             showToast('开票申请提交成功！即将发送到邮箱');
             setTimeout(() => {
-                history.back();
+                goBack('发票管理.html');
             }, 1800);
         }
     </script>
+    <script src="assets/prototype-state.js"></script>
 </body>
 </html>

@@ -46,7 +46,7 @@
         </div>
 
         <header class="pt-10 pb-2 px-4 flex justify-between items-center sticky top-0 z-10 bg-brand-stone bg-opacity-95 border-b border-gray-200/50">
-            <div class="w-8 flex items-center cursor-pointer" onclick="history.back()">
+            <div class="w-8 flex items-center cursor-pointer" onclick="goBack('商城首页.html')">
                 <i data-lucide="chevron-left" class="w-6 h-6 text-brand-text"></i>
             </div>
             <h1 class="text-lg font-bold font-serif">搭配推荐</h1>
@@ -107,7 +107,7 @@
 
                         <div class="mt-4 flex justify-between items-center">
                             <div class="text-xs text-gray-500">组合价: <span class="text-brand-berry font-bold font-serif text-sm ml-1">¥499.00</span></div>
-                            <button onclick="showToast('组合已加入购物车')" class="bg-brand-text text-white text-xs px-4 py-2 rounded-full font-medium hover:bg-black transition-colors">一键加购</button>
+                            <button onclick="addPrototypeCart(event, '古典晚宴搭配组合', '¥499.00')" class="bg-brand-text text-white text-xs px-4 py-2 rounded-full font-medium hover:bg-black transition-colors">一键加购</button>
                         </div>
                     </div>
                 </div>
@@ -151,7 +151,7 @@
 
                         <div class="mt-4 flex justify-between items-center">
                             <div class="text-xs text-gray-500">组合价: <span class="text-brand-berry font-bold font-serif text-sm ml-1">¥329.00</span></div>
-                            <button onclick="showToast('组合已加入购物车')" class="bg-brand-text text-white text-xs px-4 py-2 rounded-full font-medium hover:bg-black transition-colors">一键加购</button>
+                            <button onclick="addPrototypeCart(event, '角落的宁静搭配组合', '¥329.00')" class="bg-brand-text text-white text-xs px-4 py-2 rounded-full font-medium hover:bg-black transition-colors">一键加购</button>
                         </div>
                     </div>
                 </div>
@@ -173,5 +173,6 @@
             setTimeout(() => toast.classList.add('opacity-0'), 2000);
         }
     </script>
+    <script src="assets/prototype-state.js"></script>
 </body>
 </html>

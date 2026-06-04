@@ -7,7 +7,7 @@ This branch keeps the original prototype untouched and adds the user's newer HTM
 - Branch: `codex/new-html-prototype`
 - Entry page: `new/商城首页.html`
 - Prototype type: static mobile HTML prototype
-- Page count: 16 HTML pages
+- Page count: 17 HTML pages
 - Scope: upload and document the new version as a separate development branch, not a replacement for `mini-program-visual-prototype`
 
 ## Page Map
@@ -18,6 +18,7 @@ This branch keeps the original prototype untouched and adds the user's newer HTM
 | `new/商品分类.html` | Product category and list browsing |
 | `new/商品详情页.html` | Product detail and add-to-cart flow |
 | `new/购物车.html` | Cart, address, delivery, and price-tier preview |
+| `new/付款页面.html` | Payment confirmation before success |
 | `new/支付成功.html` | Payment result |
 | `new/订单列表.html` | Order list and order status |
 | `new/我的.html` | Account center |
@@ -51,6 +52,7 @@ The new version used Chinese filenames, while a few internal links still pointed
 - `order-list.html` -> `订单列表.html`
 - `payment-success.html` -> `支付成功.html`
 - `invoice.html` -> `发票管理.html`
+- Cart checkout now routes to `付款页面.html`, and payment confirmation then routes to `支付成功.html`.
 
 ## Iteration Notes
 
@@ -58,6 +60,8 @@ The new version used Chinese filenames, while a few internal links still pointed
 - Because pages are standalone, shared behavior and visual tokens are duplicated. A later cleanup can extract common CSS and navigation logic after the experience direction is confirmed.
 - Some text and labels should be reviewed in-browser before product decisions are locked, because the current version is optimized as a visual prototype rather than production markup.
 - CDN assets are acceptable for this branch preview, but a production-oriented prototype should eventually localize critical fonts, icons, and styling dependencies.
+- V1 iteration focuses on connecting standalone pages, replacing dead/toast-only navigation with real static routes, and keeping add-to-cart state visible in the cart preview.
+- V2 page planning is documented in `NEW_HTML_V2_ITERATION_PLAN.md`; the current confirmed scope removes search and focuses on order confirmation, order detail, logistics, address editing, reviews, favorites/history, coupons, points, custom consultation, and channel quotation.
 
 ## Verification
 

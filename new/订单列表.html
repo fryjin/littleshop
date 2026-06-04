@@ -99,7 +99,7 @@
                 <!-- 操作按钮 -->
                 <div class="flex justify-end space-x-2 mt-4 pt-1">
                     <button onclick="showToast('订单已取消')" class="px-4 py-1.5 rounded-full border border-gray-200 text-gray-400 text-[11px] hover:bg-gray-50 transition-colors">取消订单</button>
-                    <button onclick="window.location.href='支付成功.html'" class="px-4 py-1.5 rounded-full bg-brand-text text-white text-[11px] font-medium hover:bg-black transition-colors">去付款</button>
+                    <button onclick="goPage('付款页面.html')" class="px-4 py-1.5 rounded-full bg-brand-text text-white text-[11px] font-medium hover:bg-black transition-colors">去付款</button>
                 </div>
             </div>
 
@@ -165,7 +165,7 @@
                 </div>
 
                 <div class="flex justify-end space-x-2 mt-4 pt-1">
-                    <button onclick="showToast('申请售后功能已启用')" class="px-4 py-1.5 rounded-full border border-gray-200 text-gray-500 text-[11px] hover:bg-gray-50 transition-colors">申请售后</button>
+                    <button onclick="goPage('客服售后.html')" class="px-4 py-1.5 rounded-full border border-gray-200 text-gray-500 text-[11px] hover:bg-gray-50 transition-colors">申请售后</button>
                     <button onclick="showToast('感谢评价，积分已发放')" class="px-4 py-1.5 rounded-full bg-brand-stone text-brand-text text-[11px] font-medium hover:bg-gray-100 transition-colors">评价</button>
                 </div>
             </div>
@@ -206,6 +206,13 @@
                 }
             });
         }
+
+        const initialStatus = window.location.hash.replace('#', '');
+        if (initialStatus) {
+            const targetTab = document.querySelector(`[onclick*="'${initialStatus}'"]`);
+            if (targetTab) switchOrderTab(targetTab, initialStatus);
+        }
     </script>
+    <script src="assets/prototype-state.js"></script>
 </body>
 </html>

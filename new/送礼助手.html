@@ -61,7 +61,7 @@
 
         <!-- 导航栏 -->
         <header class="pt-10 pb-2 px-4 flex justify-between items-center sticky top-0 z-10 bg-brand-stone bg-opacity-95 backdrop-blur-md">
-            <div class="w-8 flex items-center cursor-pointer" onclick="history.back()">
+            <div class="w-8 flex items-center cursor-pointer" onclick="goBack('商城首页.html')">
                 <i data-lucide="chevron-left" class="w-6 h-6 text-brand-text"></i>
             </div>
             <h1 class="text-lg font-bold font-serif">送礼助手</h1>
@@ -72,15 +72,15 @@
             
             <!-- 紧凑筛选区 (固定在顶部) -->
             <div class="sticky top-0 bg-brand-stone z-10 pb-3 border-b border-gray-200/50 shadow-sm">
-                <!-- 预算 (可点击打开抽屉) -->
-                <div class="px-4 py-2 flex items-center justify-between" onclick="toggleBudgetDrawer()">
-                    <div class="flex items-center space-x-2">
-                        <span class="text-sm font-medium text-brand-text">预算：</span>
-                        <span class="text-sm text-brand-berry font-bold font-serif" id="current-budget">¥200 - ¥500</span>
-                    </div>
-                    <div class="flex items-center text-xs text-brand-sage">
-                        修改 <i data-lucide="chevron-down" class="w-3 h-3 ml-1"></i>
-                    </div>
+                <!-- 预算区间 -->
+                <div class="px-4 py-1.5 flex items-center overflow-x-auto no-scrollbar space-x-2">
+                    <span class="text-xs text-brand-muted flex-shrink-0 mr-1">预算:</span>
+                    <button class="budget-chip filter-btn active flex-shrink-0 px-3 py-1 text-xs rounded-full border border-gray-300 text-brand-text transition-colors" onclick="selectPresetBudget(this, '¥200 - ¥500')">¥200-500</button>
+                    <button class="budget-chip filter-btn flex-shrink-0 px-3 py-1 text-xs rounded-full border border-gray-300 text-brand-text transition-colors" onclick="selectPresetBudget(this, '¥500 - ¥800')">¥500-800</button>
+                    <button class="budget-chip filter-btn flex-shrink-0 px-3 py-1 text-xs rounded-full border border-gray-300 text-brand-text transition-colors" onclick="selectPresetBudget(this, '¥800+')">¥800+</button>
+                    <button class="budget-chip filter-btn flex-shrink-0 px-3 py-1 text-xs rounded-full border border-gray-300 text-brand-text transition-colors" onclick="selectPresetBudget(this, '不限预算')">不限</button>
+                    <button class="budget-chip filter-btn flex-shrink-0 px-3 py-1 text-xs rounded-full border border-gray-300 text-brand-text transition-colors" onclick="toggleBudgetDrawer()">自定义</button>
+                    <span class="text-xs text-brand-berry font-bold font-serif flex-shrink-0 pl-1" id="current-budget">¥200 - ¥500</span>
                 </div>
 
                 <!-- 场景横向滑动 -->
@@ -107,7 +107,7 @@
             <div class="p-4 space-y-4">
                 
                 <!-- 推荐商品 1 -->
-                <div class="bg-white rounded-xl p-3 flex space-x-4 shadow-sm border border-transparent hover:border-brand-sage/30 transition-all">
+                <div class="bg-white rounded-xl p-3 flex space-x-4 shadow-sm border border-transparent hover:border-brand-sage/30 transition-all cursor-pointer" onclick="goPage('商品详情页.html')">
                     <div class="w-24 h-24 bg-[#EBE7DF] rounded-lg flex-shrink-0 flex items-center justify-center relative">
                         <span class="text-[10px] text-brand-sage/50">商品图</span>
                     </div>
@@ -118,7 +118,7 @@
                         </div>
                         <div class="flex justify-between items-end mt-2">
                             <span class="text-brand-berry font-bold text-sm font-serif">¥399.00</span>
-                            <button onclick="showToast('已加入购物车')" class="w-7 h-7 bg-brand-stone rounded-full flex items-center justify-center text-brand-text hover:bg-brand-sage hover:text-white transition-colors">
+                            <button onclick="addPrototypeCart(event)" class="w-7 h-7 bg-brand-stone rounded-full flex items-center justify-center text-brand-text hover:bg-brand-sage hover:text-white transition-colors">
                                 <i data-lucide="plus" class="w-4 h-4"></i>
                             </button>
                         </div>
@@ -126,7 +126,7 @@
                 </div>
 
                 <!-- 推荐商品 2 -->
-                <div class="bg-white rounded-xl p-3 flex space-x-4 shadow-sm border border-transparent hover:border-brand-sage/30 transition-all">
+                <div class="bg-white rounded-xl p-3 flex space-x-4 shadow-sm border border-transparent hover:border-brand-sage/30 transition-all cursor-pointer" onclick="goPage('商品详情页.html')">
                     <div class="w-24 h-24 bg-[#F3E5D8] rounded-lg flex-shrink-0 flex items-center justify-center relative">
                         <span class="text-[10px] text-brand-sage/50">商品图</span>
                     </div>
@@ -137,7 +137,7 @@
                         </div>
                         <div class="flex justify-between items-end mt-2">
                             <span class="text-brand-berry font-bold text-sm font-serif">¥459.00</span>
-                            <button onclick="showToast('已加入购物车')" class="w-7 h-7 bg-brand-stone rounded-full flex items-center justify-center text-brand-text hover:bg-brand-sage hover:text-white transition-colors">
+                            <button onclick="addPrototypeCart(event)" class="w-7 h-7 bg-brand-stone rounded-full flex items-center justify-center text-brand-text hover:bg-brand-sage hover:text-white transition-colors">
                                 <i data-lucide="plus" class="w-4 h-4"></i>
                             </button>
                         </div>
@@ -145,7 +145,7 @@
                 </div>
 
                  <!-- 推荐商品 3 -->
-                 <div class="bg-white rounded-xl p-3 flex space-x-4 shadow-sm border border-transparent hover:border-brand-sage/30 transition-all">
+                 <div class="bg-white rounded-xl p-3 flex space-x-4 shadow-sm border border-transparent hover:border-brand-sage/30 transition-all cursor-pointer" onclick="goPage('商品详情页.html')">
                     <div class="w-24 h-24 bg-[#E8EAE6] rounded-lg flex-shrink-0 flex items-center justify-center relative">
                         <span class="text-[10px] text-brand-sage/50">商品图</span>
                     </div>
@@ -156,7 +156,7 @@
                         </div>
                         <div class="flex justify-between items-end mt-2">
                             <span class="text-brand-berry font-bold text-sm font-serif">¥229.00</span>
-                            <button onclick="showToast('已加入购物车')" class="w-7 h-7 bg-brand-stone rounded-full flex items-center justify-center text-brand-text hover:bg-brand-sage hover:text-white transition-colors">
+                            <button onclick="addPrototypeCart(event)" class="w-7 h-7 bg-brand-stone rounded-full flex items-center justify-center text-brand-text hover:bg-brand-sage hover:text-white transition-colors">
                                 <i data-lucide="plus" class="w-4 h-4"></i>
                             </button>
                         </div>
@@ -176,23 +176,24 @@
                     <i data-lucide="x" class="w-5 h-5 text-gray-400 cursor-pointer" onclick="toggleBudgetDrawer()"></i>
                 </div>
                 
-                <div class="space-y-3 mb-6">
-                    <div class="p-3 border border-brand-sage bg-brand-sage/5 rounded-lg flex justify-between items-center cursor-pointer" onclick="selectBudget('200-500', this)">
-                        <span class="text-sm font-medium">¥200 - ¥500</span>
-                        <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-sage"></i>
-                    </div>
-                    <div class="p-3 border border-gray-200 rounded-lg flex justify-between items-center cursor-pointer" onclick="selectBudget('500-800', this)">
-                        <span class="text-sm font-medium">¥500 - ¥800</span>
-                    </div>
-                    <div class="p-3 border border-gray-200 rounded-lg flex justify-between items-center cursor-pointer" onclick="selectBudget('800+', this)">
-                        <span class="text-sm font-medium">¥800 以上</span>
-                    </div>
-                    <div class="p-3 border border-gray-200 rounded-lg flex justify-between items-center cursor-pointer" onclick="selectBudget('不限', this)">
-                        <span class="text-sm font-medium">不限预算</span>
+                <div class="mb-6">
+                    <div class="rounded-xl bg-brand-stone p-4">
+                        <div class="flex justify-between items-center mb-5">
+                            <span class="text-xs text-gray-500">预算上限</span>
+                            <span id="custom-budget-label" class="text-sm font-bold text-brand-berry font-serif">¥800 内</span>
+                        </div>
+                        <input id="budget-range" type="range" min="100" max="1500" step="50" value="800" class="w-full accent-brand-sage" oninput="syncCustomBudget()">
+                        <div class="flex justify-between text-[10px] text-gray-400 mt-3">
+                            <span>¥100</span>
+                            <span>¥500</span>
+                            <span>¥900</span>
+                            <span>¥1300</span>
+                            <span>¥1500</span>
+                        </div>
                     </div>
                 </div>
                 
-                <button onclick="toggleBudgetDrawer()" class="w-full bg-brand-text text-white py-3 rounded-lg font-medium text-sm mb-4">确认</button>
+                <button onclick="confirmCustomBudget()" class="w-full bg-brand-text text-white py-3 rounded-lg font-medium text-sm mb-4">确认区间</button>
             </div>
         </div>
 
@@ -250,22 +251,29 @@
             isDrawerOpen = !isDrawerOpen;
         }
 
-        function selectBudget(val, el) {
-            // 重置所有样式
-            Array.from(el.parentElement.children).forEach(child => {
-                child.className = 'p-3 border border-gray-200 rounded-lg flex justify-between items-center cursor-pointer';
-                const icon = child.querySelector('i');
-                if(icon) icon.remove();
+        function selectPresetBudget(button, label) {
+            document.querySelectorAll('.budget-chip').forEach(chip => {
+                chip.classList.remove('active');
             });
-            // 选中当前
-            el.className = 'p-3 border border-brand-sage bg-brand-sage/5 rounded-lg flex justify-between items-center cursor-pointer';
-            el.innerHTML += '<i data-lucide="check-circle-2" class="w-4 h-4 text-brand-sage"></i>';
-            lucide.createIcons();
-            
-            // 更新顶部显示
-            let displayVal = val === '不限' ? '不限' : (val.includes('+') ? val : '¥' + val.replace('-', ' - ¥'));
-            document.getElementById('current-budget').textContent = displayVal;
+            button.classList.add('active');
+            document.getElementById('current-budget').textContent = label;
+        }
+
+        function syncCustomBudget() {
+            const max = Number(document.getElementById('budget-range').value);
+            document.getElementById('custom-budget-label').textContent = '¥' + max + ' 内';
+        }
+
+        function confirmCustomBudget() {
+            syncCustomBudget();
+            const label = document.getElementById('custom-budget-label').textContent;
+            document.getElementById('current-budget').textContent = label;
+            document.querySelectorAll('.budget-chip').forEach(chip => {
+                chip.classList.remove('active');
+            });
+            toggleBudgetDrawer();
         }
     </script>
+    <script src="assets/prototype-state.js"></script>
 </body>
 </html>

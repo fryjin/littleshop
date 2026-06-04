@@ -51,7 +51,7 @@
 
         <!-- 导航栏 -->
         <header class="pt-10 pb-2 px-4 flex justify-between items-center sticky top-0 z-10 bg-white/95 backdrop-blur-md border-b border-gray-50">
-            <div class="w-8 flex items-center cursor-pointer" onclick="history.back()">
+            <div class="w-8 flex items-center cursor-pointer" onclick="goBack('我的.html')">
                 <i data-lucide="chevron-left" class="w-6 h-6 text-brand-text"></i>
             </div>
             <h1 class="text-lg font-bold font-serif">渠道合作</h1>
@@ -103,7 +103,7 @@
                     填写合作信息
                 </h3>
                 
-                <form class="space-y-4" onsubmit="event.preventDefault(); showToast('申请已提交，专员将尽快联系您'); setTimeout(() => history.back(), 2000);">
+                <form class="space-y-4" onsubmit="event.preventDefault(); showToast('申请已提交，专员将尽快联系您'); setTimeout(() => goBack('我的.html'), 2000);">
                     
                     <div class="space-y-1.5">
                         <label class="text-xs text-gray-500 font-medium px-1">联系人姓名 <span class="text-brand-berry">*</span></label>
@@ -163,5 +163,6 @@
             setTimeout(() => toast.classList.add('opacity-0'), 2000);
         }
     </script>
+    <script src="assets/prototype-state.js"></script>
 </body>
 </html>

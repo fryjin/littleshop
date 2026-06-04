@@ -64,33 +64,23 @@
             </div>
         </div>
 
-        <!-- 搜索栏头部 -->
-        <header class="pt-8 pb-3 px-4 bg-white border-b border-gray-100 flex items-center z-10">
-            <div class="flex-1 bg-brand-stone rounded-full h-9 flex items-center px-4">
-                <i data-lucide="search" class="w-4 h-4 text-gray-400 mr-2"></i>
-                <input type="text" placeholder="搜索香型或商品" class="bg-transparent border-none text-sm w-full focus:outline-none placeholder-gray-400 text-brand-text">
-            </div>
-        </header>
-
         <!-- 主体结构：左右分栏 -->
         <main class="flex-1 flex overflow-hidden pb-[68px]"> <!-- 留出底部导航空间 -->
             
             <!-- 左侧边栏 -->
             <aside class="w-[90px] h-full bg-[#F9F9F9] overflow-y-auto no-scrollbar flex flex-col">
-                <div class="sidebar-item active relative py-4 px-2 text-center text-xs text-gray-500 cursor-pointer transition-colors" onclick="switchTab(this)">
+                <div class="sidebar-item active relative py-4 px-2 text-center text-xs text-gray-500 cursor-pointer transition-colors" onclick="switchTab(this, 'advanced')">
+                    进阶系列
+                </div>
+                <div class="sidebar-item relative py-4 px-2 text-center text-xs text-gray-500 cursor-pointer transition-colors" onclick="switchTab(this, 'artisan')">
+                    匠作系列
+                </div>
+                <div class="sidebar-item relative py-4 px-2 text-center text-xs text-gray-500 cursor-pointer transition-colors" onclick="switchTab(this, 'festival')">
+                    节日系列
+                </div>
+                <div class="sidebar-item relative py-4 px-2 text-center text-xs text-gray-500 cursor-pointer transition-colors" onclick="switchTab(this, 'classic')">
                     经典系列
-                </div>
-                <div class="sidebar-item relative py-4 px-2 text-center text-xs text-gray-500 cursor-pointer transition-colors" onclick="switchTab(this)">
-                    节日限定
-                </div>
-                <div class="sidebar-item relative py-4 px-2 text-center text-xs text-gray-500 cursor-pointer transition-colors" onclick="switchTab(this)">
-                    礼盒套装
-                </div>
-                <div class="sidebar-item relative py-4 px-2 text-center text-xs text-gray-500 cursor-pointer transition-colors" onclick="switchTab(this)">
-                    烛台与周边
-                </div>
-                <div class="sidebar-item relative py-4 px-2 text-center text-xs text-gray-500 cursor-pointer transition-colors" onclick="switchTab(this)">
-                    大宗拿样
+                    <span class="block text-[10px] text-brand-sage mt-1">渠道</span>
                 </div>
             </aside>
 
@@ -100,24 +90,24 @@
                 <!-- 分类头图 (可选) -->
                 <div class="w-full h-24 bg-[#EBE7DF] rounded-lg mb-4 flex flex-col items-center justify-center relative overflow-hidden">
                     <i data-lucide="image" class="w-6 h-6 text-brand-sage/40 mb-1"></i>
-                    <span class="text-xs text-brand-sage/60 font-serif font-bold">The Classics</span>
+                    <span id="category-title" class="text-xs text-brand-sage/60 font-serif font-bold">进阶系列</span>
                 </div>
 
                 <div class="flex justify-between items-center mb-3">
-                    <span class="text-xs font-medium text-gray-400">共 12 件商品</span>
+                    <span id="category-count" class="text-xs font-medium text-gray-400">共 19 件商品</span>
                     <div class="flex items-center text-xs text-gray-600">
                         默认排序 <i data-lucide="chevron-down" class="w-3 h-3 ml-1"></i>
                     </div>
                 </div>
 
                 <!-- 商品网格 -->
-                <div class="grid grid-cols-2 gap-3">
+                <div id="category-grid" class="grid grid-cols-2 gap-3">
                     
                     <!-- 商品卡片 1 -->
                     <div class="flex flex-col group cursor-pointer" onclick="window.location.href='商品详情页.html'">
                         <div class="w-full aspect-square bg-[#F7F6F2] rounded-lg mb-2 flex items-center justify-center relative overflow-hidden border border-gray-50">
                             <!-- 加购按钮 -->
-                            <button onclick="addToCart(event)" class="absolute bottom-2 right-2 w-7 h-7 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-sm text-brand-text hover:bg-brand-sage hover:text-white transition-colors z-10">
+                            <button onclick="addPrototypeCart(event)" class="absolute bottom-2 right-2 w-7 h-7 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-sm text-brand-text hover:bg-brand-sage hover:text-white transition-colors z-10">
                                 <i data-lucide="plus" class="w-4 h-4"></i>
                             </button>
                         </div>
@@ -130,7 +120,7 @@
                     <!-- 商品卡片 2 -->
                     <div class="flex flex-col group cursor-pointer" onclick="window.location.href='商品详情页.html'">
                         <div class="w-full aspect-square bg-[#E8EAE6] rounded-lg mb-2 flex items-center justify-center relative overflow-hidden border border-gray-50">
-                            <button onclick="addToCart(event)" class="absolute bottom-2 right-2 w-7 h-7 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-sm text-brand-text hover:bg-brand-sage hover:text-white transition-colors z-10">
+                            <button onclick="addPrototypeCart(event)" class="absolute bottom-2 right-2 w-7 h-7 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-sm text-brand-text hover:bg-brand-sage hover:text-white transition-colors z-10">
                                 <i data-lucide="plus" class="w-4 h-4"></i>
                             </button>
                         </div>
@@ -143,7 +133,7 @@
                     <!-- 商品卡片 3 -->
                     <div class="flex flex-col group cursor-pointer" onclick="window.location.href='商品详情页.html'">
                         <div class="w-full aspect-square bg-[#F3E5D8] rounded-lg mb-2 flex items-center justify-center relative overflow-hidden border border-gray-50">
-                            <button onclick="addToCart(event)" class="absolute bottom-2 right-2 w-7 h-7 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-sm text-brand-text hover:bg-brand-sage hover:text-white transition-colors z-10">
+                            <button onclick="addPrototypeCart(event)" class="absolute bottom-2 right-2 w-7 h-7 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-sm text-brand-text hover:bg-brand-sage hover:text-white transition-colors z-10">
                                 <i data-lucide="plus" class="w-4 h-4"></i>
                             </button>
                         </div>
@@ -205,44 +195,95 @@
 
     <script>
         lucide.createIcons();
-        
-        let cartCount = 0;
 
-        // 左侧分类切换逻辑
-        function switchTab(el) {
-            // 移除所有 active 类
+        const categoryData = {
+            advanced: {
+                title: '进阶系列',
+                count: '共 19 件商品',
+                tone: 'Advanced',
+                items: [
+                    { name: '象牙花冠', price: '¥259', bg: '#F7F6F2' },
+                    { name: '森林松绿', price: '¥289', bg: '#E8EAE6' },
+                    { name: '玫瑰粉雾', price: '¥269', bg: '#F3E5D8' },
+                    { name: '奶油浮雕', price: '¥259', bg: '#FAF5EA' }
+                ]
+            },
+            artisan: {
+                title: '匠作系列',
+                count: '共 73 件商品',
+                tone: 'Artisan',
+                items: [
+                    { name: '莓红鎏金', price: '¥399', bg: '#F3E5D8' },
+                    { name: '雾蓝花冠', price: '¥429', bg: '#E8EAE6' },
+                    { name: '香槟金雕', price: '¥459', bg: '#FAF5EA' },
+                    { name: '深梅礼烛', price: '¥499', bg: '#EEE5E8' }
+                ]
+            },
+            festival: {
+                title: '节日系列',
+                count: '共 16 件商品',
+                tone: 'Festival',
+                items: [
+                    { name: '暖金节庆', price: '¥329', bg: '#F3E5D8' },
+                    { name: '红白限定', price: '¥359', bg: '#EEE5E8' },
+                    { name: '冬日礼盒', price: '¥399', bg: '#E8EAE6' },
+                    { name: '花束双支', price: '¥459', bg: '#FAF5EA' }
+                ]
+            },
+            classic: {
+                title: '经典系列',
+                count: '仅渠道身份开放',
+                tone: 'Channel Only',
+                locked: true,
+                items: [
+                    { name: '基础直筒', price: '申请后可见', bg: '#F7F6F2' },
+                    { name: '基础卷边', price: '申请后可见', bg: '#E8EAE6' }
+                ]
+            }
+        };
+
+        function renderCategory(category) {
+            const data = categoryData[category] || categoryData.advanced;
+            document.getElementById('category-title').textContent = data.tone;
+            document.getElementById('category-count').textContent = data.count;
+            const grid = document.getElementById('category-grid');
+            const notice = data.locked ? [
+                '<div class="col-span-2 rounded-xl border border-brand-sage/20 bg-brand-sage/10 p-4 mb-1">',
+                '<h3 class="text-sm font-bold mb-1">经典系列仅渠道身份开放</h3>',
+                '<p class="text-xs text-gray-600 leading-relaxed mb-3">申请通过后可查看经典系列色号、起订规则和渠道报价。</p>',
+                '<button onclick="goPage(&quot;渠道合作申请.html&quot;)" class="px-4 py-2 rounded-full bg-brand-sage text-white text-xs">申请渠道身份</button>',
+                '</div>'
+            ].join('') : '';
+            grid.innerHTML = notice + data.items.map(function (item) {
+                const click = data.locked ? 'goPage(&quot;渠道合作申请.html&quot;)' : 'goPage(&quot;商品详情页.html&quot;)';
+                const action = data.locked
+                    ? '<span class="absolute bottom-2 right-2 text-[10px] bg-white/90 text-brand-sage rounded-full px-2 py-1">渠道</span>'
+                    : '<button onclick="addPrototypeCart(event, &quot;' + item.name + '&quot;, &quot;' + item.price + '&quot;)" class="absolute bottom-2 right-2 w-7 h-7 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-sm text-brand-text hover:bg-brand-sage hover:text-white transition-colors z-10"><i data-lucide="plus" class="w-4 h-4"></i></button>';
+                return [
+                    '<div class="flex flex-col group cursor-pointer" onclick="' + click + '">',
+                    '<div class="w-full aspect-square rounded-lg mb-2 flex items-center justify-center relative overflow-hidden border border-gray-50" style="background:' + item.bg + '">',
+                    action,
+                    '</div>',
+                    '<h3 class="text-xs font-medium text-brand-text line-clamp-1">' + item.name + '</h3>',
+                    '<div class="mt-1 flex items-end space-x-1">',
+                    '<span class="text-brand-berry font-bold text-xs font-serif">' + item.price + '</span>',
+                    '</div>',
+                    '</div>'
+                ].join('');
+            }).join('');
+            lucide.createIcons();
+        }
+
+        function switchTab(el, category) {
             document.querySelectorAll('.sidebar-item').forEach(item => {
                 item.classList.remove('active');
             });
-            // 为当前点击项添加 active 类
             el.classList.add('active');
-            
-            // 可以在此处添加右侧内容刷新的逻辑 (真实开发中通过请求或锚点实现)
+            renderCategory(category);
         }
 
-        // 简易加购逻辑
-        function addToCart(event) {
-            event.stopPropagation(); // 阻止点击卡片触发页面跳转
-            cartCount++;
-            
-            const badge = document.getElementById('cart-badge');
-            badge.textContent = cartCount;
-            badge.classList.remove('hidden');
-            
-            const btn = event.currentTarget;
-            const originalHtml = btn.innerHTML;
-            btn.innerHTML = '<i data-lucide="check" class="w-4 h-4 text-brand-sage"></i>';
-            lucide.createIcons();
-            
-            const toast = document.getElementById('toast');
-            toast.classList.remove('opacity-0');
-            setTimeout(() => toast.classList.add('opacity-0'), 1500);
-            
-            setTimeout(() => {
-                btn.innerHTML = originalHtml;
-                lucide.createIcons();
-            }, 1000);
-        }
+        renderCategory('advanced');
     </script>
+    <script src="assets/prototype-state.js"></script>
 </body>
 </html>

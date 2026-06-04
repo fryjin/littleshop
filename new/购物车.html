@@ -76,7 +76,7 @@
             <div class="w-8"></div>
             <h1 class="text-lg font-bold font-serif">购物车</h1>
             <div class="w-8 text-right">
-                <span class="text-sm text-gray-500 cursor-pointer">管理</span>
+                <span class="text-sm text-gray-500 cursor-pointer" onclick="showToast('可勾选商品后调整数量或结算')">管理</span>
             </div>
         </header>
 
@@ -119,9 +119,9 @@
                             <span class="text-brand-berry font-bold font-serif text-sm">¥259.00</span>
                             <!-- 数量加减 -->
                             <div class="flex items-center border border-gray-200 rounded">
-                                <button class="w-6 h-6 flex items-center justify-center text-gray-500">-</button>
+                                <button onclick="changeStaticQty(this, -1)" class="w-6 h-6 flex items-center justify-center text-gray-500">-</button>
                                 <span class="w-6 text-center text-xs">1</span>
-                                <button class="w-6 h-6 flex items-center justify-center text-gray-500">+</button>
+                                <button onclick="changeStaticQty(this, 1)" class="w-6 h-6 flex items-center justify-center text-gray-500">+</button>
                             </div>
                         </div>
                     </div>
@@ -139,13 +139,14 @@
                         <div class="flex justify-between items-end mt-2">
                             <span class="text-brand-berry font-bold font-serif text-sm">¥399.00</span>
                             <div class="flex items-center border border-gray-200 rounded">
-                                <button class="w-6 h-6 flex items-center justify-center text-gray-500">-</button>
+                                <button onclick="changeStaticQty(this, -1)" class="w-6 h-6 flex items-center justify-center text-gray-500">-</button>
                                 <span class="w-6 text-center text-xs">1</span>
-                                <button class="w-6 h-6 flex items-center justify-center text-gray-500">+</button>
+                                <button onclick="changeStaticQty(this, 1)" class="w-6 h-6 flex items-center justify-center text-gray-500">+</button>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div id="prototype-cart-extra"></div>
             </div>
 
             <!-- 阶梯价与加购提示 -->
@@ -168,17 +169,17 @@
                     <span class="text-xs text-gray-500">合计:</span>
                     <span class="text-brand-berry font-bold font-serif">¥658.00</span>
                 </div>
-                <button onclick="showToast('调起支付')" class="px-6 py-2 rounded-full bg-brand-text text-white text-sm font-medium">去结算(2)</button>
+                <button onclick="checkoutPrototypeOrder()" class="px-6 py-2 rounded-full bg-brand-text text-white text-sm font-medium">去结算</button>
             </div>
         </div>
 
         <!-- 底部导航 -->
         <nav class="absolute bottom-0 w-full bg-white/90 backdrop-blur-md pb-safe pt-2 px-2 z-30 flex justify-around items-center h-[68px]">
-            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer transition-colors" onclick="history.back()">
+            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer transition-colors" onclick="goPage('商城首页.html')">
                 <i data-lucide="home" class="w-[22px] h-[22px] mb-1"></i>
                 <span class="text-[10px] font-medium">首页</span>
             </div>
-            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer transition-colors">
+            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer transition-colors" onclick="goPage('商品分类.html')">
                 <i data-lucide="layout-grid" class="w-[22px] h-[22px] mb-1"></i>
                 <span class="text-[10px] font-medium">分类</span>
             </div>
@@ -186,7 +187,7 @@
                 <i data-lucide="shopping-bag" class="w-[22px] h-[22px] mb-1 text-brand-sage fill-brand-sage/20"></i>
                 <span class="text-[10px] font-bold text-brand-sage">购物车</span>
             </div>
-            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer transition-colors">
+            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer transition-colors" onclick="goPage('我的.html')">
                 <i data-lucide="user" class="w-[22px] h-[22px] mb-1"></i>
                 <span class="text-[10px] font-medium">我的</span>
             </div>
@@ -204,6 +205,14 @@
             toast.classList.remove('opacity-0');
             setTimeout(() => toast.classList.add('opacity-0'), 2000);
         }
+
+        function changeStaticQty(button, delta) {
+            const row = button.parentElement;
+            const qty = row.querySelector('span');
+            const next = Math.max(1, Number(qty.textContent) + delta);
+            qty.textContent = next;
+        }
     </script>
+    <script src="assets/prototype-state.js"></script>
 </body>
 </html>

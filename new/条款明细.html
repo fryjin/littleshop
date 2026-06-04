@@ -76,7 +76,7 @@
 
         <!-- 头部导航 -->
         <header class="pt-10 pb-2 px-4 flex justify-between items-center sticky top-0 z-10 bg-white/95 border-b border-gray-50">
-            <div class="w-8 flex items-center cursor-pointer" onclick="history.back()">
+            <div class="w-8 flex items-center cursor-pointer" onclick="goBack('政策协议.html')">
                 <i data-lucide="chevron-left" class="w-6 h-6 text-brand-text"></i>
             </div>
             <h1 class="text-xs font-bold font-serif text-brand-muted uppercase tracking-wider">条款细则</h1>
@@ -229,9 +229,10 @@
         function handleAgreementAccept() {
             showToast('感谢您的认可，已同意该工艺约定');
             setTimeout(() => {
-                history.back();
+                goBack('政策协议.html');
             }, 1500);
         }
     </script>
+    <script src="assets/prototype-state.js"></script>
 </body>
 </html>

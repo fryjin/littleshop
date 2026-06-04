@@ -114,7 +114,7 @@
                             <span class="text-[10px] text-brand-berry font-serif font-bold mt-1 block">¥89.00</span>
                         </div>
                     </div>
-                    <button onclick="showToast('托盘已直接加入购物车')" class="w-7 h-7 bg-white rounded-full flex items-center justify-center text-brand-text shadow-sm hover:bg-brand-sage hover:text-white transition-colors">
+                    <button onclick="addPrototypeCart(event, '黑胡桃木器物托盘', '¥89.00')" class="w-7 h-7 bg-white rounded-full flex items-center justify-center text-brand-text shadow-sm hover:bg-brand-sage hover:text-white transition-colors">
                         <i data-lucide="plus" class="w-4 h-4"></i>
                     </button>
                 </div>
@@ -135,5 +135,6 @@
             setTimeout(() => toast.classList.add('opacity-0'), 2000);
         }
     </script>
+    <script src="assets/prototype-state.js"></script>
 </body>
 </html>

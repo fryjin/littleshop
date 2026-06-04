@@ -73,7 +73,7 @@
         </div>
 
         <header class="pt-10 pb-2 px-4 flex justify-between items-center sticky top-0 z-10 bg-white/95 border-b border-gray-50">
-            <div class="w-8 flex items-center cursor-pointer" onclick="history.back()">
+            <div class="w-8 flex items-center cursor-pointer" onclick="goBack('我的.html')">
                 <i data-lucide="chevron-left" class="w-6 h-6 text-brand-text"></i>
             </div>
             <h1 class="text-lg font-bold font-serif">发票管理</h1>
@@ -325,5 +325,6 @@
             document.getElementById('input-email').value = '';
         }
     </script>
+    <script src="assets/prototype-state.js"></script>
 </body>
 </html>

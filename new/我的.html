@@ -53,23 +53,23 @@
             <div class="bg-white rounded-xl shadow-sm p-4 mb-4">
                 <div class="flex justify-between items-center mb-4">
                     <span class="font-bold text-sm">我的订单</span>
-                    <span class="text-xs text-gray-400 flex items-center">全部订单 <i data-lucide="chevron-right" class="w-3 h-3 ml-0.5"></i></span>
+                    <span class="text-xs text-gray-400 flex items-center cursor-pointer" onclick="goPage('订单列表.html')">全部订单 <i data-lucide="chevron-right" class="w-3 h-3 ml-0.5"></i></span>
                 </div>
                 <div class="flex justify-between px-2">
-                    <div class="flex flex-col items-center gap-1.5 relative">
+                    <div class="flex flex-col items-center gap-1.5 relative cursor-pointer" onclick="goPage('订单列表.html#unpaid')">
                         <i data-lucide="credit-card" class="w-6 h-6 text-gray-600"></i>
                         <span class="text-[11px] text-gray-600">待付款</span>
                     </div>
-                    <div class="flex flex-col items-center gap-1.5 relative">
+                    <div class="flex flex-col items-center gap-1.5 relative cursor-pointer" onclick="goPage('订单列表.html#unshipped')">
                         <i data-lucide="package" class="w-6 h-6 text-gray-600"></i>
                         <span class="text-[11px] text-gray-600">待发货</span>
                         <span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-brand-berry text-white text-[8px] rounded-full flex items-center justify-center">1</span>
                     </div>
-                    <div class="flex flex-col items-center gap-1.5 relative">
+                    <div class="flex flex-col items-center gap-1.5 relative cursor-pointer" onclick="goPage('订单列表.html#unreceived')">
                         <i data-lucide="truck" class="w-6 h-6 text-gray-600"></i>
                         <span class="text-[11px] text-gray-600">待收货</span>
                     </div>
-                    <div class="flex flex-col items-center gap-1.5 relative">
+                    <div class="flex flex-col items-center gap-1.5 relative cursor-pointer" onclick="goPage('订单列表.html#completed')">
                         <i data-lucide="message-square" class="w-6 h-6 text-gray-600"></i>
                         <span class="text-[11px] text-gray-600">评价</span>
                     </div>
@@ -88,28 +88,28 @@
 
             <!-- 基础服务 3项 -->
             <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-                <div class="flex items-center justify-between p-4 border-b border-gray-50 cursor-pointer" onclick="showToast('前往地址管理')">
+                <div class="flex items-center justify-between p-4 border-b border-gray-50 cursor-pointer" onclick="goPage('地址管理.html')">
                     <div class="flex items-center gap-3">
                         <i data-lucide="map-pin" class="w-5 h-5 text-gray-500"></i>
                         <span class="text-sm">地址管理</span>
                     </div>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-gray-300"></i>
                 </div>
-                <div class="flex items-center justify-between p-4 border-b border-gray-50 cursor-pointer">
+                <div class="flex items-center justify-between p-4 border-b border-gray-50 cursor-pointer" onclick="goPage('发票管理.html')">
                     <div class="flex items-center gap-3">
                         <i data-lucide="receipt" class="w-5 h-5 text-gray-500"></i>
                         <span class="text-sm">发票管理</span>
                     </div>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-gray-300"></i>
                 </div>
-                <div class="flex items-center justify-between p-4 border-b border-gray-50 cursor-pointer">
+                <div class="flex items-center justify-between p-4 border-b border-gray-50 cursor-pointer" onclick="goPage('客服售后.html')">
                     <div class="flex items-center gap-3">
                         <i data-lucide="headphones" class="w-5 h-5 text-gray-500"></i>
                         <span class="text-sm">客服与售后</span>
                     </div>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-gray-300"></i>
                 </div>
-                <div class="flex items-center justify-between p-4 cursor-pointer">
+                <div class="flex items-center justify-between p-4 cursor-pointer" onclick="goPage('政策协议.html')">
                     <div class="flex items-center gap-3">
                         <i data-lucide="file-text" class="w-5 h-5 text-gray-500"></i>
                         <span class="text-sm">政策与协议</span>
@@ -122,15 +122,15 @@
 
         <!-- 底部导航 -->
         <nav class="absolute bottom-0 w-full bg-white/90 backdrop-blur-md border-t border-gray-100 pb-safe pt-2 px-2 z-30 flex justify-around items-center h-[68px]">
-            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer" onclick="history.back()">
+            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer" onclick="goPage('商城首页.html')">
                 <i data-lucide="home" class="w-[22px] h-[22px] mb-1"></i>
                 <span class="text-[10px] font-medium">首页</span>
             </div>
-            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer">
+            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer" onclick="goPage('商品分类.html')">
                 <i data-lucide="layout-grid" class="w-[22px] h-[22px] mb-1"></i>
                 <span class="text-[10px] font-medium">分类</span>
             </div>
-            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer relative">
+            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer relative" onclick="goPage('购物车.html')">
                 <i data-lucide="shopping-bag" class="w-[22px] h-[22px] mb-1"></i>
                 <span class="text-[10px] font-medium">购物车</span>
             </div>
@@ -151,5 +151,6 @@
             setTimeout(() => toast.classList.add('opacity-0'), 2000);
         }
     </script>
+    <script src="assets/prototype-state.js"></script>
 </body>
 </html>
