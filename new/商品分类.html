@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>分类 - Wax Atelier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            stone: '#F7F6F2', ivory: '#FFFFF0', sage: '#8FA396',
+                            apricot: '#F3E5D8', berry: '#8A2B46', text: '#333333', muted: '#888888'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif SC"', 'serif'],
+                        sans: ['system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        body { background-color: #e5e7eb; }
+        .app-container { background-color: #FFFFFF; }
+        
+        /* 侧边栏选中态 */
+        .sidebar-item.active {
+            background-color: #FFFFFF;
+            color: #333333;
+            font-weight: 600;
+        }
+        .sidebar-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 16px;
+            background-color: #8FA396;
+            border-radius: 0 4px 4px 0;
+        }
+    </style>
+</head>
+<body class="flex justify-center h-screen overflow-hidden text-brand-text">
+
+    <div class="w-full h-full sm:w-[375px] sm:h-[812px] sm:my-auto sm:rounded-[40px] sm:border-[8px] border-gray-800 app-container flex flex-col relative overflow-hidden shadow-2xl font-sans">
+        
+        <!-- 顶部状态栏 -->
+        <div class="h-7 w-full flex justify-between items-center px-6 pt-2 text-xs font-medium text-gray-800 z-20 bg-white">
+            <span>10:16</span>
+            <div class="flex space-x-1 items-center">
+                <i data-lucide="signal" class="w-3 h-3"></i>
+                <i data-lucide="wifi" class="w-3 h-3"></i>
+                <i data-lucide="battery-full" class="w-4 h-4"></i>
+            </div>
+        </div>
+
+        <!-- 搜索栏头部 -->
+        <header class="pt-8 pb-3 px-4 bg-white border-b border-gray-100 flex items-center z-10">
+            <div class="flex-1 bg-brand-stone rounded-full h-9 flex items-center px-4">
+                <i data-lucide="search" class="w-4 h-4 text-gray-400 mr-2"></i>
+                <input type="text" placeholder="搜索香型或商品" class="bg-transparent border-none text-sm w-full focus:outline-none placeholder-gray-400 text-brand-text">
+            </div>
+        </header>
+
+        <!-- 主体结构：左右分栏 -->
+        <main class="flex-1 flex overflow-hidden pb-[68px]"> <!-- 留出底部导航空间 -->
+            
+            <!-- 左侧边栏 -->
+            <aside class="w-[90px] h-full bg-[#F9F9F9] overflow-y-auto no-scrollbar flex flex-col">
+                <div class="sidebar-item active relative py-4 px-2 text-center text-xs text-gray-500 cursor-pointer transition-colors" onclick="switchTab(this)">
+                    经典系列
+                </div>
+                <div class="sidebar-item relative py-4 px-2 text-center text-xs text-gray-500 cursor-pointer transition-colors" onclick="switchTab(this)">
+                    节日限定
+                </div>
+                <div class="sidebar-item relative py-4 px-2 text-center text-xs text-gray-500 cursor-pointer transition-colors" onclick="switchTab(this)">
+                    礼盒套装
+                </div>
+                <div class="sidebar-item relative py-4 px-2 text-center text-xs text-gray-500 cursor-pointer transition-colors" onclick="switchTab(this)">
+                    烛台与周边
+                </div>
+                <div class="sidebar-item relative py-4 px-2 text-center text-xs text-gray-500 cursor-pointer transition-colors" onclick="switchTab(this)">
+                    大宗拿样
+                </div>
+            </aside>
+
+            <!-- 右侧商品展示区 -->
+            <section class="flex-1 h-full bg-white overflow-y-auto no-scrollbar p-3">
+                
+                <!-- 分类头图 (可选) -->
+                <div class="w-full h-24 bg-[#EBE7DF] rounded-lg mb-4 flex flex-col items-center justify-center relative overflow-hidden">
+                    <i data-lucide="image" class="w-6 h-6 text-brand-sage/40 mb-1"></i>
+                    <span class="text-xs text-brand-sage/60 font-serif font-bold">The Classics</span>
+                </div>
+
+                <div class="flex justify-between items-center mb-3">
+                    <span class="text-xs font-medium text-gray-400">共 12 件商品</span>
+                    <div class="flex items-center text-xs text-gray-600">
+                        默认排序 <i data-lucide="chevron-down" class="w-3 h-3 ml-1"></i>
+                    </div>
+                </div>
+
+                <!-- 商品网格 -->
+                <div class="grid grid-cols-2 gap-3">
+                    
+                    <!-- 商品卡片 1 -->
+                    <div class="flex flex-col group cursor-pointer" onclick="window.location.href='商品详情页.html'">
+                        <div class="w-full aspect-square bg-[#F7F6F2] rounded-lg mb-2 flex items-center justify-center relative overflow-hidden border border-gray-50">
+                            <!-- 加购按钮 -->
+                            <button onclick="addToCart(event)" class="absolute bottom-2 right-2 w-7 h-7 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-sm text-brand-text hover:bg-brand-sage hover:text-white transition-colors z-10">
+                                <i data-lucide="plus" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                        <h3 class="text-xs font-medium text-brand-text line-clamp-1">勃艮第红卷边蜡烛</h3>
+                        <div class="mt-1 flex items-end space-x-1">
+                            <span class="text-brand-berry font-bold text-xs font-serif">¥259</span>
+                        </div>
+                    </div>
+
+                    <!-- 商品卡片 2 -->
+                    <div class="flex flex-col group cursor-pointer" onclick="window.location.href='商品详情页.html'">
+                        <div class="w-full aspect-square bg-[#E8EAE6] rounded-lg mb-2 flex items-center justify-center relative overflow-hidden border border-gray-50">
+                            <button onclick="addToCart(event)" class="absolute bottom-2 right-2 w-7 h-7 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-sm text-brand-text hover:bg-brand-sage hover:text-white transition-colors z-10">
+                                <i data-lucide="plus" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                        <h3 class="text-xs font-medium text-brand-text line-clamp-1">森林晨露直筒款</h3>
+                        <div class="mt-1 flex items-end space-x-1">
+                            <span class="text-brand-berry font-bold text-xs font-serif">¥199</span>
+                        </div>
+                    </div>
+
+                    <!-- 商品卡片 3 -->
+                    <div class="flex flex-col group cursor-pointer" onclick="window.location.href='商品详情页.html'">
+                        <div class="w-full aspect-square bg-[#F3E5D8] rounded-lg mb-2 flex items-center justify-center relative overflow-hidden border border-gray-50">
+                            <button onclick="addToCart(event)" class="absolute bottom-2 right-2 w-7 h-7 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-sm text-brand-text hover:bg-brand-sage hover:text-white transition-colors z-10">
+                                <i data-lucide="plus" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                        <h3 class="text-xs font-medium text-brand-text line-clamp-1">微光初现单支装</h3>
+                        <div class="mt-1 flex items-end space-x-1">
+                            <span class="text-brand-berry font-bold text-xs font-serif">¥229</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 商品卡片 4 (售罄状态示例) -->
+                    <div class="flex flex-col group opacity-60">
+                        <div class="w-full aspect-square bg-gray-100 rounded-lg mb-2 flex items-center justify-center relative overflow-hidden border border-gray-50">
+                            <div class="absolute inset-0 bg-white/40 flex items-center justify-center">
+                                <div class="bg-black/60 text-white text-[10px] px-2 py-1 rounded">已售罄</div>
+                            </div>
+                        </div>
+                        <h3 class="text-xs font-medium text-brand-text line-clamp-1">秋日落叶异形蜡</h3>
+                        <div class="mt-1 flex items-end space-x-1">
+                            <span class="text-gray-400 font-bold text-xs font-serif">¥329</span>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- 底部占位 -->
+                <div class="h-6 w-full mt-4 flex justify-center items-center">
+                    <span class="text-[10px] text-gray-300">没有更多了</span>
+                </div>
+            </section>
+        </main>
+
+        <!-- 底部全局导航栏 (分类状态激活) -->
+        <nav class="absolute bottom-0 w-full bg-white/90 backdrop-blur-md border-t border-gray-100 pb-safe pt-2 px-2 z-30 flex justify-around items-center h-[68px]">
+            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer transition-colors" onclick="window.location.href='商城首页.html'">
+                <i data-lucide="home" class="w-[22px] h-[22px] mb-1"></i>
+                <span class="text-[10px] font-medium">首页</span>
+            </div>
+            <div class="flex flex-col items-center justify-center w-full h-full text-brand-text cursor-pointer">
+                <!-- 激活态 -->
+                <i data-lucide="layout-grid" class="w-[22px] h-[22px] mb-1 text-brand-sage fill-brand-sage/20"></i>
+                <span class="text-[10px] font-bold text-brand-sage">分类</span>
+            </div>
+            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer relative transition-colors" onclick="window.location.href='购物车.html'">
+                <i data-lucide="shopping-bag" class="w-[22px] h-[22px] mb-1"></i>
+                <span class="text-[10px] font-medium">购物车</span>
+                <span id="cart-badge" class="absolute top-[2px] right-4 bg-brand-berry text-white text-[9px] px-[5px] py-[1px] rounded-full font-bold shadow-sm hidden">0</span>
+            </div>
+            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer transition-colors" onclick="window.location.href='我的.html'">
+                <i data-lucide="user" class="w-[22px] h-[22px] mb-1"></i>
+                <span class="text-[10px] font-medium">我的</span>
+            </div>
+        </nav>
+
+        <div id="toast" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/70 text-white text-sm px-6 py-3 rounded-lg opacity-0 pointer-events-none transition-opacity duration-300 z-50 text-center">
+            已加入购物车
+        </div>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+        
+        let cartCount = 0;
+
+        // 左侧分类切换逻辑
+        function switchTab(el) {
+            // 移除所有 active 类
+            document.querySelectorAll('.sidebar-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            // 为当前点击项添加 active 类
+            el.classList.add('active');
+            
+            // 可以在此处添加右侧内容刷新的逻辑 (真实开发中通过请求或锚点实现)
+        }
+
+        // 简易加购逻辑
+        function addToCart(event) {
+            event.stopPropagation(); // 阻止点击卡片触发页面跳转
+            cartCount++;
+            
+            const badge = document.getElementById('cart-badge');
+            badge.textContent = cartCount;
+            badge.classList.remove('hidden');
+            
+            const btn = event.currentTarget;
+            const originalHtml = btn.innerHTML;
+            btn.innerHTML = '<i data-lucide="check" class="w-4 h-4 text-brand-sage"></i>';
+            lucide.createIcons();
+            
+            const toast = document.getElementById('toast');
+            toast.classList.remove('opacity-0');
+            setTimeout(() => toast.classList.add('opacity-0'), 1500);
+            
+            setTimeout(() => {
+                btn.innerHTML = originalHtml;
+                lucide.createIcons();
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

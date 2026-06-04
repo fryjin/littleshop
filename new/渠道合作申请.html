@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>渠道合作 - Wax Atelier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            stone: '#F7F6F2', ivory: '#FFFFF0', sage: '#8FA396',
+                            apricot: '#F3E5D8', berry: '#8A2B46', text: '#333333', muted: '#888888'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif SC"', 'serif'],
+                        sans: ['system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        body { background-color: #e5e7eb; }
+        .app-container { background-color: #F7F6F2; }
+        
+        /* 表单输入框重置 */
+        input:focus, textarea:focus { outline: none; }
+    </style>
+</head>
+<body class="flex justify-center h-screen overflow-hidden text-brand-text">
+
+    <div class="w-full h-full sm:w-[375px] sm:h-[812px] sm:my-auto sm:rounded-[40px] sm:border-[8px] border-gray-800 app-container flex flex-col relative overflow-hidden shadow-2xl font-sans bg-white">
+        
+        <!-- 顶部状态栏 (模拟) -->
+        <div class="h-7 w-full flex justify-between items-center px-6 pt-2 text-xs font-medium text-gray-800 z-20 bg-white/90 backdrop-blur absolute top-0">
+            <span>10:16</span>
+            <div class="flex space-x-1 items-center">
+                <i data-lucide="signal" class="w-3 h-3"></i>
+                <i data-lucide="wifi" class="w-3 h-3"></i>
+                <i data-lucide="battery-full" class="w-4 h-4"></i>
+            </div>
+        </div>
+
+        <!-- 导航栏 -->
+        <header class="pt-10 pb-2 px-4 flex justify-between items-center sticky top-0 z-10 bg-white/95 backdrop-blur-md border-b border-gray-50">
+            <div class="w-8 flex items-center cursor-pointer" onclick="history.back()">
+                <i data-lucide="chevron-left" class="w-6 h-6 text-brand-text"></i>
+            </div>
+            <h1 class="text-lg font-bold font-serif">渠道合作</h1>
+            <div class="w-8"></div>
+        </header>
+
+        <main class="flex-1 overflow-y-auto no-scrollbar pb-32">
+            
+            <!-- 头图/简介区 -->
+            <div class="bg-brand-sage text-white p-6 pb-10 relative overflow-hidden">
+                <!-- 装饰性背景 -->
+                <div class="absolute -right-10 -top-10 w-40 h-40 bg-white opacity-5 rounded-full blur-2xl"></div>
+                <div class="absolute -left-10 -bottom-10 w-32 h-32 bg-brand-apricot opacity-10 rounded-full blur-xl"></div>
+                
+                <h2 class="text-2xl font-serif font-bold mb-2 relative z-10">成为合作伙伴</h2>
+                <p class="text-xs text-white/80 leading-relaxed relative z-10 max-w-[80%]">我们为独立买手店、花艺工作室及高端礼品定制提供专属的阶梯报价与陈列支持。</p>
+            </div>
+
+            <!-- 核心权益卡片 -->
+            <div class="px-4 -mt-6 relative z-10 mb-6">
+                <div class="bg-white rounded-xl shadow-sm p-4 border border-gray-50 flex justify-between">
+                    <div class="flex flex-col items-center flex-1">
+                        <div class="w-10 h-10 bg-brand-stone rounded-full flex items-center justify-center mb-2">
+                            <i data-lucide="trending-down" class="w-5 h-5 text-brand-sage"></i>
+                        </div>
+                        <span class="text-[11px] font-medium">阶梯底价</span>
+                    </div>
+                    <div class="w-[1px] bg-gray-100 my-2"></div>
+                    <div class="flex flex-col items-center flex-1">
+                        <div class="w-10 h-10 bg-brand-stone rounded-full flex items-center justify-center mb-2">
+                            <i data-lucide="package" class="w-5 h-5 text-brand-sage"></i>
+                        </div>
+                        <span class="text-[11px] font-medium">拿样支持</span>
+                    </div>
+                    <div class="w-[1px] bg-gray-100 my-2"></div>
+                    <div class="flex flex-col items-center flex-1">
+                        <div class="w-10 h-10 bg-brand-stone rounded-full flex items-center justify-center mb-2">
+                            <i data-lucide="image" class="w-5 h-5 text-brand-sage"></i>
+                        </div>
+                        <span class="text-[11px] font-medium">图文授权</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 申请表单 -->
+            <div class="px-4">
+                <h3 class="text-sm font-bold font-serif mb-4 flex items-center">
+                    <div class="w-1 h-3 bg-brand-sage mr-2 rounded-full"></div>
+                    填写合作信息
+                </h3>
+                
+                <form class="space-y-4" onsubmit="event.preventDefault(); showToast('申请已提交，专员将尽快联系您'); setTimeout(() => history.back(), 2000);">
+                    
+                    <div class="space-y-1.5">
+                        <label class="text-xs text-gray-500 font-medium px-1">联系人姓名 <span class="text-brand-berry">*</span></label>
+                        <input type="text" required placeholder="请输入您的姓名" class="w-full bg-brand-stone border-transparent rounded-lg px-4 py-3 text-sm text-brand-text border focus:border-brand-sage transition-colors placeholder-gray-400">
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label class="text-xs text-gray-500 font-medium px-1">联系电话 <span class="text-brand-berry">*</span></label>
+                        <input type="tel" required placeholder="请输入手机号码" class="w-full bg-brand-stone border-transparent rounded-lg px-4 py-3 text-sm text-brand-text border focus:border-brand-sage transition-colors placeholder-gray-400">
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label class="text-xs text-gray-500 font-medium px-1">店铺/公司名称 <span class="text-brand-berry">*</span></label>
+                        <input type="text" required placeholder="如：某某花艺工作室" class="w-full bg-brand-stone border-transparent rounded-lg px-4 py-3 text-sm text-brand-text border focus:border-brand-sage transition-colors placeholder-gray-400">
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label class="text-xs text-gray-500 font-medium px-1">业务类型 <span class="text-brand-berry">*</span></label>
+                        <div class="relative">
+                            <select required class="w-full bg-brand-stone border-transparent rounded-lg px-4 py-3 text-sm text-brand-text border focus:border-brand-sage transition-colors appearance-none">
+                                <option value="" disabled selected class="text-gray-400">请选择业务类型</option>
+                                <option value="1">实体买手店 / 集合店</option>
+                                <option value="2">花艺 / 婚庆工作室</option>
+                                <option value="3">企业礼品定制采购</option>
+                                <option value="4">线上分销 / 其他</option>
+                            </select>
+                            <i data-lucide="chevron-down" class="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"></i>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label class="text-xs text-gray-500 font-medium px-1">简单描述您的需求 (选填)</label>
+                        <textarea rows="3" placeholder="例如：预计采购数量、希望的合作模式等" class="w-full bg-brand-stone border-transparent rounded-lg px-4 py-3 text-sm text-brand-text border focus:border-brand-sage transition-colors placeholder-gray-400 resize-none"></textarea>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-brand-text text-white py-3.5 rounded-full font-medium text-sm shadow-md hover:bg-black transition-colors">提交申请</button>
+                    </div>
+                    <p class="text-[10px] text-gray-400 text-center mt-2">提交即代表同意 <span class="text-brand-sage">《渠道合作隐私协议》</span></p>
+                </form>
+            </div>
+            
+        </main>
+
+        <div id="toast" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/70 text-white text-sm px-6 py-3 rounded-lg opacity-0 pointer-events-none transition-opacity duration-300 z-50 text-center max-w-[80%]">
+            提示信息
+        </div>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.remove('opacity-0');
+            setTimeout(() => toast.classList.add('opacity-0'), 2000);
+        }
+    </script>
+</body>
+</html>

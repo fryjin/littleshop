@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>购物车 - Wax Atelier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            stone: '#F7F6F2', ivory: '#FFFFF0', sage: '#8FA396',
+                            apricot: '#F3E5D8', berry: '#8A2B46', text: '#333333', muted: '#888888'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif SC"', 'serif'],
+                        sans: ['system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        body { background-color: #e5e7eb; }
+        .app-container { background-color: #F7F6F2; }
+        
+        /* 自定义复选框 */
+        .custom-checkbox {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+            outline: none;
+        }
+        .custom-checkbox:checked {
+            background-color: #8FA396;
+            border-color: #8FA396;
+        }
+        .custom-checkbox:checked::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body class="flex justify-center h-screen overflow-hidden text-brand-text">
+
+    <div class="w-full h-full sm:w-[375px] sm:h-[812px] sm:my-auto sm:rounded-[40px] sm:border-[8px] border-gray-800 app-container flex flex-col relative overflow-hidden shadow-2xl font-sans">
+        
+        <div class="h-7 w-full flex justify-between items-center px-6 pt-2 text-xs font-medium text-gray-800 z-20 bg-brand-stone bg-opacity-90 absolute top-0">
+            <span>10:16</span>
+            <div class="flex space-x-1 items-center">
+                <i data-lucide="signal" class="w-3 h-3"></i>
+                <i data-lucide="wifi" class="w-3 h-3"></i>
+                <i data-lucide="battery-full" class="w-4 h-4"></i>
+            </div>
+        </div>
+
+        <header class="pt-10 pb-2 px-4 flex justify-between items-center sticky top-0 z-10 bg-brand-stone bg-opacity-95 border-b border-gray-200/50">
+            <div class="w-8"></div>
+            <h1 class="text-lg font-bold font-serif">购物车</h1>
+            <div class="w-8 text-right">
+                <span class="text-sm text-gray-500 cursor-pointer">管理</span>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-y-auto no-scrollbar pb-32">
+            
+            <!-- 地址选择入口 -->
+            <div class="bg-white m-3 p-4 rounded-xl flex items-center justify-between shadow-sm cursor-pointer" onclick="window.location.href='地址管理.html?from=cart'">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-full bg-brand-stone flex items-center justify-center">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-brand-sage"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-sm font-bold">张女士</span>
+                            <span class="text-xs text-gray-500">138****8888</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-0.5">上海市 徐汇区 某某街道...</p>
+                    </div>
+                </div>
+                <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+            </div>
+
+            <!-- 购物车明细列表 -->
+            <div class="bg-white m-3 rounded-xl shadow-sm overflow-hidden">
+                <div class="px-4 py-3 border-b border-gray-100 flex items-center">
+                    <input type="checkbox" class="custom-checkbox mr-2" checked>
+                    <span class="text-sm font-serif font-bold">Wax Atelier 官方商城</span>
+                </div>
+
+                <!-- 商品 1 -->
+                <div class="p-4 flex gap-3 border-b border-gray-50 last:border-0">
+                    <input type="checkbox" class="custom-checkbox self-center" checked>
+                    <div class="w-20 h-20 bg-[#F3E5D8] rounded flex-shrink-0"></div>
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-sm font-medium line-clamp-1">勃艮第红复古卷边蜡烛</h3>
+                            <p class="text-[10px] text-gray-400 mt-1 bg-gray-50 inline-block px-1.5 py-0.5 rounded">标准版 | 浆果迷踪 | 水波纹 <i data-lucide="chevron-down" class="w-3 h-3 inline"></i></p>
+                        </div>
+                        <div class="flex justify-between items-end mt-2">
+                            <span class="text-brand-berry font-bold font-serif text-sm">¥259.00</span>
+                            <!-- 数量加减 -->
+                            <div class="flex items-center border border-gray-200 rounded">
+                                <button class="w-6 h-6 flex items-center justify-center text-gray-500">-</button>
+                                <span class="w-6 text-center text-xs">1</span>
+                                <button class="w-6 h-6 flex items-center justify-center text-gray-500">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 商品 2 -->
+                <div class="p-4 flex gap-3">
+                    <input type="checkbox" class="custom-checkbox self-center" checked>
+                    <div class="w-20 h-20 bg-[#E8EAE6] rounded flex-shrink-0"></div>
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-sm font-medium line-clamp-1">冬日暖阳双支礼盒</h3>
+                            <p class="text-[10px] text-gray-400 mt-1 bg-gray-50 inline-block px-1.5 py-0.5 rounded">礼盒装 | 无香陈列 <i data-lucide="chevron-down" class="w-3 h-3 inline"></i></p>
+                        </div>
+                        <div class="flex justify-between items-end mt-2">
+                            <span class="text-brand-berry font-bold font-serif text-sm">¥399.00</span>
+                            <div class="flex items-center border border-gray-200 rounded">
+                                <button class="w-6 h-6 flex items-center justify-center text-gray-500">-</button>
+                                <span class="w-6 text-center text-xs">1</span>
+                                <button class="w-6 h-6 flex items-center justify-center text-gray-500">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 阶梯价与加购提示 -->
+            <div class="mx-3 mt-2 px-3 py-2 bg-brand-sage/10 rounded-lg flex items-start space-x-2">
+                <i data-lucide="info" class="w-4 h-4 text-brand-sage flex-shrink-0 mt-0.5"></i>
+                <!--  将此处 href 属性修改为跳转到批发合作说明页 -->
+                <p class="text-[11px] text-gray-600 leading-relaxed">当前属于<span class="font-bold">零售价</span>档位。再购买 3 件即可解锁满件 9 折优惠，或<a href="渠道合作申请.html" class="text-brand-sage underline">申请渠道身份</a>获取批发价。</p>
+            </div>
+
+        </main>
+
+        <!-- 底部结算栏 -->
+        <div class="absolute bottom-[68px] w-full bg-white px-4 py-2 border-t border-gray-100 shadow-[0_-4px_15px_rgba(0,0,0,0.02)] z-30 flex justify-between items-center h-14">
+            <div class="flex items-center space-x-2">
+                <input type="checkbox" class="custom-checkbox" checked>
+                <span class="text-xs text-gray-500">全选</span>
+            </div>
+            <div class="flex items-center space-x-3">
+                <div class="text-right">
+                    <span class="text-xs text-gray-500">合计:</span>
+                    <span class="text-brand-berry font-bold font-serif">¥658.00</span>
+                </div>
+                <button onclick="showToast('调起支付')" class="px-6 py-2 rounded-full bg-brand-text text-white text-sm font-medium">去结算(2)</button>
+            </div>
+        </div>
+
+        <!-- 底部导航 -->
+        <nav class="absolute bottom-0 w-full bg-white/90 backdrop-blur-md pb-safe pt-2 px-2 z-30 flex justify-around items-center h-[68px]">
+            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer transition-colors" onclick="history.back()">
+                <i data-lucide="home" class="w-[22px] h-[22px] mb-1"></i>
+                <span class="text-[10px] font-medium">首页</span>
+            </div>
+            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer transition-colors">
+                <i data-lucide="layout-grid" class="w-[22px] h-[22px] mb-1"></i>
+                <span class="text-[10px] font-medium">分类</span>
+            </div>
+            <div class="flex flex-col items-center justify-center w-full h-full text-brand-text cursor-pointer relative">
+                <i data-lucide="shopping-bag" class="w-[22px] h-[22px] mb-1 text-brand-sage fill-brand-sage/20"></i>
+                <span class="text-[10px] font-bold text-brand-sage">购物车</span>
+            </div>
+            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer transition-colors">
+                <i data-lucide="user" class="w-[22px] h-[22px] mb-1"></i>
+                <span class="text-[10px] font-medium">我的</span>
+            </div>
+        </nav>
+
+        <div id="toast" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/70 text-white text-sm px-6 py-3 rounded-lg opacity-0 pointer-events-none transition-opacity duration-300 z-50">
+            提示信息
+        </div>
+    </div>
+    <script>
+        lucide.createIcons();
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.remove('opacity-0');
+            setTimeout(() => toast.classList.add('opacity-0'), 2000);
+        }
+    </script>
+</body>
+</html>

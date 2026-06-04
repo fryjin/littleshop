@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>商品详情 - Wax Atelier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            stone: '#F7F6F2', ivory: '#FFFFF0', sage: '#8FA396',
+                            apricot: '#F3E5D8', berry: '#8A2B46', text: '#333333', muted: '#888888'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif SC"', 'serif'],
+                        sans: ['system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        body { background-color: #e5e7eb; }
+        .app-container { background-color: #FFFFFF; }
+        
+        .spec-btn.active { border-color: #8FA396; color: #8FA396; background-color: rgba(143, 163, 150, 0.05); }
+    </style>
+</head>
+<body class="flex justify-center h-screen overflow-hidden text-brand-text">
+
+    <div class="w-full h-full sm:w-[375px] sm:h-[812px] sm:my-auto sm:rounded-[40px] sm:border-[8px] border-gray-800 app-container flex flex-col relative overflow-hidden shadow-2xl font-sans">
+        
+        <!-- 返回按钮 (悬浮) -->
+        <div class="absolute top-10 left-4 z-30 w-8 h-8 bg-black/30 backdrop-blur rounded-full flex items-center justify-center cursor-pointer" onclick="history.back()">
+            <i data-lucide="chevron-left" class="w-5 h-5 text-white"></i>
+        </div>
+
+        <main class="flex-1 overflow-y-auto no-scrollbar pb-32">
+            
+            <!-- 轮播图区域 -->
+            <div class="w-full h-[375px] bg-[#EBE7DF] relative flex items-center justify-center">
+                <span class="text-brand-sage/50 text-sm">[商品主图/轮播 1/4]</span>
+                <!-- 轮播指示器 -->
+                <div class="absolute bottom-4 flex space-x-1.5">
+                    <div class="w-4 h-1.5 bg-brand-sage rounded-full"></div>
+                    <div class="w-1.5 h-1.5 bg-white/50 rounded-full"></div>
+                    <div class="w-1.5 h-1.5 bg-white/50 rounded-full"></div>
+                    <div class="w-1.5 h-1.5 bg-white/50 rounded-full"></div>
+                </div>
+            </div>
+
+            <!-- 商品基础信息 -->
+            <div class="px-4 py-5 border-b border-gray-100">
+                <div class="flex justify-between items-start mb-2">
+                    <h1 class="text-xl font-serif font-bold leading-tight">勃艮第红复古卷边蜡烛<br><span class="text-sm font-normal text-brand-muted mt-1 inline-block">Burgundy Ruffle Candle</span></h1>
+                    <div class="flex flex-col items-end">
+                        <span class="text-xl font-bold font-serif text-brand-berry">¥259.00</span>
+                    </div>
+                </div>
+                <p class="text-xs text-brand-muted line-clamp-2">经典系列手工匠作，独特的波浪卷边设计，搭配醇厚的浆果香气，为空间注入温暖与质感。</p>
+            </div>
+
+            <!-- 阶梯价提示 -->
+            <div class="px-4 py-3 bg-[#F3E5D8]/30 flex items-center justify-between">
+                <span class="text-xs font-medium text-brand-text">批发阶梯价</span>
+                <!--  将此处 onClick 事件修改为跳转到批发合作说明页 -->
+                <span class="text-xs text-brand-sage cursor-pointer" onclick="window.location.href='渠道合作申请.html'">申请后查看 <i data-lucide="chevron-right" class="w-3 h-3 inline"></i></span>
+            </div>
+
+            <!-- 规格选择区 -->
+            <div class="p-4 space-y-5">
+                
+                <!-- 尺寸 (简化版) -->
+                <div>
+                    <h3 class="text-sm font-medium mb-3">规格尺寸</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <button class="spec-btn active px-4 py-2 text-xs border border-gray-200 rounded text-gray-600 transition-colors">标准版 (8x10cm)</button>
+                        <button class="spec-btn px-4 py-2 text-xs border border-gray-200 rounded text-gray-600 transition-colors">加高版 (8x15cm)</button>
+                    </div>
+                </div>
+
+                <!-- 雕花预览 (缩略图弹窗版) -->
+                <div>
+                    <div class="flex justify-between items-end mb-3">
+                        <h3 class="text-sm font-medium">雕花款式</h3>
+                        <span class="text-[10px] text-brand-muted">点击小图预览细节</span>
+                    </div>
+                    <div class="flex space-x-3">
+                        <div class="flex flex-col items-center gap-1 cursor-pointer" onclick="toggleImageModal(true)">
+                            <div class="w-14 h-14 rounded border-2 border-brand-sage overflow-hidden flex items-center justify-center bg-[#E8EAE6]">
+                                <span class="text-[8px] text-gray-400">水波纹</span>
+                            </div>
+                            <span class="text-[10px] text-brand-sage font-medium">水波纹</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-1 cursor-pointer">
+                            <div class="w-14 h-14 rounded border border-gray-200 overflow-hidden flex items-center justify-center bg-[#F7F6F2]">
+                                <span class="text-[8px] text-gray-400">叶脉纹</span>
+                            </div>
+                            <span class="text-[10px] text-gray-500">叶脉纹</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 香型选择 -->
+                <div>
+                    <h3 class="text-sm font-medium mb-3">香调选择</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <button class="spec-btn active px-4 py-2 text-xs border border-gray-200 rounded text-gray-600 transition-colors">浆果迷踪 (微甜)</button>
+                        <button class="spec-btn px-4 py-2 text-xs border border-gray-200 rounded text-gray-600 transition-colors">无香陈列</button>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- 占位图文详情 -->
+            <div class="mt-4 pb-10">
+                <div class="flex items-center justify-center py-4 border-t border-gray-100">
+                    <div class="h-[1px] w-12 bg-gray-200"></div>
+                    <span class="text-xs text-brand-muted mx-4 font-serif">图文详情</span>
+                    <div class="h-[1px] w-12 bg-gray-200"></div>
+                </div>
+                <div class="w-full h-64 bg-gray-50 flex items-center justify-center">
+                    <span class="text-gray-400 text-sm">详情长图区域</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- 底部购买区 & 导航 -->
+        <div class="absolute bottom-[68px] w-full bg-white px-4 py-3 border-t border-gray-100 shadow-[0_-4px_15px_rgba(0,0,0,0.02)] z-30">
+            <div class="flex items-center justify-between">
+                <div class="flex space-x-4 mr-4">
+                    <div class="flex flex-col items-center justify-center text-gray-500">
+                        <i data-lucide="headphones" class="w-5 h-5 mb-0.5"></i>
+                        <span class="text-[9px]">客服</span>
+                    </div>
+                </div>
+                <div class="flex-1 flex space-x-2">
+                    <button onclick="showToast('已加入购物车')" class="flex-1 py-2.5 rounded-full border border-brand-sage text-brand-sage text-sm font-medium">加入购物车</button>
+                    <button onclick="showToast('准备结算')" class="flex-1 py-2.5 rounded-full bg-brand-text text-white text-sm font-medium">立即购买</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部全局导航栏 -->
+        <nav class="absolute bottom-0 w-full bg-white/90 backdrop-blur-md border-t border-gray-100 pb-safe pt-2 px-2 z-30 flex justify-around items-center h-[68px]">
+            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer transition-colors" onclick="history.back()">
+                <i data-lucide="home" class="w-[22px] h-[22px] mb-1"></i>
+                <span class="text-[10px] font-medium">首页</span>
+            </div>
+            <div class="flex flex-col items-center justify-center w-full h-full text-brand-text cursor-pointer">
+                <i data-lucide="layout-grid" class="w-[22px] h-[22px] mb-1 text-brand-sage fill-brand-sage/20"></i>
+                <span class="text-[10px] font-bold text-brand-sage">分类</span>
+            </div>
+            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer relative transition-colors">
+                <i data-lucide="shopping-bag" class="w-[22px] h-[22px] mb-1"></i>
+                <span class="text-[10px] font-medium">购物车</span>
+                <span class="absolute top-[2px] right-4 bg-brand-berry text-white text-[9px] px-[5px] py-[1px] rounded-full font-bold shadow-sm">1</span>
+            </div>
+            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer transition-colors">
+                <i data-lucide="user" class="w-[22px] h-[22px] mb-1"></i>
+                <span class="text-[10px] font-medium">我的</span>
+            </div>
+        </nav>
+
+        <!-- 雕花大图预览弹窗 -->
+        <div id="image-modal" class="absolute inset-0 bg-black/90 z-50 hidden flex-col items-center justify-center transition-opacity duration-300 opacity-0" onclick="toggleImageModal(false)">
+            <i data-lucide="x" class="absolute top-10 right-6 w-6 h-6 text-white cursor-pointer z-50"></i>
+            <div class="w-full aspect-square bg-[#E8EAE6] flex items-center justify-center m-4" onclick="event.stopPropagation()">
+                 <span class="text-brand-sage/60 font-medium">雕花细节大图 (水波纹)</span>
+            </div>
+            <p class="text-white mt-4 font-medium">水波纹雕花工艺演示</p>
+        </div>
+
+        <div id="toast" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/70 text-white text-sm px-6 py-3 rounded-lg opacity-0 pointer-events-none transition-opacity duration-300 z-50">
+            提示信息
+        </div>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // 规格单选逻辑
+        document.querySelectorAll('.spec-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                Array.from(this.parentElement.children).forEach(sibling => {
+                    sibling.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.remove('opacity-0');
+            setTimeout(() => toast.classList.add('opacity-0'), 2000);
+        }
+
+        // 雕花预览弹窗逻辑
+        const modal = document.getElementById('image-modal');
+        function toggleImageModal(show) {
+            if (show) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                void modal.offsetWidth; // trigger reflow
+                modal.classList.add('opacity-100');
+            } else {
+                modal.classList.remove('opacity-100');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                }, 300);
+            }
+        }
+    </script>
+</body>
+</html>

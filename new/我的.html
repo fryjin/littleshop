@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>我的 - Wax Atelier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            stone: '#F7F6F2', ivory: '#FFFFF0', sage: '#8FA396',
+                            apricot: '#F3E5D8', berry: '#8A2B46', text: '#333333', muted: '#888888'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        body { background-color: #e5e7eb; }
+        .app-container { background-color: #F7F6F2; }
+    </style>
+</head>
+<body class="flex justify-center h-screen overflow-hidden text-brand-text">
+    <div class="w-full h-full sm:w-[375px] sm:h-[812px] sm:my-auto sm:rounded-[40px] sm:border-[8px] border-gray-800 app-container flex flex-col relative overflow-hidden shadow-2xl font-sans">
+        
+        <!-- 用户信息区 -->
+        <div class="bg-[#EBE7DF] pt-14 pb-8 px-6 rounded-b-3xl relative">
+            <div class="absolute top-10 right-4 flex space-x-3 text-gray-600">
+                <i data-lucide="settings" class="w-5 h-5"></i>
+            </div>
+            <div class="flex items-center space-x-4 mt-4">
+                <div class="w-16 h-16 bg-white rounded-full border-2 border-white shadow-sm flex items-center justify-center overflow-hidden">
+                    <i data-lucide="user" class="w-8 h-8 text-gray-300"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl font-bold font-serif">Wax_User_09</h2>
+                    <span class="inline-block mt-1 px-2 py-0.5 bg-brand-sage/10 text-brand-sage text-[10px] rounded-full border border-brand-sage/20">零售用户</span>
+                </div>
+            </div>
+        </div>
+
+        <main class="flex-1 overflow-y-auto no-scrollbar pb-24 px-4 -mt-4 z-10">
+            
+            <!-- 订单概览 -->
+            <div class="bg-white rounded-xl shadow-sm p-4 mb-4">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="font-bold text-sm">我的订单</span>
+                    <span class="text-xs text-gray-400 flex items-center">全部订单 <i data-lucide="chevron-right" class="w-3 h-3 ml-0.5"></i></span>
+                </div>
+                <div class="flex justify-between px-2">
+                    <div class="flex flex-col items-center gap-1.5 relative">
+                        <i data-lucide="credit-card" class="w-6 h-6 text-gray-600"></i>
+                        <span class="text-[11px] text-gray-600">待付款</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1.5 relative">
+                        <i data-lucide="package" class="w-6 h-6 text-gray-600"></i>
+                        <span class="text-[11px] text-gray-600">待发货</span>
+                        <span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-brand-berry text-white text-[8px] rounded-full flex items-center justify-center">1</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1.5 relative">
+                        <i data-lucide="truck" class="w-6 h-6 text-gray-600"></i>
+                        <span class="text-[11px] text-gray-600">待收货</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1.5 relative">
+                        <i data-lucide="message-square" class="w-6 h-6 text-gray-600"></i>
+                        <span class="text-[11px] text-gray-600">评价</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 主入口：渠道合作/批发身份 -->
+            <!--  将此处 onClick 事件修改为跳转到批发合作说明页 -->
+            <div class="bg-brand-sage text-white rounded-xl shadow-sm p-4 mb-4 flex items-center justify-between cursor-pointer" onclick="window.location.href='渠道合作申请.html'">
+                <div>
+                    <h3 class="font-bold font-serif text-base mb-0.5 flex items-center gap-1"><i data-lucide="briefcase" class="w-4 h-4"></i> 申请批发身份</h3>
+                    <p class="text-[11px] text-white/80">成为渠道伙伴，获取专属报价单与陈列支持</p>
+                </div>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </div>
+
+            <!-- 基础服务 3项 -->
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                <div class="flex items-center justify-between p-4 border-b border-gray-50 cursor-pointer" onclick="showToast('前往地址管理')">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-gray-500"></i>
+                        <span class="text-sm">地址管理</span>
+                    </div>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-gray-300"></i>
+                </div>
+                <div class="flex items-center justify-between p-4 border-b border-gray-50 cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="receipt" class="w-5 h-5 text-gray-500"></i>
+                        <span class="text-sm">发票管理</span>
+                    </div>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-gray-300"></i>
+                </div>
+                <div class="flex items-center justify-between p-4 border-b border-gray-50 cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="headphones" class="w-5 h-5 text-gray-500"></i>
+                        <span class="text-sm">客服与售后</span>
+                    </div>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-gray-300"></i>
+                </div>
+                <div class="flex items-center justify-between p-4 cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="file-text" class="w-5 h-5 text-gray-500"></i>
+                        <span class="text-sm">政策与协议</span>
+                    </div>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-gray-300"></i>
+                </div>
+            </div>
+            
+        </main>
+
+        <!-- 底部导航 -->
+        <nav class="absolute bottom-0 w-full bg-white/90 backdrop-blur-md border-t border-gray-100 pb-safe pt-2 px-2 z-30 flex justify-around items-center h-[68px]">
+            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer" onclick="history.back()">
+                <i data-lucide="home" class="w-[22px] h-[22px] mb-1"></i>
+                <span class="text-[10px] font-medium">首页</span>
+            </div>
+            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer">
+                <i data-lucide="layout-grid" class="w-[22px] h-[22px] mb-1"></i>
+                <span class="text-[10px] font-medium">分类</span>
+            </div>
+            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer relative">
+                <i data-lucide="shopping-bag" class="w-[22px] h-[22px] mb-1"></i>
+                <span class="text-[10px] font-medium">购物车</span>
+            </div>
+            <div class="flex flex-col items-center justify-center w-full h-full text-brand-text cursor-pointer">
+                <i data-lucide="user" class="w-[22px] h-[22px] mb-1 text-brand-sage fill-brand-sage/20"></i>
+                <span class="text-[10px] font-bold text-brand-sage">我的</span>
+            </div>
+        </nav>
+
+        <div id="toast" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/70 text-white text-sm px-6 py-3 rounded-lg opacity-0 pointer-events-none transition-opacity duration-300 z-50"></div>
+    </div>
+    <script>
+        lucide.createIcons();
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.remove('opacity-0');
+            setTimeout(() => toast.classList.add('opacity-0'), 2000);
+        }
+    </script>
+</body>
+</html>

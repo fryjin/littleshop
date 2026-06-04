@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>政策与服务协议 - Wax Atelier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            stone: '#F7F6F2', ivory: '#FFFFF0', sage: '#8FA396',
+                            apricot: '#F3E5D8', berry: '#8A2B46', text: '#333333', muted: '#888888'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif SC"', 'serif'],
+                        sans: ['system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        body { background-color: #e5e7eb; }
+        .app-container { background-color: #F7F6F2; }
+    </style>
+</head>
+<body class="flex justify-center h-screen overflow-hidden text-brand-text">
+
+    <!-- 模拟手机屏幕的容器 -->
+    <div class="w-full h-full sm:w-[375px] sm:h-[812px] sm:my-auto sm:rounded-[40px] sm:border-[8px] border-gray-800 app-container flex flex-col relative overflow-hidden shadow-2xl font-sans bg-white">
+        
+        <!-- 顶部状态栏 (模拟) -->
+        <div class="h-7 w-full flex justify-between items-center px-6 pt-2 text-xs font-medium text-gray-800 z-20 bg-white/90 backdrop-blur absolute top-0">
+            <span>10:16</span>
+            <div class="flex space-x-1 items-center">
+                <i data-lucide="signal" class="w-3 h-3"></i>
+                <i data-lucide="wifi" class="w-3 h-3"></i>
+                <i data-lucide="battery-full" class="w-4 h-4"></i>
+            </div>
+        </div>
+
+        <header class="pt-10 pb-2 px-4 flex justify-between items-center sticky top-0 z-10 bg-white/95 border-b border-gray-50">
+            <div class="w-8 flex items-center cursor-pointer" onclick="history.back()">
+                <i data-lucide="chevron-left" class="w-6 h-6 text-brand-text"></i>
+            </div>
+            <h1 class="text-lg font-bold font-serif">服务与政策</h1>
+            <div class="w-8"></div>
+        </header>
+
+        <main class="flex-1 overflow-y-auto no-scrollbar p-4 space-y-4 pb-12">
+            
+            <div class="text-center py-4">
+                <h2 class="text-base font-serif font-bold mb-1">为了保障您的购物体验</h2>
+                <p class="text-[10px] text-brand-muted leading-relaxed">请仔细阅读以下关于德国手工雕刻蜡烛的品质约定与服务协议</p>
+            </div>
+
+            <!-- 折叠栏一：购买与配送须知 -->
+            <div class="bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm">
+                <div class="px-4 py-3.5 flex justify-between items-center cursor-pointer hover:bg-gray-50/50 transition-colors" onclick="toggleAccordion('policy-buy')">
+                    <div class="flex items-center gap-2.5">
+                        <i data-lucide="shopping-bag" class="w-4 h-4 text-brand-sage"></i>
+                        <span class="text-xs font-bold font-serif">购买与配送须知</span>
+                    </div>
+                    <i id="icon-policy-buy" data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform duration-300"></i>
+                </div>
+                <div id="content-policy-buy" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-brand-stone/30">
+                    <div class="p-4 text-xs text-gray-600 leading-relaxed space-y-2 border-t border-gray-50">
+                        <p class="font-bold text-brand-text">1. 手工特殊性说明</p>
+                        <p>每一款 Wax Atelier 雕刻蜡烛皆由工匠手工雕刻并卷边完成，颜色微调、轻微波纹不对称、极小气泡为纯手工制作的特有标记，不属于质量缺陷。请包容手工制品的独立灵魂。</p>
+                        <p class="font-bold text-brand-text mt-3">2. 关于仓储与配送</p>
+                        <p>全场零售默认使用顺丰速运包邮寄出。蜡烛属于环境温度敏感品，我们将在库房安排隔热纸箱与防震填充包装，建议您收货后第一时间移入阴凉干燥处（25℃以下）妥善陈列。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 折叠栏二：售后与退换政策 -->
+            <div class="bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm">
+                <div class="px-4 py-3.5 flex justify-between items-center cursor-pointer hover:bg-gray-50/50 transition-colors" onclick="toggleAccordion('policy-aftersales')">
+                    <div class="flex items-center gap-2.5">
+                        <i data-lucide="shield-alert" class="w-4 h-4 text-brand-sage"></i>
+                        <span class="text-xs font-bold font-serif">售后与破损退换</span>
+                    </div>
+                    <i id="icon-policy-aftersales" data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform duration-300"></i>
+                </div>
+                <div id="content-policy-aftersales" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-brand-stone/30">
+                    <div class="p-4 text-xs text-gray-600 leading-relaxed space-y-2 border-t border-gray-50">
+                        <p class="font-bold text-brand-text">1. 极速破损无忧寄</p>
+                        <p>蜡烛在长途极寒/极热或转运颠簸中可能偶发局部断裂。如有运输破损，请于签收后 48 小时内，直接进入 **[我的 -> 客服售后]** 上传清晰外观照片，我们确认无误后将免费补寄新货，运费全免。</p>
+                        <p class="font-bold text-brand-text mt-3">2. 七天无理由退换</p>
+                        <p>本品支持 7 日无理由退换。因手工艺特殊，退换商品必须保持**未剪芯、未燃点、雕刻纹理完好无损、原装盒配件完整**方可支持。寄回运费需由买家承担。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 折叠栏三：隐私与数据安全保护 -->
+            <div class="bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm">
+                <div class="px-4 py-3.5 flex justify-between items-center cursor-pointer hover:bg-gray-50/50 transition-colors" onclick="toggleAccordion('policy-privacy')">
+                    <div class="flex items-center gap-2.5">
+                        <i data-lucide="lock" class="w-4 h-4 text-brand-sage"></i>
+                        <span class="text-xs font-bold font-serif">隐私与数据安全保护</span>
+                    </div>
+                    <i id="icon-policy-privacy" data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform duration-300"></i>
+                </div>
+                <div id="content-policy-privacy" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-brand-stone/30">
+                    <div class="p-4 text-xs text-gray-600 leading-relaxed space-y-2 border-t border-gray-50">
+                        <p>我们严格遵照网络安全法规，您的收货地址、联系电话、订单详情等隐私，仅限于订单拣配、顺丰物流递送及批发专员审核。除非获得授权或法定义务，任何信息不会被共享至第三方机构。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 折叠栏四：渠道合作伙伴行为准则 -->
+            <div class="bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm">
+                <div class="px-4 py-3.5 flex justify-between items-center cursor-pointer hover:bg-gray-50/50 transition-colors" onclick="toggleAccordion('policy-wholesale')">
+                    <div class="flex items-center gap-2.5">
+                        <i data-lucide="users" class="w-4 h-4 text-brand-sage"></i>
+                        <span class="text-xs font-bold font-serif">渠道合作伙伴协议</span>
+                    </div>
+                    <i id="icon-policy-wholesale" data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform duration-300"></i>
+                </div>
+                <div id="content-policy-wholesale" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-brand-stone/30">
+                    <div class="p-4 text-xs text-gray-600 leading-relaxed space-y-2 border-t border-gray-50">
+                        <p class="font-bold text-brand-text">1. 批发身份管理</p>
+                        <p>渠道通过资质申请后，即代表同意遵守 Wax Atelier 的建议市场零售限价指南。严禁私自在公开三方平台上恶意折价抛售，避免损害手工匠作行业整体形象价值。</p>
+                        <p class="font-bold text-brand-text mt-3">2. 商标图文授权范围</p>
+                        <p>仅限对通过官方渠道合法采购的货款，拥有店面陈列、朋友圈物料图、公众号宣传推文的商标使用与素材转发权。</p>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="mt-auto pb-8 text-center text-[10px] text-gray-400">
+            Wax Atelier · 官方合规部颁布 2026版
+        </footer>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        function toggleAccordion(id) {
+            const content = document.getElementById('content-' + id);
+            const icon = document.getElementById('icon-' + id);
+            
+            // 检查当前状态
+            const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+            // 先关闭所有的折叠面板，形成纯风琴折叠效果
+            document.querySelectorAll('[id^="content-policy-"]').forEach(el => {
+                el.style.maxHeight = '0px';
+            });
+            document.querySelectorAll('[id^="icon-policy-"]').forEach(el => {
+                el.style.transform = 'rotate(0deg)';
+            });
+
+            // 再次切换当前的
+            if (!isOpen) {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.style.maxHeight = '0px';
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html>

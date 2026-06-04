@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>工艺品质约定与退换政策协议 - Wax Atelier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            stone: '#F7F6F2', ivory: '#FFFFF0', sage: '#8FA396',
+                            apricot: '#F3E5D8', berry: '#8A2B46', text: '#333333', muted: '#888888'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif SC"', 'serif'],
+                        sans: ['system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        body { background-color: #e5e7eb; }
+        .app-container { background-color: #FFFFFF; }
+        
+        .custom-checkbox {
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            display: inline-block;
+            position: relative;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .custom-checkbox:checked {
+            background-color: #8FA396;
+            border-color: #8FA396;
+        }
+        .custom-checkbox:checked::after {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 1px;
+            width: 5px;
+            height: 8px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body class="flex justify-center h-screen overflow-hidden text-brand-text">
+
+    <div class="w-full h-full sm:w-[375px] sm:h-[812px] sm:my-auto sm:rounded-[40px] sm:border-[8px] border-gray-800 app-container flex flex-col relative overflow-hidden shadow-2xl font-sans bg-white">
+        
+        <!-- 顶部状态栏 -->
+        <div class="h-7 w-full flex justify-between items-center px-6 pt-2 text-xs font-medium text-gray-800 z-20 bg-white/90 backdrop-blur absolute top-0">
+            <span>10:16</span>
+            <div class="flex space-x-1 items-center">
+                <i data-lucide="signal" class="w-3 h-3"></i>
+                <i data-lucide="wifi" class="w-3 h-3"></i>
+                <i data-lucide="battery-full" class="w-4 h-4"></i>
+            </div>
+        </div>
+
+        <!-- 头部导航 -->
+        <header class="pt-10 pb-2 px-4 flex justify-between items-center sticky top-0 z-10 bg-white/95 border-b border-gray-50">
+            <div class="w-8 flex items-center cursor-pointer" onclick="history.back()">
+                <i data-lucide="chevron-left" class="w-6 h-6 text-brand-text"></i>
+            </div>
+            <h1 class="text-xs font-bold font-serif text-brand-muted uppercase tracking-wider">条款细则</h1>
+            <div class="w-8 text-right cursor-pointer" onclick="toggleOutline()">
+                <i data-lucide="list" class="w-4 h-4 text-brand-text inline-block"></i>
+            </div>
+        </header>
+
+        <!-- 条款正文滚动区域 -->
+        <main id="policy-content" class="flex-1 overflow-y-auto no-scrollbar px-6 py-6 space-y-6 pb-24 text-xs leading-relaxed text-gray-600">
+            
+            <div class="border-b border-gray-100 pb-5 text-center">
+                <h2 id="sec-title" class="text-base font-bold font-serif text-brand-text mb-2">手工艺约束品质约定与服务协议</h2>
+                <span class="text-[10px] text-gray-400 font-mono block">最后更新日期：2026年6月3日</span>
+            </div>
+
+            <!-- 第一章节 -->
+            <section id="sec-1" class="space-y-2.5 scroll-mt-20">
+                <h3 class="font-serif font-bold text-sm text-brand-text flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 bg-brand-sage rounded-full"></span> 01 / 手工瑕疵与美学约定
+                </h3>
+                <p>
+                    Wax Atelier 旗下所有雕刻蜡烛均由德国与本土资深工匠通过纯手工雕刻、拉伸、卷边等工艺手工完成。由于手工艺品区别于机器流水线批量产品的独立性质，您知悉并同意以下美学特点：
+                </p>
+                <ul class="list-disc list-inside space-y-1 pl-1 text-gray-500">
+                    <li>轻微的边缘不对称或水波纹大小差异均属于正常艺术特质。</li>
+                    <li>蜡胚表面偶发的极微小气孔或收缩纹理属于天然石蜡与精油混合降温的自然物理特性。</li>
+                    <li>各批次由纯天然色素调配，可能存在约 5% 的肉眼微小色调偏差。</li>
+                </ul>
+                <p class="bg-brand-stone/40 p-3 rounded-lg border border-gray-100/50 text-[11px] italic text-brand-muted">
+                    “手工制作非瑕疵声明：如果您追求完满对称的机械感，本品纯真拙朴的手作痕迹可能并不完全适合您的要求。”
+                </p>
+            </section>
+
+            <!-- 第二章节 -->
+            <section id="sec-2" class="space-y-2.5 scroll-mt-20">
+                <h3 class="font-serif font-bold text-sm text-brand-text flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 bg-brand-sage rounded-full"></span> 02 / 仓储与敏感气温维护
+                </h3>
+                <p>
+                    由于手工蜡烛配方中包含了高度环境敏感的天然植物蜡、蜂蜡、极高比例香薰香精，在气温波动阶段，必须严格遵照如下指引进行陈列与妥善保存：
+                </p>
+                <p>
+                    理想保存环境为干燥、避光且室温在 **25℃ 以下** 的环境。严禁直接暴晒在正午日光下或放置于发热设备、微波炉、明火直射台面周边，避免因环境气温局部骤升导致蜡体软化、局部晕色或雕刻形态走样。
+                </p>
+            </section>
+
+            <!-- 第三章节 -->
+            <section id="sec-3" class="space-y-2.5 scroll-mt-20">
+                <h3 class="font-serif font-bold text-sm text-brand-text flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 bg-brand-sage rounded-full"></span> 03 / 七天无理由退换规则
+                </h3>
+                <p>
+                    本商品支持自签收之日起的 **七天无理由退换服务**。然而鉴于手工艺雕花艺术的珍贵与脆弱性质，退回的货品须通过我们的仓库质检。退回标准如下：
+                </p>
+                <ul class="list-disc list-inside space-y-1 pl-1 text-gray-500">
+                    <li>未进行过任何剪断烛芯、点燃、刮擦或物理形变的体验。</li>
+                    <li>外包装礼盒完好、内部隔热海绵无挤压损毁，专属定制火柴或说明书必须保持一并完整退回。</li>
+                    <li>因个人原因（如不喜欢款式、味道）产生的退货邮费须由买家本人自行承担。</li>
+                </ul>
+            </section>
+
+            <!-- 第四章节 -->
+            <section id="sec-4" class="space-y-2.5 scroll-mt-20">
+                <h3 class="font-serif font-bold text-sm text-brand-text flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 bg-brand-sage rounded-full"></span> 04 / 破损补寄特别保障
+                </h3>
+                <p>
+                    如在物流配送过程中发生因剧烈颠簸、挤压而造成的蜡烛折断或重度凹陷。请务必在签收后 **48 小时内**，通过 **“客服与售后”** 选项入口在线上传外箱包装和货品残损细节图凭证。质检部审核后，我们将无条件为您在 24 小时内免费补发全新款产品，无需寄回损坏件。
+                </p>
+            </section>
+
+        </main>
+
+        <!-- 底部确认阅读 -->
+        <div class="absolute bottom-0 w-full bg-white px-4 py-4 border-t border-gray-100 pb-safe z-30 flex items-center gap-3">
+            <label class="flex items-center space-x-2 text-xs text-gray-400 cursor-pointer select-none">
+                <input type="checkbox" id="agree-checkbox" class="custom-checkbox" onchange="toggleConfirmBtn(this)">
+                <span>我已详阅并同意此约定</span>
+            </label>
+            <button id="confirm-read-btn" disabled onclick="handleAgreementAccept()" class="flex-1 bg-gray-300 text-white py-3 rounded-full font-medium text-xs transition-colors cursor-not-allowed">
+                确认并返回
+            </button>
+        </div>
+
+        <!-- 侧边大纲抽屉 (右滑滑出) -->
+        <div id="outline-drawer" class="absolute inset-y-0 right-0 w-48 bg-white shadow-2xl z-40 transform translate-x-full transition-transform duration-300 flex flex-col p-4">
+            <div class="flex justify-between items-center mb-5 border-b border-gray-50 pb-2">
+                <span class="text-xs font-bold text-brand-muted">条款章节目录</span>
+                <i data-lucide="x" class="w-4 h-4 text-gray-400 cursor-pointer" onclick="toggleOutline()"></i>
+            </div>
+            <div class="space-y-4 text-xs">
+                <div class="text-brand-text hover:text-brand-sage font-medium cursor-pointer" onclick="scrollToSection('sec-1')">01 手工美学约定</div>
+                <div class="text-brand-text hover:text-brand-sage font-medium cursor-pointer" onclick="scrollToSection('sec-2')">02 气温仓储维护</div>
+                <div class="text-brand-text hover:text-brand-sage font-medium cursor-pointer" onclick="scrollToSection('sec-3')">03 七天无理由退换</div>
+                <div class="text-brand-text hover:text-brand-sage font-medium cursor-pointer" onclick="scrollToSection('sec-4')">04 破损补寄特别保障</div>
+            </div>
+        </div>
+
+        <div id="toast" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/70 text-white text-xs px-6 py-3 rounded-lg opacity-0 pointer-events-none transition-opacity duration-300 z-50 text-center"></div>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.remove('opacity-0');
+            setTimeout(() => toast.classList.add('opacity-0'), 2000);
+        }
+
+        // 大纲抽屉显隐
+        const drawer = document.getElementById('outline-drawer');
+        let drawerOpen = false;
+        function toggleOutline() {
+            if (drawerOpen) {
+                drawer.classList.add('translate-x-full');
+            } else {
+                drawer.classList.remove('translate-x-full');
+            }
+            drawerOpen = !drawerOpen;
+        }
+
+        // 快捷滚动定位到章节
+        function scrollToSection(id) {
+            const target = document.getElementById(id);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+                toggleOutline();
+            }
+        }
+
+        // 条款勾选确认联动
+        function toggleConfirmBtn(checkbox) {
+            const btn = document.getElementById('confirm-read-btn');
+            if (checkbox.checked) {
+                btn.disabled = false;
+                btn.classList.remove('bg-gray-300', 'cursor-not-allowed');
+                btn.classList.add('bg-brand-sage', 'hover:bg-brand-sage/90');
+            } else {
+                btn.disabled = true;
+                btn.classList.add('bg-gray-300', 'cursor-not-allowed');
+                btn.classList.remove('bg-brand-sage', 'hover:bg-brand-sage/90');
+            }
+        }
+
+        // 接受条款
+        function handleAgreementAccept() {
+            showToast('感谢您的认可，已同意该工艺约定');
+            setTimeout(() => {
+                history.back();
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

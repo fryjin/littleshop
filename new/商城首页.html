@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Wax Atelier - 首页</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 Lucide 图标库 -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- 引入优雅的衬线字体，符合手工工艺品调性 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            stone: '#F7F6F2', // 雾白暖灰 (背景)
+                            ivory: '#FFFFF0', // 象牙白
+                            sage: '#8FA396',  // 鼠尾草绿灰
+                            apricot: '#F3E5D8', // 浅杏金
+                            berry: '#8A2B46', // 深莓色 (价格/强调)
+                            text: '#333333',
+                            muted: '#888888'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif SC"', 'serif'],
+                        sans: ['system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 隐藏滚动条 */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        body { background-color: #e5e7eb; } /* 外围背景 */
+        .app-container { background-color: #F7F6F2; } /* 品牌主色背景 */
+    </style>
+</head>
+<body class="flex justify-center h-screen overflow-hidden text-brand-text">
+
+    <!-- 模拟手机屏幕的容器 -->
+    <div class="w-full h-full sm:w-[375px] sm:h-[812px] sm:my-auto sm:rounded-[40px] sm:border-[8px] border-gray-800 app-container flex flex-col relative overflow-hidden shadow-2xl font-sans">
+        
+        <!-- 顶部状态栏区域 (模拟) -->
+        <div class="h-7 w-full flex justify-between items-center px-6 pt-2 text-xs font-medium text-gray-800 z-20 bg-brand-stone bg-opacity-90 backdrop-blur-sm absolute top-0">
+            <span>10:16</span>
+            <div class="flex space-x-1 items-center">
+                <i data-lucide="signal" class="w-3 h-3"></i>
+                <i data-lucide="wifi" class="w-3 h-3"></i>
+                <i data-lucide="battery-full" class="w-4 h-4"></i>
+            </div>
+        </div>
+
+        <!-- 自定义导航栏 (Header) -->
+        <header class="pt-10 pb-3 px-4 flex justify-between items-center sticky top-0 z-10 bg-brand-stone bg-opacity-95 backdrop-blur-md">
+            <div class="w-8">
+                <i data-lucide="search" class="w-5 h-5 text-gray-600"></i>
+            </div>
+            <h1 class="text-xl font-bold font-serif tracking-wider">Wax Atelier</h1>
+            <!-- 小程序胶囊按钮 (模拟) -->
+            <div class="flex items-center space-x-2 bg-white/50 rounded-full px-2 py-1 border border-gray-200/50">
+                <i data-lucide="more-horizontal" class="w-4 h-4 text-gray-800"></i>
+                <div class="w-[1px] h-3 bg-gray-300"></div>
+                <i data-lucide="circle-x" class="w-4 h-4 text-gray-800"></i>
+            </div>
+        </header>
+
+        <!-- 主要内容区 (可滚动) -->
+        <main class="flex-1 overflow-y-auto no-scrollbar pb-24">
+            
+            <!-- Hero 主视觉 (替代旧版大 banner) -->
+            <div class="px-4 mt-2 mb-6">
+                <div class="relative w-full h-72 rounded-2xl overflow-hidden bg-brand-apricot flex items-center justify-center shadow-sm">
+                    <!-- 按照规范插入图片占位 -->
+                    <div class="absolute inset-0 flex flex-col items-center justify-center text-brand-sage/50 bg-[#EBE7DF]">
+                         <i data-lucide="image" class="w-12 h-12 mb-2"></i>
+                         <span class="text-sm font-medium"></span>
+                    </div>
+                    <!-- 文字蒙层 -->
+                    <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/40 to-transparent">
+                        <h2 class="text-white font-serif text-2xl font-bold mb-1">春季匠作系列</h2>
+                        <p class="text-white/80 text-sm font-light">德国手工雕刻 · 感受时间的温度</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 核心功能分流 (金刚区) - 响应文档：收敛入口，突出核心业务 -->
+            <div class="grid grid-cols-4 gap-2 px-4 mb-8">
+                <div class="flex flex-col items-center justify-center space-y-2 cursor-pointer" onclick="showToast('正在前往：送礼助手')">
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-brand-sage shadow-sm border border-gray-100">
+                        <i data-lucide="gift" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-xs text-brand-text font-medium">送礼助手</span>
+                </div>
+                <div class="flex flex-col items-center justify-center space-y-2 cursor-pointer" onclick="showToast('正在前往：搭配推荐')">
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-brand-sage shadow-sm border border-gray-100">
+                        <i data-lucide="sparkles" class="w-5 h-5"></i>
+                    </div>
+                    <!-- 文档强调：去 AI 味，改为搭配推荐 -->
+                    <span class="text-xs text-brand-text font-medium">搭配推荐</span>
+                </div>
+                <div class="flex flex-col items-center justify-center space-y-2 cursor-pointer">
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-brand-sage shadow-sm border border-gray-100">
+                        <i data-lucide="layout-grid" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-xs text-brand-text font-medium">全部商品</span>
+                </div>
+                <div class="flex flex-col items-center justify-center space-y-2 cursor-pointer">
+                    <div class="w-12 h-12 bg-brand-sage text-white rounded-full flex items-center justify-center shadow-sm border border-brand-sage/50">
+                        <i data-lucide="briefcase" class="w-5 h-5"></i>
+                    </div>
+                    <!-- 文档强调：批发能力后置，这里提供申请入口 -->
+                    <span class="text-xs text-brand-text font-medium">批发合作</span>
+                </div>
+            </div>
+
+            <!-- 热卖推荐 (横向滑动) -->
+            <div class="mb-8">
+                <div class="px-4 flex justify-between items-end mb-4">
+                    <h2 class="text-lg font-serif font-bold text-brand-text tracking-wide">热卖单品</h2>
+                    <span class="text-xs text-brand-muted flex items-center">查看全部 <i data-lucide="chevron-right" class="w-3 h-3 ml-1"></i></span>
+                </div>
+                
+                <div class="flex overflow-x-auto no-scrollbar px-4 space-x-4 pb-2">
+                    
+                    <!-- 商品卡片 1 -->
+                    <div class="w-36 flex-shrink-0 flex flex-col group">
+                        <div class="w-36 h-40 bg-white rounded-xl mb-3 flex items-center justify-center overflow-hidden relative shadow-sm">
+                            <span class="text-[10px] text-gray-400 text-center px-2"></span>
+                            <!-- 轻量加购组件 - 响应文档：加购只做加购，停留原页 -->
+                            <button onclick="addToCart(event)" class="absolute bottom-2 right-2 w-7 h-7 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow text-brand-text hover:bg-brand-sage hover:text-white transition-colors">
+                                <i data-lucide="plus" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                        <h3 class="text-sm font-medium text-brand-text truncate">勃艮第红卷边蜡烛</h3>
+                        <p class="text-xs text-brand-muted mt-1 truncate">经典系列 · 浆果香型</p>
+                        <!-- 价格使用深莓色点缀 -->
+                        <div class="mt-2 text-brand-berry font-bold text-sm font-serif">¥259.00</div>
+                    </div>
+
+                    <!-- 商品卡片 2 -->
+                    <div class="w-36 flex-shrink-0 flex flex-col group">
+                        <div class="w-36 h-40 bg-white rounded-xl mb-3 flex items-center justify-center overflow-hidden relative shadow-sm">
+                            <span class="text-[10px] text-gray-400 text-center px-2"></span>
+                            <button onclick="addToCart(event)" class="absolute bottom-2 right-2 w-7 h-7 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow text-brand-text hover:bg-brand-sage hover:text-white transition-colors">
+                                <i data-lucide="plus" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                        <h3 class="text-sm font-medium text-brand-text truncate">森林晨露直筒蜡烛</h3>
+                        <p class="text-xs text-brand-muted mt-1 truncate">进阶系列 · 木质香调</p>
+                        <div class="mt-2 text-brand-berry font-bold text-sm font-serif">¥329.00</div>
+                    </div>
+                    
+                    <!-- 商品卡片 3 -->
+                    <div class="w-36 flex-shrink-0 flex flex-col group">
+                        <div class="w-36 h-40 bg-white rounded-xl mb-3 flex items-center justify-center overflow-hidden relative shadow-sm">
+                            <span class="text-[10px] text-gray-400 text-center px-2"></span>
+                            <button onclick="addToCart(event)" class="absolute bottom-2 right-2 w-7 h-7 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow text-brand-text hover:bg-brand-sage hover:text-white transition-colors">
+                                <i data-lucide="plus" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                        <h3 class="text-sm font-medium text-brand-text truncate">冬日暖阳双支礼盒</h3>
+                        <p class="text-xs text-brand-muted mt-1 truncate">节日礼盒 · 含火柴包</p>
+                        <div class="mt-2 text-brand-berry font-bold text-sm font-serif">¥599.00</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 场景分类展示 (替代大段介绍) -->
+            <div class="px-4 mb-6">
+                <h2 class="text-lg font-serif font-bold text-brand-text tracking-wide mb-4">探索场景</h2>
+                
+                <div class="space-y-3">
+                    <!-- 婚礼采购场景 -->
+                    <div class="w-full h-32 bg-white rounded-xl flex items-center p-1 shadow-sm relative overflow-hidden">
+                        <div class="w-1/3 h-full bg-[#F3E5D8] rounded-lg flex items-center justify-center">
+                            <span class="text-[10px] text-brand-sage/60 text-center px-2"></span>
+                        </div>
+                        <div class="flex-1 px-4 flex flex-col justify-center">
+                            <h3 class="font-serif font-bold text-base mb-1">婚礼采购</h3>
+                            <p class="text-xs text-brand-muted mb-3 line-clamp-2">提供伴手礼、晚宴桌面陈列等多场景组合推荐，量大从优。</p>
+                            <span class="text-xs font-medium text-brand-sage flex items-center">查看方案 <i data-lucide="arrow-right" class="w-3 h-3 ml-1"></i></span>
+                        </div>
+                    </div>
+
+                    <!-- 拿样包场景 -->
+                    <div class="w-full h-32 bg-white rounded-xl flex items-center p-1 shadow-sm relative overflow-hidden">
+                        <div class="w-1/3 h-full bg-[#E8EAE6] rounded-lg flex items-center justify-center">
+                            <span class="text-[10px] text-brand-sage/60 text-center px-2"></span>
+                        </div>
+                        <div class="flex-1 px-4 flex flex-col justify-center">
+                            <h3 class="font-serif font-bold text-base mb-1">渠道拿样</h3>
+                            <p class="text-xs text-brand-muted mb-3 line-clamp-2">专为商业客户准备的 3/6/12 款拿样组合，快速体验工艺品质。</p>
+                            <span class="text-xs font-medium text-brand-sage flex items-center">申请样品 <i data-lucide="arrow-right" class="w-3 h-3 ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 底部留白 -->
+            <div class="h-10 flex items-center justify-center text-xs text-gray-400">
+                — Wax Atelier 官方商城 —
+            </div>
+
+        </main>
+
+        <!-- 底部导航栏 (Tab Bar) - 响应文档：购物车角标联动 -->
+        <nav class="absolute bottom-0 w-full bg-white/90 backdrop-blur-md border-t border-gray-100 pb-safe pt-2 px-2 z-30 flex justify-around items-center h-[68px] shadow-[0_-4px_20px_rgba(0,0,0,0.03)]">
+            <div class="flex flex-col items-center justify-center w-full h-full text-brand-text cursor-pointer">
+                <!-- 当前激活态使用品牌绿 -->
+                <i data-lucide="home" class="w-[22px] h-[22px] mb-1 text-brand-sage fill-brand-sage/20"></i>
+                <span class="text-[10px] font-bold text-brand-sage">首页</span>
+            </div>
+            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer transition-colors">
+                <i data-lucide="layout-grid" class="w-[22px] h-[22px] mb-1"></i>
+                <span class="text-[10px] font-medium">分类</span>
+            </div>
+            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer relative transition-colors">
+                <i data-lucide="shopping-bag" class="w-[22px] h-[22px] mb-1"></i>
+                <span class="text-[10px] font-medium">购物车</span>
+                <!-- 购物车角标 -->
+                <span id="cart-badge" class="absolute top-[2px] right-4 bg-brand-berry text-white text-[9px] px-[5px] py-[1px] rounded-full font-bold shadow-sm hidden">0</span>
+            </div>
+            <div class="flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-text cursor-pointer transition-colors">
+                <i data-lucide="user" class="w-[22px] h-[22px] mb-1"></i>
+                <span class="text-[10px] font-medium">我的</span>
+            </div>
+        </nav>
+        
+        <!-- Toast 提示组件 -->
+        <div id="toast" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/70 text-white text-sm px-6 py-3 rounded-lg opacity-0 pointer-events-none transition-opacity duration-300 z-50">
+            提示信息
+        </div>
+
+    </div>
+
+    <script>
+        // 初始化 Lucide 图标
+        lucide.createIcons();
+
+        // 模拟全局购物车数量状态 (响应文档要求)
+        let cartCount = 0;
+
+        // Toast 提示函数
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.remove('opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('opacity-0');
+            }, 2000);
+        }
+
+        // 加入购物车交互逻辑
+        function addToCart(event) {
+            // 阻止事件冒泡，防止触发商品卡片本身的点击(如跳转详情页)
+            event.stopPropagation();
+            
+            // 增加数量
+            cartCount++;
+            
+            // 更新角标 UI
+            const badge = document.getElementById('cart-badge');
+            badge.textContent = cartCount;
+            badge.classList.remove('hidden');
+            
+            // 按钮点击动效反馈
+            const btn = event.currentTarget;
+            const originalHtml = btn.innerHTML;
+            btn.innerHTML = '<i data-lucide="check" class="w-4 h-4 text-brand-sage"></i>';
+            lucide.createIcons(); // 重新渲染替换的图标
+            
+            // 弹出轻提示 (文档要求：加购只做加购，给轻提示和角标)
+            showToast('已加入购物车');
+            
+            // 恢复按钮状态
+            setTimeout(() => {
+                btn.innerHTML = originalHtml;
+                lucide.createIcons();
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
