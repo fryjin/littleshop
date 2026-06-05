@@ -43,6 +43,64 @@
             color: white;
             border-color: #8FA396;
         }
+        .budget-range-shell {
+            position: relative;
+            height: 34px;
+        }
+        .budget-range-track,
+        .budget-range-fill {
+            position: absolute;
+            top: 15px;
+            height: 4px;
+            border-radius: 999px;
+        }
+        .budget-range-track {
+            left: 0;
+            right: 0;
+            background: #DDE3DE;
+        }
+        .budget-range-fill {
+            background: #8FA396;
+        }
+        .budget-range-input {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 34px;
+            appearance: none;
+            -webkit-appearance: none;
+            background: transparent;
+            pointer-events: none;
+        }
+        .budget-range-input::-webkit-slider-runnable-track {
+            height: 4px;
+            background: transparent;
+        }
+        .budget-range-input::-webkit-slider-thumb {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            margin-top: -7px;
+            border-radius: 999px;
+            background: #FFFFFF;
+            border: 4px solid #8FA396;
+            box-shadow: 0 2px 8px rgba(51, 51, 51, 0.18);
+            pointer-events: auto;
+        }
+        .budget-range-input::-moz-range-track {
+            height: 4px;
+            background: transparent;
+        }
+        .budget-range-input::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            border-radius: 999px;
+            background: #FFFFFF;
+            border: 4px solid #8FA396;
+            box-shadow: 0 2px 8px rgba(51, 51, 51, 0.18);
+            pointer-events: auto;
+        }
     </style>
 </head>
 <body class="flex justify-center h-screen overflow-hidden text-brand-text">
@@ -75,12 +133,11 @@
                 <!-- 预算区间 -->
                 <div class="px-4 py-1.5 flex items-center overflow-x-auto no-scrollbar space-x-2">
                     <span class="text-xs text-brand-muted flex-shrink-0 mr-1">预算:</span>
-                    <button class="budget-chip filter-btn active flex-shrink-0 px-3 py-1 text-xs rounded-full border border-gray-300 text-brand-text transition-colors" onclick="selectPresetBudget(this, '¥200 - ¥500')">¥200-500</button>
-                    <button class="budget-chip filter-btn flex-shrink-0 px-3 py-1 text-xs rounded-full border border-gray-300 text-brand-text transition-colors" onclick="selectPresetBudget(this, '¥500 - ¥800')">¥500-800</button>
+                    <button class="budget-chip filter-btn active flex-shrink-0 px-3 py-1 text-xs rounded-full border border-gray-300 text-brand-text transition-colors" onclick="selectPresetBudget(this, '¥200-500')">¥200-500</button>
+                    <button class="budget-chip filter-btn flex-shrink-0 px-3 py-1 text-xs rounded-full border border-gray-300 text-brand-text transition-colors" onclick="selectPresetBudget(this, '¥500-800')">¥500-800</button>
                     <button class="budget-chip filter-btn flex-shrink-0 px-3 py-1 text-xs rounded-full border border-gray-300 text-brand-text transition-colors" onclick="selectPresetBudget(this, '¥800+')">¥800+</button>
                     <button class="budget-chip filter-btn flex-shrink-0 px-3 py-1 text-xs rounded-full border border-gray-300 text-brand-text transition-colors" onclick="selectPresetBudget(this, '不限预算')">不限</button>
-                    <button class="budget-chip filter-btn flex-shrink-0 px-3 py-1 text-xs rounded-full border border-gray-300 text-brand-text transition-colors" onclick="toggleBudgetDrawer()">自定义</button>
-                    <span class="text-xs text-brand-berry font-bold font-serif flex-shrink-0 pl-1" id="current-budget">¥200 - ¥500</span>
+                    <button id="custom-budget-chip" class="budget-chip filter-btn flex-shrink-0 px-3 py-1 text-xs rounded-full border border-gray-300 text-brand-text transition-colors" onclick="toggleBudgetDrawer()">自定义</button>
                 </div>
 
                 <!-- 场景横向滑动 -->
@@ -179,16 +236,21 @@
                 <div class="mb-6">
                     <div class="rounded-xl bg-brand-stone p-4">
                         <div class="flex justify-between items-center mb-5">
-                            <span class="text-xs text-gray-500">预算上限</span>
-                            <span id="custom-budget-label" class="text-sm font-bold text-brand-berry font-serif">¥800 内</span>
+                            <span class="text-xs text-gray-500">预算区间</span>
+                            <span id="custom-budget-label" class="text-sm font-bold text-brand-berry font-serif">¥0 - ¥10000</span>
                         </div>
-                        <input id="budget-range" type="range" min="100" max="1500" step="50" value="800" class="w-full accent-brand-sage" oninput="syncCustomBudget()">
+                        <div class="budget-range-shell">
+                            <div class="budget-range-track"></div>
+                            <div id="budget-range-fill" class="budget-range-fill"></div>
+                            <input id="budget-start" class="budget-range-input" type="range" min="0" max="10000" step="100" value="0" oninput="syncCustomBudget('start')">
+                            <input id="budget-end" class="budget-range-input" type="range" min="0" max="10000" step="100" value="10000" oninput="syncCustomBudget('end')">
+                        </div>
                         <div class="flex justify-between text-[10px] text-gray-400 mt-3">
-                            <span>¥100</span>
-                            <span>¥500</span>
-                            <span>¥900</span>
-                            <span>¥1300</span>
-                            <span>¥1500</span>
+                            <span>¥0</span>
+                            <span>¥2500</span>
+                            <span>¥5000</span>
+                            <span>¥7500</span>
+                            <span>¥10000</span>
                         </div>
                     </div>
                 </div>
@@ -256,23 +318,44 @@
                 chip.classList.remove('active');
             });
             button.classList.add('active');
-            document.getElementById('current-budget').textContent = label;
         }
 
-        function syncCustomBudget() {
-            const max = Number(document.getElementById('budget-range').value);
-            document.getElementById('custom-budget-label').textContent = '¥' + max + ' 内';
+        function syncCustomBudget(changed) {
+            const startInput = document.getElementById('budget-start');
+            const endInput = document.getElementById('budget-end');
+            let start = Number(startInput.value);
+            let end = Number(endInput.value);
+
+            if (start > end) {
+                if (changed === 'start') {
+                    end = start;
+                    endInput.value = end;
+                } else {
+                    start = end;
+                    startInput.value = start;
+                }
+            }
+
+            document.getElementById('custom-budget-label').textContent = '¥' + start + ' - ¥' + end;
+
+            const max = Number(startInput.max);
+            const left = (start / max) * 100;
+            const right = (end / max) * 100;
+            const fill = document.getElementById('budget-range-fill');
+            fill.style.left = left + '%';
+            fill.style.width = Math.max(0, right - left) + '%';
         }
 
         function confirmCustomBudget() {
             syncCustomBudget();
-            const label = document.getElementById('custom-budget-label').textContent;
-            document.getElementById('current-budget').textContent = label;
             document.querySelectorAll('.budget-chip').forEach(chip => {
                 chip.classList.remove('active');
             });
+            document.getElementById('custom-budget-chip').classList.add('active');
             toggleBudgetDrawer();
         }
+
+        syncCustomBudget();
     </script>
     <script src="assets/prototype-state.js"></script>
 </body>

@@ -93,9 +93,11 @@ Across iterations, the same loop repeats:
 ## Required Files To Check
 
 - `D:\little shop\NEW_HTML_PROTOTYPE.md`
+- `D:\little shop\NEW_HTML_V2_ITERATION_PLAN.md`
 - `D:\little shop\PROJECT_PROGRESS.md`
 - `D:\little shop\README.md`
 - New pages in `D:\little shop\new`
+- `D:\little shop\new\assets\prototype-state.js` when shared cart, return-path, or page-jump behavior changed
 - Legacy entry: `D:\little shop\mini-program-visual-prototype\index.html`
 - Shared assets in `mini-program-visual-prototype/assets/` when legacy pages are touched
 
@@ -112,24 +114,30 @@ Run the smallest full check that matches the change:
 2. Link check
    - Search for stale English filenames, removed pages, or broken route names.
    - For `new/`, pay special attention to Chinese filenames and `history.back()` paths.
+   - When `new/` route steps changed, confirm they still match the current V2 sequence in `NEW_HTML_V2_ITERATION_PLAN.md`.
 
 3. `node --check mini-program-visual-prototype/assets/app.js`
    - Required whenever shared JS changed.
 
-4. `git diff --check`
+4. Shared state check for `new/`
+   - Re-read `new/assets/prototype-state.js` whenever cart state, toast feedback, checkout jumps, or fallback back-navigation changed.
+   - Confirm cart badges, local cart rendering, and checkout redirect targets still match the edited flow.
+
+5. `git diff --check`
    - Catch whitespace or patch-shape mistakes.
 
-5. `rg`
+6. `rg`
    - Search for stale copy, removed banners, old labels, or dead links that the change was supposed to eliminate.
 
-6. Mobile rendering check
+7. Mobile rendering check
    - Re-check changed pages and any page touched by shared CSS/JS in a 390x844 viewport when browser tooling is available.
    - Watch for horizontal overflow, broken bottom CTA spacing, and cart/detail navigation regressions.
 
-7. Documentation sync
+8. Documentation sync
    - Update `PROJECT_PROGRESS.md` when the iteration changes user-visible behavior, page inventory, validation status, or the working method.
    - Update `README.md` only when entry points, page counts, or the current delivery scope changed.
    - Update `NEW_HTML_PROTOTYPE.md` when the new page map or design direction changes.
+   - Update `NEW_HTML_V2_ITERATION_PLAN.md` when the confirmed V2 scope, route sequence, or page list changes.
 
 ## Done Condition
 

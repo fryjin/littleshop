@@ -92,6 +92,9 @@
                     <span class="text-xs font-bold font-serif text-brand-muted">第一步：选择开票订单</span>
                     <span class="text-[10px] text-gray-400">仅显示可开票订单</span>
                 </div>
+                <div class="mb-3 rounded-xl bg-brand-sage/10 border border-brand-sage/20 px-3 py-2 text-[11px] text-gray-600 leading-relaxed">
+                    开票后订单不支持退款退货。请确认商品、金额和售后状态后再提交。
+                </div>
                 
                 <div class="space-y-3">
                     <!-- 订单 1 -->
@@ -180,6 +183,7 @@
             <!-- 免责及开票时效说明 -->
             <div class="px-2 text-[10px] text-gray-400 leading-relaxed space-y-1">
                 <p>注：申请提交后系统将在 1-3 个工作日内自动开具电子发票，并发送至指定邮箱，请注意查收。</p>
+                <p>开票完成后，该订单不再支持退款退货。</p>
             </div>
 
         </main>
@@ -308,6 +312,8 @@
                 showToast('请填写接收邮箱');
                 return;
             }
+
+            if (!window.confirm('开票后订单不支持退款退货，确认提交开票申请？')) return;
 
             showToast('开票申请提交成功！即将发送到邮箱');
             setTimeout(() => {

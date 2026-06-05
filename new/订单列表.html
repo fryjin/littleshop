@@ -52,20 +52,21 @@
                 <i data-lucide="chevron-left" class="w-6 h-6 text-brand-text"></i>
             </div>
             <h1 class="text-lg font-bold font-serif">我的订单</h1>
-            <div class="w-8"></div>
+            <button onclick="startInvoiceMode()" class="w-8 text-xs text-brand-sage font-medium">开票</button>
         </header>
 
         <!-- 状态切换 Tabs -->
-        <div class="bg-white flex justify-between px-4 py-3 text-xs border-b border-gray-100 z-10">
+        <div class="bg-white flex gap-4 overflow-x-auto no-scrollbar px-4 py-3 text-xs border-b border-gray-100 z-10">
             <span class="font-bold text-brand-sage border-b-2 border-brand-sage pb-1 cursor-pointer" onclick="switchOrderTab(this, 'all')">全部</span>
             <span class="text-gray-400 pb-1 cursor-pointer" onclick="switchOrderTab(this, 'unpaid')">待付款</span>
             <span class="text-gray-400 pb-1 cursor-pointer" onclick="switchOrderTab(this, 'unshipped')">待发货</span>
             <span class="text-gray-400 pb-1 cursor-pointer" onclick="switchOrderTab(this, 'unreceived')">待收货</span>
             <span class="text-gray-400 pb-1 cursor-pointer" onclick="switchOrderTab(this, 'completed')">已完成</span>
+            <span class="text-gray-400 pb-1 cursor-pointer" onclick="switchOrderTab(this, 'refund')">退款/售后</span>
         </div>
 
         <!-- 订单列表滚动区域 -->
-        <main class="flex-1 overflow-y-auto no-scrollbar p-3 space-y-3 pb-8">
+        <main class="flex-1 overflow-y-auto no-scrollbar p-3 space-y-3 pb-20">
             
             <!-- 订单 1：待付款 (零售) -->
             <div class="bg-white rounded-xl p-4 shadow-sm border border-transparent hover:border-brand-sage/20 transition-all duration-300" data-status="unpaid">
@@ -137,9 +138,13 @@
             </div>
 
             <!-- 订单 3：已完成 (体验拿样包) -->
-            <div class="bg-white rounded-xl p-4 shadow-sm border border-transparent" data-status="completed">
+            <div class="bg-white rounded-xl p-4 shadow-sm border border-transparent" data-status="completed" data-invoice-ready="true">
                 <div class="flex justify-between items-center pb-2.5 border-b border-gray-50 mb-3 text-xs">
-                    <span class="text-gray-400">订单号: WAX20260515231</span>
+                    <label class="invoice-check hidden items-center gap-2 text-gray-500">
+                        <input type="checkbox" class="w-4 h-4 accent-brand-sage" data-amount="199" onchange="updateInvoiceSelection()">
+                        <span>订单号: WAX20260515231</span>
+                    </label>
+                    <span class="order-number text-gray-400">订单号: WAX20260515231</span>
                     <span class="text-gray-400">已完成</span>
                 </div>
                 
@@ -165,12 +170,116 @@
                 </div>
 
                 <div class="flex justify-end space-x-2 mt-4 pt-1">
+                    <button onclick="addPrototypeCart(event, '商业渠道体验拿样包 (3款)', '¥199.00')" class="px-4 py-1.5 rounded-full border border-brand-sage text-brand-sage text-[11px] font-medium hover:bg-brand-sage/5 transition-colors">一键加购</button>
                     <button onclick="goPage('客服售后.html')" class="px-4 py-1.5 rounded-full border border-gray-200 text-gray-500 text-[11px] hover:bg-gray-50 transition-colors">申请售后</button>
-                    <button onclick="showToast('感谢评价，积分已发放')" class="px-4 py-1.5 rounded-full bg-brand-stone text-brand-text text-[11px] font-medium hover:bg-gray-100 transition-colors">评价</button>
+                    <button onclick="goPage('评价列表.html#pending')" class="px-4 py-1.5 rounded-full bg-brand-stone text-brand-text text-[11px] font-medium hover:bg-gray-100 transition-colors">去评价</button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl p-4 shadow-sm border border-transparent" data-status="completed" data-invoice-ready="true">
+                <div class="flex justify-between items-center pb-2.5 border-b border-gray-50 mb-3 text-xs">
+                    <label class="invoice-check hidden items-center gap-2 text-gray-500">
+                        <input type="checkbox" class="w-4 h-4 accent-brand-sage" data-amount="459" onchange="updateInvoiceSelection()">
+                        <span>订单号: WAX20260508018</span>
+                    </label>
+                    <span class="order-number text-gray-400">订单号: WAX20260508018</span>
+                    <span class="text-gray-400">已完成</span>
+                </div>
+
+                <div class="flex gap-3 mb-3">
+                    <div class="w-16 h-16 bg-[#F3E5D8] rounded flex-shrink-0 flex items-center justify-center">
+                        <span class="text-[8px] text-brand-sage/50">[商品图]</span>
+                    </div>
+                    <div class="flex-1 flex flex-col justify-between py-0.5">
+                        <h4 class="text-xs font-bold line-clamp-1">繁花复古卷边蜡烛</h4>
+                        <p class="text-[10px] text-gray-400">礼盒装 | 玫瑰木 | M</p>
+                        <div class="flex justify-between items-center mt-1">
+                            <span class="text-xs font-serif font-bold">¥459.00</span>
+                            <span class="text-[10px] text-gray-400">x 1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center pt-2.5 border-t border-gray-50 text-xs">
+                    <span class="text-gray-400">共 1 件商品</span>
+                    <div>
+                        合计: <span class="text-brand-berry font-bold font-serif text-sm">¥459.00</span>
+                    </div>
+                </div>
+
+                <div class="flex justify-end space-x-2 mt-4 pt-1">
+                    <button onclick="addPrototypeCart(event, '繁花复古卷边蜡烛', '¥459.00')" class="px-4 py-1.5 rounded-full border border-brand-sage text-brand-sage text-[11px] font-medium hover:bg-brand-sage/5 transition-colors">一键加购</button>
+                    <button onclick="goPage('客服售后.html')" class="px-4 py-1.5 rounded-full border border-gray-200 text-gray-500 text-[11px] hover:bg-gray-50 transition-colors">申请售后</button>
+                    <button onclick="goPage('评价列表.html#reviewed')" class="px-4 py-1.5 rounded-full bg-brand-stone text-brand-text text-[11px] font-medium hover:bg-gray-100 transition-colors">追评</button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl p-4 shadow-sm border border-transparent" data-status="completed">
+                <div class="flex justify-between items-center pb-2.5 border-b border-gray-50 mb-3 text-xs">
+                    <span class="text-gray-400">订单号: WAX20260506077</span>
+                    <span class="text-gray-400">已完成</span>
+                </div>
+                <div class="flex gap-3 mb-3">
+                    <div class="w-16 h-16 bg-[#E8EAE6] rounded flex-shrink-0 flex items-center justify-center">
+                        <span class="text-[8px] text-brand-sage/50">[商品图]</span>
+                    </div>
+                    <div class="flex-1 flex flex-col justify-between py-0.5">
+                        <h4 class="text-xs font-bold line-clamp-1">雾蓝花冠蜡烛</h4>
+                        <p class="text-[10px] text-gray-400">M | 白茶 | 叶脉纹</p>
+                        <div class="flex justify-between items-center mt-1">
+                            <span class="text-xs font-serif font-bold">¥429.00</span>
+                            <span class="text-[10px] text-gray-400">x 1</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center pt-2.5 border-t border-gray-50 text-xs">
+                    <span class="text-gray-400">共 1 件商品</span>
+                    <div>合计: <span class="text-brand-berry font-bold font-serif text-sm">¥429.00</span></div>
+                </div>
+                <div class="flex justify-end space-x-2 mt-4 pt-1">
+                    <button onclick="addPrototypeCart(event, '雾蓝花冠蜡烛', '¥429.00')" class="px-4 py-1.5 rounded-full border border-brand-sage text-brand-sage text-[11px] font-medium hover:bg-brand-sage/5 transition-colors">一键加购</button>
+                    <button onclick="goPage('评价列表.html#pending')" class="px-4 py-1.5 rounded-full bg-brand-stone text-brand-text text-[11px] font-medium hover:bg-gray-100 transition-colors">去评价</button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl p-4 shadow-sm border border-transparent" data-status="refund">
+                <div class="flex justify-between items-center pb-2.5 border-b border-gray-50 mb-3 text-xs">
+                    <span class="text-gray-400">订单号: WAX20260501021</span>
+                    <span class="text-brand-berry font-bold">售后处理中</span>
+                </div>
+                <div class="flex gap-3 mb-3">
+                    <div class="w-16 h-16 bg-brand-stone rounded flex-shrink-0 flex items-center justify-center">
+                        <span class="text-[8px] text-brand-sage/50">[商品图]</span>
+                    </div>
+                    <div class="flex-1 flex flex-col justify-between py-0.5">
+                        <h4 class="text-xs font-bold line-clamp-1">红白限定节日蜡烛</h4>
+                        <p class="text-[10px] text-gray-400">物流破损，售后已受理</p>
+                        <div class="flex justify-between items-center mt-1">
+                            <span class="text-xs font-serif font-bold">¥359.00</span>
+                            <span class="text-[10px] text-gray-400">x 1</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center pt-2.5 border-t border-gray-50 text-xs">
+                    <span class="text-gray-400">预计 1-3 个工作日处理</span>
+                    <div>退款: <span class="text-brand-berry font-bold font-serif text-sm">¥359.00</span></div>
+                </div>
+                <div class="flex justify-end space-x-2 mt-4 pt-1">
+                    <button onclick="goPage('客服售后.html')" class="px-4 py-1.5 rounded-full border border-gray-200 text-gray-500 text-[11px] hover:bg-gray-50 transition-colors">查看进度</button>
                 </div>
             </div>
 
         </main>
+
+        <div id="invoice-bar" class="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-100 px-4 py-3 hidden z-20">
+            <div class="flex items-center justify-between gap-3">
+                <div class="text-xs text-gray-500">
+                    已选 <span id="invoice-count" class="font-bold text-brand-text">0</span> 单
+                    <span id="invoice-total" class="ml-1 text-brand-berry font-serif font-bold">¥0.00</span>
+                </div>
+                <button onclick="submitInvoiceOrders()" class="px-5 py-2 rounded-full bg-brand-text text-white text-xs font-medium">去开票</button>
+            </div>
+        </div>
 
         <div id="toast" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/70 text-white text-xs px-6 py-3 rounded-lg opacity-0 pointer-events-none transition-opacity duration-300 z-50 text-center"></div>
 
@@ -205,6 +314,39 @@
                     card.style.display = 'none';
                 }
             });
+        }
+
+        function startInvoiceMode() {
+            const completedTab = document.querySelector('[onclick*="completed"]');
+            if (completedTab) switchOrderTab(completedTab, 'completed');
+            document.querySelectorAll('.invoice-check').forEach(function (item) {
+                item.classList.remove('hidden');
+                item.classList.add('flex');
+            });
+            document.querySelectorAll('.order-number').forEach(function (item) {
+                item.classList.add('hidden');
+            });
+            document.getElementById('invoice-bar').classList.remove('hidden');
+            updateInvoiceSelection();
+        }
+
+        function updateInvoiceSelection() {
+            const checked = Array.from(document.querySelectorAll('.invoice-check input:checked'));
+            const total = checked.reduce(function (sum, input) {
+                return sum + Number(input.dataset.amount || 0);
+            }, 0);
+            document.getElementById('invoice-count').textContent = checked.length;
+            document.getElementById('invoice-total').textContent = '¥' + total.toFixed(2);
+        }
+
+        function submitInvoiceOrders() {
+            const checked = Array.from(document.querySelectorAll('.invoice-check input:checked'));
+            if (!checked.length) {
+                showToast('请先选择已完成订单');
+                return;
+            }
+            localStorage.setItem('wax_invoice_order_count', String(checked.length));
+            goPage('申请开票.html');
         }
 
         const initialStatus = window.location.hash.replace('#', '');

@@ -32,6 +32,7 @@
         .app-container { background-color: #FFFFFF; }
         
         .spec-btn.active { border-color: #8FA396; color: #8FA396; background-color: rgba(143, 163, 150, 0.05); }
+        .option-tile.active { border-color: #8FA396; color: #333333; background-color: rgba(143, 163, 150, 0.08); }
     </style>
 </head>
 <body class="flex justify-center h-screen overflow-hidden text-brand-text">
@@ -65,7 +66,7 @@
                         <span class="text-xl font-bold font-serif text-brand-berry">¥259.00</span>
                     </div>
                 </div>
-                <p class="text-xs text-brand-muted line-clamp-2">经典系列手工匠作，独特的波浪卷边设计，搭配醇厚的浆果香气，为空间注入温暖与质感。</p>
+                <p class="text-xs text-brand-muted line-clamp-2">进阶系列手工雕刻蜡烛，独特的波浪卷边设计，搭配柔和花木香气，为空间注入温暖与质感。</p>
             </div>
 
             <!-- 阶梯价提示 -->
@@ -78,48 +79,77 @@
             <!-- 规格选择区 -->
             <div class="p-4 space-y-5">
                 
-                <!-- 尺寸 (简化版) -->
+                <!-- 尺寸 -->
                 <div>
                     <h3 class="text-sm font-medium mb-3">规格尺寸</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <button class="spec-btn active px-4 py-2 text-xs border border-gray-200 rounded text-gray-600 transition-colors">标准版 (8x10cm)</button>
-                        <button class="spec-btn px-4 py-2 text-xs border border-gray-200 rounded text-gray-600 transition-colors">加高版 (8x15cm)</button>
+                    <div class="grid grid-cols-4 gap-2" id="size-options">
+                        <button class="size-btn option-tile active rounded-lg border border-gray-200 py-2 text-center text-xs transition-colors" data-size="S" onclick="selectSize('S')">
+                            <span class="block font-bold text-sm">S</span>
+                            <span class="block text-[10px] text-gray-400 mt-1">6x8cm</span>
+                        </button>
+                        <button class="size-btn option-tile rounded-lg border border-gray-200 py-2 text-center text-xs transition-colors" data-size="M" onclick="selectSize('M')">
+                            <span class="block font-bold text-sm">M</span>
+                            <span class="block text-[10px] text-gray-400 mt-1">7x10cm</span>
+                        </button>
+                        <button class="size-btn option-tile rounded-lg border border-gray-200 py-2 text-center text-xs transition-colors" data-size="L" onclick="selectSize('L')">
+                            <span class="block font-bold text-sm">L</span>
+                            <span class="block text-[10px] text-gray-400 mt-1">8x12cm</span>
+                        </button>
+                        <button class="size-btn option-tile rounded-lg border border-gray-200 py-2 text-center text-xs transition-colors" data-size="XL" onclick="selectSize('XL')">
+                            <span class="block font-bold text-sm">XL</span>
+                            <span class="block text-[10px] text-gray-400 mt-1">10x15cm</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- 雕花预览 (缩略图弹窗版) -->
+                <!-- 雕花预览 -->
                 <div>
                     <div class="flex justify-between items-end mb-3">
                         <h3 class="text-sm font-medium">雕花款式</h3>
-                        <span class="text-[10px] text-brand-muted">点击小图预览细节</span>
+                        <span class="text-[10px] text-brand-muted" id="carving-summary">默认 S 尺寸</span>
                     </div>
-                    <div class="flex space-x-3">
-                        <div class="flex flex-col items-center gap-1 cursor-pointer" onclick="toggleImageModal(true)">
-                            <div class="w-14 h-14 rounded border-2 border-brand-sage overflow-hidden flex items-center justify-center bg-[#E8EAE6]">
-                                <span class="text-[8px] text-gray-400">水波纹</span>
-                            </div>
-                            <span class="text-[10px] text-brand-sage font-medium">水波纹</span>
-                        </div>
-                        <div class="flex flex-col items-center gap-1 cursor-pointer">
-                            <div class="w-14 h-14 rounded border border-gray-200 overflow-hidden flex items-center justify-center bg-[#F7F6F2]">
-                                <span class="text-[8px] text-gray-400">叶脉纹</span>
-                            </div>
-                            <span class="text-[10px] text-gray-500">叶脉纹</span>
-                        </div>
-                    </div>
+                    <div class="grid grid-cols-3 gap-2" id="carving-options"></div>
                 </div>
 
                 <!-- 香型选择 -->
                 <div>
-                    <h3 class="text-sm font-medium mb-3">香调选择</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <button class="spec-btn active px-4 py-2 text-xs border border-gray-200 rounded text-gray-600 transition-colors">浆果迷踪 (微甜)</button>
-                        <button class="spec-btn px-4 py-2 text-xs border border-gray-200 rounded text-gray-600 transition-colors">无香陈列</button>
+                    <div class="flex justify-between items-end mb-3">
+                        <h3 class="text-sm font-medium">香型选择</h3>
+                        <span class="text-[10px] text-brand-muted" id="scent-series-label">进阶系列 · 法国品牌</span>
                     </div>
+                    <div id="scent-brand-options" class="hidden flex gap-2 mb-3">
+                        <button class="scent-brand-btn spec-btn active px-3 py-1.5 text-xs border border-gray-200 rounded-full text-gray-600 transition-colors" onclick="selectScentBrand('france')">法国品牌</button>
+                        <button class="scent-brand-btn spec-btn px-3 py-1.5 text-xs border border-gray-200 rounded-full text-gray-600 transition-colors" onclick="selectScentBrand('usa')">美国品牌</button>
+                    </div>
+                    <div class="flex flex-wrap gap-2" id="scent-options"></div>
                 </div>
 
             </div>
             
+            <!-- 用户评价 -->
+            <section class="px-4 pt-2 pb-4">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-sm font-medium">用户评价</h3>
+                    <button onclick="goPage('评价列表.html#reviewed')" class="text-[11px] text-brand-sage flex items-center gap-0.5">
+                        查看全部 <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                    </button>
+                </div>
+                <article class="bg-brand-stone/70 rounded-xl p-3 flex gap-3 cursor-pointer" onclick="goPage('评价详情.html')">
+                    <div class="w-16 h-16 rounded-lg bg-[#F3E5D8] flex-shrink-0 flex items-center justify-center text-[10px] text-brand-sage">评价图</div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-2">
+                                <span class="w-6 h-6 rounded-full bg-white flex items-center justify-center text-[11px] font-bold text-brand-sage">W</span>
+                                <span class="text-xs font-medium">周女士</span>
+                            </div>
+                            <span class="text-[10px] text-gray-400">最新带图</span>
+                        </div>
+                        <p class="text-xs text-gray-600 leading-relaxed mt-2 line-clamp-2">包装很稳，卷边细节比图片里更立体。玫瑰木香味偏柔，放客厅不冲。</p>
+                        <div class="mt-2 text-[10px] text-gray-400">M · 玫瑰木 · 水波纹</div>
+                    </div>
+                </article>
+            </section>
+
             <!-- 占位图文详情 -->
             <div class="mt-4 pb-10">
                 <div class="flex items-center justify-center py-4 border-t border-gray-100">
@@ -188,15 +218,97 @@
     <script>
         lucide.createIcons();
 
-        // 规格单选逻辑
-        document.querySelectorAll('.spec-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                Array.from(this.parentElement.children).forEach(sibling => {
-                    sibling.classList.remove('active');
-                });
-                this.classList.add('active');
+        const carvingBySize = {
+            S: ['S 水波纹', 'S 叶脉纹', 'S 卷边花冠'],
+            M: ['M 水波纹', 'M 叶脉纹', 'M 花瓣层叠'],
+            L: ['L 宫廷褶皱', 'L 花冠卷边', 'L 层叠叶纹'],
+            XL: ['XL 宫廷褶皱', 'XL 陈列花冠', 'XL 大型卷边']
+        };
+        const scentData = {
+            france: [
+                '玫瑰木',
+                '白茶',
+                '无香陈列'
+            ],
+            usa: [
+                '玫瑰木',
+                '白花麝香',
+                '晚香玉',
+                '雪松琥珀',
+                '檀木',
+                '乌木烟熏',
+                '莓果',
+                '柑橘橙花',
+                '白茶',
+                '无香陈列'
+            ]
+        };
+        const params = new URLSearchParams(window.location.search);
+        const productSeries = params.get('series') || 'advanced';
+        let currentSize = 'S';
+        let currentScentBrand = productSeries === 'artisan' ? 'usa' : 'france';
+
+        function selectSize(size) {
+            currentSize = size;
+            document.querySelectorAll('.size-btn').forEach(function (btn) {
+                btn.classList.toggle('active', btn.dataset.size === size);
             });
-        });
+            renderCarvingOptions();
+        }
+
+        function renderCarvingOptions() {
+            const options = carvingBySize[currentSize] || carvingBySize.S;
+            document.getElementById('carving-summary').textContent = '当前 ' + currentSize + ' 尺寸';
+            document.getElementById('carving-options').innerHTML = options.map(function (name, index) {
+                return [
+                    '<button class="carving-btn option-tile ' + (index === 0 ? 'active' : '') + ' rounded-lg border border-gray-200 p-2 text-center transition-colors" onclick="selectCarving(this, &quot;' + name + '&quot;)">',
+                    '  <div class="w-full aspect-square rounded bg-[#E8EAE6] mb-1 flex items-center justify-center text-[9px] text-brand-sage/60">预览</div>',
+                    '  <span class="text-[10px] font-medium">' + name + '</span>',
+                    '</button>'
+                ].join('');
+            }).join('');
+        }
+
+        function selectCarving(button, name) {
+            document.querySelectorAll('.carving-btn').forEach(function (btn) {
+                btn.classList.remove('active');
+            });
+            button.classList.add('active');
+            toggleImageModal(true, name);
+        }
+
+        function selectScentBrand(brand) {
+            currentScentBrand = brand;
+            document.querySelectorAll('.scent-brand-btn').forEach(function (btn) {
+                btn.classList.toggle('active', btn.getAttribute('onclick') === "selectScentBrand('" + brand + "')");
+            });
+            renderScentOptions();
+        }
+
+        function renderScentOptions() {
+            if (productSeries === 'festival') {
+                document.getElementById('scent-brand-options').classList.remove('hidden');
+                document.getElementById('scent-series-label').textContent = '节日系列 · 先选品牌';
+            } else if (productSeries === 'artisan') {
+                document.getElementById('scent-series-label').textContent = '匠作系列 · 美国品牌';
+                currentScentBrand = 'usa';
+            } else {
+                document.getElementById('scent-series-label').textContent = '进阶系列 · 法国品牌';
+                currentScentBrand = 'france';
+            }
+
+            const options = scentData[currentScentBrand];
+            document.getElementById('scent-options').innerHTML = options.map(function (name, index) {
+                return '<button class="scent-btn spec-btn ' + (index === 0 ? 'active' : '') + ' px-3 py-2 text-xs border border-gray-200 rounded text-gray-600 transition-colors" onclick="selectScent(this)">' + name + '</button>';
+            }).join('');
+        }
+
+        function selectScent(button) {
+            document.querySelectorAll('.scent-btn').forEach(function (btn) {
+                btn.classList.remove('active');
+            });
+            button.classList.add('active');
+        }
 
         function showToast(message) {
             const toast = document.getElementById('toast');
@@ -207,8 +319,12 @@
 
         // 雕花预览弹窗逻辑
         const modal = document.getElementById('image-modal');
-        function toggleImageModal(show) {
+        function toggleImageModal(show, title) {
             if (show) {
+                if (title) {
+                    modal.querySelector('span').textContent = title + ' · 雕花细节大图';
+                    modal.querySelector('p').textContent = title;
+                }
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');
                 void modal.offsetWidth; // trigger reflow
@@ -221,6 +337,9 @@
                 }, 300);
             }
         }
+
+        selectSize('S');
+        renderScentOptions();
     </script>
     <script src="assets/prototype-state.js"></script>
 </body>

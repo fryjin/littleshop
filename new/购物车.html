@@ -57,6 +57,11 @@
             border-width: 0 2px 2px 0;
             transform: rotate(45deg);
         }
+        .cart-option.active {
+            border-color: #8FA396;
+            background-color: rgba(143, 163, 150, 0.1);
+            color: #333333;
+        }
     </style>
 </head>
 <body class="flex justify-center h-screen overflow-hidden text-brand-text">
@@ -101,46 +106,61 @@
 
             <!-- 购物车明细列表 -->
             <div class="bg-white m-3 rounded-xl shadow-sm overflow-hidden">
-                <div class="px-4 py-3 border-b border-gray-100 flex items-center">
-                    <input type="checkbox" class="custom-checkbox mr-2" checked>
-                    <span class="text-sm font-serif font-bold">Wax Atelier 官方商城</span>
+                <div class="px-4 py-2 bg-brand-stone/60 text-[11px] text-gray-500 flex items-center justify-between">
+                    <span>进阶系列</span>
+                    <label class="flex items-center gap-1 text-gray-500">
+                        <input type="checkbox" class="custom-checkbox series-check" checked onchange="toggleSeriesCart(this)">
+                        <span>全选</span>
+                    </label>
                 </div>
-
                 <!-- 商品 1 -->
-                <div class="p-4 flex gap-3 border-b border-gray-50 last:border-0">
-                    <input type="checkbox" class="custom-checkbox self-center" checked>
+                <div class="p-4 flex gap-3 border-b border-gray-50 cart-item-row" data-price="259">
+                    <input type="checkbox" class="custom-checkbox cart-item-check self-center" checked>
                     <div class="w-20 h-20 bg-[#F3E5D8] rounded flex-shrink-0"></div>
                     <div class="flex-1 flex flex-col justify-between">
                         <div>
                             <h3 class="text-sm font-medium line-clamp-1">勃艮第红复古卷边蜡烛</h3>
-                            <p class="text-[10px] text-gray-400 mt-1 bg-gray-50 inline-block px-1.5 py-0.5 rounded">标准版 | 浆果迷踪 | 水波纹 <i data-lucide="chevron-down" class="w-3 h-3 inline"></i></p>
+                            <button type="button" class="text-[10px] text-gray-500 mt-1 bg-gray-50 inline-flex items-center px-1.5 py-0.5 rounded" data-size="M" data-scent="玫瑰木" data-carving="水波纹" data-package="精品包装" onclick="openCartConfigEditor(this)">
+                                <span class="config-text">M | 玫瑰木 | 水波纹</span>
+                                <i data-lucide="chevron-down" class="w-3 h-3 ml-0.5"></i>
+                            </button>
                         </div>
                         <div class="flex justify-between items-end mt-2">
                             <span class="text-brand-berry font-bold font-serif text-sm">¥259.00</span>
                             <!-- 数量加减 -->
                             <div class="flex items-center border border-gray-200 rounded">
                                 <button onclick="changeStaticQty(this, -1)" class="w-6 h-6 flex items-center justify-center text-gray-500">-</button>
-                                <span class="w-6 text-center text-xs">1</span>
+                                <span class="w-6 text-center text-xs cart-qty">1</span>
                                 <button onclick="changeStaticQty(this, 1)" class="w-6 h-6 flex items-center justify-center text-gray-500">+</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <div class="px-4 py-2 bg-brand-stone/60 text-[11px] text-gray-500 flex items-center justify-between">
+                    <span>节日系列</span>
+                    <label class="flex items-center gap-1 text-gray-500">
+                        <input type="checkbox" class="custom-checkbox series-check" checked onchange="toggleSeriesCart(this)">
+                        <span>全选</span>
+                    </label>
+                </div>
                 <!-- 商品 2 -->
-                <div class="p-4 flex gap-3">
-                    <input type="checkbox" class="custom-checkbox self-center" checked>
+                <div class="p-4 flex gap-3 border-b border-gray-50 cart-item-row" data-price="399">
+                    <input type="checkbox" class="custom-checkbox cart-item-check self-center" checked>
                     <div class="w-20 h-20 bg-[#E8EAE6] rounded flex-shrink-0"></div>
                     <div class="flex-1 flex flex-col justify-between">
                         <div>
                             <h3 class="text-sm font-medium line-clamp-1">冬日暖阳双支礼盒</h3>
-                            <p class="text-[10px] text-gray-400 mt-1 bg-gray-50 inline-block px-1.5 py-0.5 rounded">礼盒装 | 无香陈列 <i data-lucide="chevron-down" class="w-3 h-3 inline"></i></p>
+                            <button type="button" class="text-[10px] text-gray-500 mt-1 bg-gray-50 inline-flex items-center px-1.5 py-0.5 rounded" data-size="M" data-scent="无香陈列" data-carving="叶脉纹" data-package="礼盒包装" onclick="openCartConfigEditor(this)">
+                                <span class="config-text">M | 无香陈列 | 叶脉纹</span>
+                                <i data-lucide="chevron-down" class="w-3 h-3 ml-0.5"></i>
+                            </button>
                         </div>
                         <div class="flex justify-between items-end mt-2">
                             <span class="text-brand-berry font-bold font-serif text-sm">¥399.00</span>
                             <div class="flex items-center border border-gray-200 rounded">
                                 <button onclick="changeStaticQty(this, -1)" class="w-6 h-6 flex items-center justify-center text-gray-500">-</button>
-                                <span class="w-6 text-center text-xs">1</span>
+                                <span class="w-6 text-center text-xs cart-qty">1</span>
                                 <button onclick="changeStaticQty(this, 1)" class="w-6 h-6 flex items-center justify-center text-gray-500">+</button>
                             </div>
                         </div>
@@ -161,13 +181,13 @@
         <!-- 底部结算栏 -->
         <div class="absolute bottom-[68px] w-full bg-white px-4 py-2 border-t border-gray-100 shadow-[0_-4px_15px_rgba(0,0,0,0.02)] z-30 flex justify-between items-center h-14">
             <div class="flex items-center space-x-2">
-                <input type="checkbox" class="custom-checkbox" checked>
+                <input type="checkbox" class="custom-checkbox" checked onchange="toggleAllCart(this)">
                 <span class="text-xs text-gray-500">全选</span>
             </div>
             <div class="flex items-center space-x-3">
                 <div class="text-right">
                     <span class="text-xs text-gray-500">合计:</span>
-                    <span class="text-brand-berry font-bold font-serif">¥658.00</span>
+                    <span id="cart-total" class="text-brand-berry font-bold font-serif">¥658.00</span>
                 </div>
                 <button onclick="checkoutPrototypeOrder()" class="px-6 py-2 rounded-full bg-brand-text text-white text-sm font-medium">去结算</button>
             </div>
@@ -196,9 +216,61 @@
         <div id="toast" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/70 text-white text-sm px-6 py-3 rounded-lg opacity-0 pointer-events-none transition-opacity duration-300 z-50">
             提示信息
         </div>
+
+        <div id="cart-config-drawer" class="absolute inset-0 bg-black/40 z-40 hidden flex-col justify-end opacity-0 transition-opacity duration-200">
+            <div id="cart-config-sheet" class="bg-white rounded-t-2xl p-4 translate-y-full transition-transform duration-200">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-bold font-serif text-base">修改商品信息</h3>
+                    <button type="button" onclick="closeCartConfigEditor()" class="w-8 h-8 flex items-center justify-center text-gray-400">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <div class="text-xs text-gray-500 mb-2">尺寸</div>
+                        <div class="grid grid-cols-4 gap-2" data-config-group="size">
+                            <button type="button" class="cart-option py-2 rounded-lg border border-gray-200 text-xs" data-value="S">S<br><span class="text-[10px] text-gray-400">6x8</span></button>
+                            <button type="button" class="cart-option py-2 rounded-lg border border-gray-200 text-xs" data-value="M">M<br><span class="text-[10px] text-gray-400">7x10</span></button>
+                            <button type="button" class="cart-option py-2 rounded-lg border border-gray-200 text-xs" data-value="L">L<br><span class="text-[10px] text-gray-400">8x12</span></button>
+                            <button type="button" class="cart-option py-2 rounded-lg border border-gray-200 text-xs" data-value="XL">XL<br><span class="text-[10px] text-gray-400">10x15</span></button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="text-xs text-gray-500 mb-2">香型</div>
+                        <div class="flex flex-wrap gap-2" data-config-group="scent">
+                            <button type="button" class="cart-option px-3 py-2 rounded-lg border border-gray-200 text-xs" data-value="玫瑰木">玫瑰木</button>
+                            <button type="button" class="cart-option px-3 py-2 rounded-lg border border-gray-200 text-xs" data-value="白茶">白茶</button>
+                            <button type="button" class="cart-option px-3 py-2 rounded-lg border border-gray-200 text-xs" data-value="无香陈列">无香陈列</button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="text-xs text-gray-500 mb-2">雕花</div>
+                        <div class="grid grid-cols-3 gap-2" data-config-group="carving">
+                            <button type="button" class="cart-option py-2 rounded-lg border border-gray-200 text-xs" data-value="水波纹">水波纹</button>
+                            <button type="button" class="cart-option py-2 rounded-lg border border-gray-200 text-xs" data-value="叶脉纹">叶脉纹</button>
+                            <button type="button" class="cart-option py-2 rounded-lg border border-gray-200 text-xs" data-value="卷边花冠">卷边花冠</button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="text-xs text-gray-500 mb-2">包装</div>
+                        <div class="grid grid-cols-2 gap-2" data-config-group="package">
+                            <button type="button" class="cart-option py-2 rounded-lg border border-gray-200 text-xs" data-value="精品包装">精品包装</button>
+                            <button type="button" class="cart-option py-2 rounded-lg border border-gray-200 text-xs" data-value="礼盒包装">礼盒包装</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" onclick="confirmCartConfig()" class="w-full mt-5 py-3 rounded-full bg-brand-text text-white text-sm font-medium">确认修改</button>
+            </div>
+        </div>
     </div>
     <script>
         lucide.createIcons();
+        const CART_KEY = 'wax_new_cart_items';
+        let editingConfigTrigger = null;
+        let editingCartIndex = null;
+
         function showToast(msg) {
             const toast = document.getElementById('toast');
             toast.textContent = msg;
@@ -211,7 +283,166 @@
             const qty = row.querySelector('span');
             const next = Math.max(1, Number(qty.textContent) + delta);
             qty.textContent = next;
+            updateCartTotal();
         }
+
+        function getCartRows() {
+            return Array.from(document.querySelectorAll('.cart-item-row'));
+        }
+
+        function updateCartTotal() {
+            let total = 0;
+            getCartRows().forEach(function (row) {
+                const checked = row.querySelector('.cart-item-check');
+                if (!checked || !checked.checked) return;
+                const price = Number(row.dataset.price || 0);
+                const qty = Number((row.querySelector('.cart-qty') || {}).textContent || 1);
+                total += price * qty;
+            });
+            document.getElementById('cart-total').textContent = '¥' + total.toFixed(2);
+            syncCartChecks();
+        }
+
+        function syncCartChecks() {
+            const rows = getCartRows();
+            const checkedRows = rows.filter(function (row) {
+                const input = row.querySelector('.cart-item-check');
+                return input && input.checked;
+            });
+            document.querySelectorAll('.absolute.bottom-\\[68px\\] input.custom-checkbox').forEach(function (input) {
+                input.checked = rows.length > 0 && checkedRows.length === rows.length;
+            });
+            document.querySelectorAll('.series-check').forEach(function (input) {
+                const seriesRows = getSeriesRows(input);
+                input.checked = seriesRows.length > 0 && seriesRows.every(function (row) {
+                    const check = row.querySelector('.cart-item-check');
+                    return check && check.checked;
+                });
+            });
+        }
+
+        function toggleAllCart(input) {
+            document.querySelectorAll('.cart-item-check').forEach(function (item) {
+                item.checked = input.checked;
+            });
+            document.querySelectorAll('.series-check').forEach(function (item) {
+                item.checked = input.checked;
+            });
+            updateCartTotal();
+        }
+
+        function getSeriesRows(input) {
+            const rows = [];
+            let node = input.closest('.flex.items-center.justify-between');
+            while (node && node.nextElementSibling) {
+                node = node.nextElementSibling;
+                if (node.classList.contains('items-center') && node.classList.contains('justify-between')) break;
+                if (node.classList.contains('cart-item-row')) rows.push(node);
+            }
+            return rows;
+        }
+
+        function toggleSeriesCart(input) {
+            getSeriesRows(input).forEach(function (node) {
+                const check = node.querySelector('.cart-item-check');
+                if (check) check.checked = input.checked;
+            });
+            updateCartTotal();
+        }
+
+        function readCartItems() {
+            try {
+                return JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+            } catch (error) {
+                return [];
+            }
+        }
+
+        function writeCartItems(items) {
+            localStorage.setItem(CART_KEY, JSON.stringify(items));
+        }
+
+        function setConfigOption(group, value) {
+            document.querySelectorAll('[data-config-group="' + group + '"] .cart-option').forEach(function (button) {
+                button.classList.toggle('active', button.dataset.value === value);
+            });
+        }
+
+        function getConfigOption(group) {
+            const active = document.querySelector('[data-config-group="' + group + '"] .cart-option.active');
+            return active ? active.dataset.value : '';
+        }
+
+        document.querySelectorAll('.cart-option').forEach(function (button) {
+            button.addEventListener('click', function () {
+                const group = this.closest('[data-config-group]');
+                group.querySelectorAll('.cart-option').forEach(function (item) {
+                    item.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+        function openCartConfigEditor(trigger, cartIndex) {
+            editingConfigTrigger = trigger;
+            editingCartIndex = Number.isInteger(cartIndex) ? cartIndex : null;
+            const config = editingCartIndex !== null ? (readCartItems()[editingCartIndex] || {}) : trigger.dataset;
+
+            setConfigOption('size', config.size || 'M');
+            setConfigOption('scent', config.scent || '玫瑰木');
+            setConfigOption('carving', config.carving || '水波纹');
+            setConfigOption('package', config.package || '精品包装');
+
+            const drawer = document.getElementById('cart-config-drawer');
+            const sheet = document.getElementById('cart-config-sheet');
+            drawer.classList.remove('hidden');
+            drawer.classList.add('flex');
+            void drawer.offsetWidth;
+            drawer.classList.add('opacity-100');
+            sheet.classList.remove('translate-y-full');
+        }
+
+        function closeCartConfigEditor() {
+            const drawer = document.getElementById('cart-config-drawer');
+            const sheet = document.getElementById('cart-config-sheet');
+            sheet.classList.add('translate-y-full');
+            drawer.classList.remove('opacity-100');
+            setTimeout(function () {
+                drawer.classList.add('hidden');
+                drawer.classList.remove('flex');
+            }, 200);
+        }
+
+        function confirmCartConfig() {
+            const config = {
+                size: getConfigOption('size'),
+                scent: getConfigOption('scent'),
+                carving: getConfigOption('carving'),
+                package: getConfigOption('package')
+            };
+
+            if (editingCartIndex !== null) {
+                const items = readCartItems();
+                if (items[editingCartIndex]) {
+                    Object.assign(items[editingCartIndex], config);
+                    writeCartItems(items);
+                    window.renderPrototypeCartExtras();
+                }
+            } else if (editingConfigTrigger) {
+                Object.assign(editingConfigTrigger.dataset, config);
+                const text = editingConfigTrigger.querySelector('.config-text');
+                if (text) text.textContent = config.size + ' | ' + config.scent + ' | ' + config.carving;
+            }
+
+            closeCartConfigEditor();
+            showToast('商品信息已更新');
+            lucide.createIcons();
+        }
+
+        document.addEventListener('change', function (event) {
+            if (event.target.classList.contains('cart-item-check')) updateCartTotal();
+        });
+        document.addEventListener('DOMContentLoaded', updateCartTotal);
     </script>
     <script src="assets/prototype-state.js"></script>
 </body>

@@ -2,11 +2,28 @@
 
 微信小程序商城高保真静态视觉稿，产品为德国手工香薰雕刻蜡烛。
 
+## 当前开发分支
+
+当前主要迭代分支为 `codex/new-html-prototype`，新版原型位于：
+
+```text
+new/商城首页.html
+```
+
+旧版视觉稿仍保留在：
+
+```text
+mini-program-visual-prototype/index.html
+```
+
+新版不会覆盖旧版，后续体验迭代优先在 `new/` 下进行。
+
 ## 当前交付
 
-- 入口页：`mini-program-visual-prototype/index.html`
+- 新版入口页：`new/商城首页.html`
+- 旧版入口页：`mini-program-visual-prototype/index.html`
 - 当前阶段：静态 HTML 视觉稿，不包含真实小程序、后端、支付、登录、库存或客服接口。
-- 页面数量：24 个 HTML 页面，包含 `address.html`、`invoice.html`、`policy.html` 等账户基础能力页。
+- 新版页面数量：22 个 HTML 页面，包含商品、购物车、付款、订单、地址、发票、积分、优惠券、收藏浏览、评价和渠道申请等静态页面。
 - 默认身份：零售买家；经典系列和渠道批发价仅在批发路径中出现。
 - 视觉方向：Wax Atelier，手工奢品、礼品橱窗、克制交易、香氛生活方式、批发渠道可信感。
 
@@ -40,7 +57,13 @@
 
 ## 使用方式
 
-直接在浏览器打开：
+新版直接在浏览器打开：
+
+```text
+new/商城首页.html
+```
+
+旧版直接在浏览器打开：
 
 ```text
 mini-program-visual-prototype/index.html
@@ -63,6 +86,10 @@ http://127.0.0.1:5174/index.html
 
 ## 验证记录
 
+- 新版 `new/assets/prototype-state.js` 已通过语法检查。
+- 新版 22 个 HTML 页面内联脚本已做静态解析检查。
+- 新版本地 `.html` 页面引用已检查，当前未发现缺失目标页。
+- 新版 `git diff --check` 已检查，仅有 Windows 换行提示，无空白错误。
 - `mini-program-visual-prototype/assets/app.js` 已通过语法检查。
 - 此前关键页面已做过 390 x 844 移动视口检查；本轮以静态语法和文案残留检查为主。
 - 本轮已运行 `node --check mini-program-visual-prototype/assets/app.js`。

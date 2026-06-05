@@ -48,6 +48,11 @@
             background-color: #8FA396;
             border-radius: 0 4px 4px 0;
         }
+        .festival-tag.active {
+            background-color: #8FA396;
+            color: #FFFFFF;
+            border-color: #8FA396;
+        }
     </style>
 </head>
 <body class="flex justify-center h-screen overflow-hidden text-brand-text">
@@ -91,6 +96,17 @@
                 <div class="w-full h-24 bg-[#EBE7DF] rounded-lg mb-4 flex flex-col items-center justify-center relative overflow-hidden">
                     <i data-lucide="image" class="w-6 h-6 text-brand-sage/40 mb-1"></i>
                     <span id="category-title" class="text-xs text-brand-sage/60 font-serif font-bold">进阶系列</span>
+                </div>
+
+                <div id="festival-filter" class="hidden mb-3">
+                    <div class="flex overflow-x-auto no-scrollbar gap-2">
+                        <button class="festival-tag active flex-shrink-0 px-3 py-1 text-xs rounded-full border border-gray-200 text-brand-text" onclick="selectFestivalTag(this, 'all')">全部</button>
+                        <button class="festival-tag flex-shrink-0 px-3 py-1 text-xs rounded-full border border-gray-200 text-brand-text" onclick="selectFestivalTag(this, 'spring')">春节</button>
+                        <button class="festival-tag flex-shrink-0 px-3 py-1 text-xs rounded-full border border-gray-200 text-brand-text" onclick="selectFestivalTag(this, 'valentine')">情人节</button>
+                        <button class="festival-tag flex-shrink-0 px-3 py-1 text-xs rounded-full border border-gray-200 text-brand-text" onclick="selectFestivalTag(this, 'mother')">母亲节</button>
+                        <button class="festival-tag flex-shrink-0 px-3 py-1 text-xs rounded-full border border-gray-200 text-brand-text" onclick="selectFestivalTag(this, 'midautumn')">中秋</button>
+                        <button class="festival-tag flex-shrink-0 px-3 py-1 text-xs rounded-full border border-gray-200 text-brand-text" onclick="selectFestivalTag(this, 'christmas')">圣诞</button>
+                    </div>
                 </div>
 
                 <div class="flex justify-between items-center mb-3">
@@ -224,10 +240,10 @@
                 count: '共 16 件商品',
                 tone: 'Festival',
                 items: [
-                    { name: '暖金节庆', price: '¥329', bg: '#F3E5D8' },
-                    { name: '红白限定', price: '¥359', bg: '#EEE5E8' },
-                    { name: '冬日礼盒', price: '¥399', bg: '#E8EAE6' },
-                    { name: '花束双支', price: '¥459', bg: '#FAF5EA' }
+                    { name: '暖金节庆', price: '¥329', bg: '#F3E5D8', tags: ['spring', 'midautumn'] },
+                    { name: '红白限定', price: '¥359', bg: '#EEE5E8', tags: ['valentine', 'christmas'] },
+                    { name: '冬日礼盒', price: '¥399', bg: '#E8EAE6', tags: ['christmas'] },
+                    { name: '花束双支', price: '¥459', bg: '#FAF5EA', tags: ['mother', 'valentine'] }
                 ]
             },
             classic: {
@@ -242,10 +258,20 @@
             }
         };
 
+        let currentCategory = 'advanced';
+        let activeFestivalTag = 'all';
+
         function renderCategory(category) {
             const data = categoryData[category] || categoryData.advanced;
+            currentCategory = category;
             document.getElementById('category-title').textContent = data.tone;
-            document.getElementById('category-count').textContent = data.count;
+            document.getElementById('festival-filter').classList.toggle('hidden', category !== 'festival');
+            const visibleItems = category === 'festival' && activeFestivalTag !== 'all'
+                ? data.items.filter(function (item) { return item.tags && item.tags.includes(activeFestivalTag); })
+                : data.items;
+            document.getElementById('category-count').textContent = category === 'festival' && activeFestivalTag !== 'all'
+                ? '共 ' + visibleItems.length + ' 件商品'
+                : data.count;
             const grid = document.getElementById('category-grid');
             const notice = data.locked ? [
                 '<div class="col-span-2 rounded-xl border border-brand-sage/20 bg-brand-sage/10 p-4 mb-1">',
@@ -254,8 +280,8 @@
                 '<button onclick="goPage(&quot;渠道合作申请.html&quot;)" class="px-4 py-2 rounded-full bg-brand-sage text-white text-xs">申请渠道身份</button>',
                 '</div>'
             ].join('') : '';
-            grid.innerHTML = notice + data.items.map(function (item) {
-                const click = data.locked ? 'goPage(&quot;渠道合作申请.html&quot;)' : 'goPage(&quot;商品详情页.html&quot;)';
+            grid.innerHTML = notice + visibleItems.map(function (item) {
+                const click = data.locked ? 'goPage(&quot;渠道合作申请.html&quot;)' : 'goPage(&quot;商品详情页.html?series=' + category + '&quot;)';
                 const action = data.locked
                     ? '<span class="absolute bottom-2 right-2 text-[10px] bg-white/90 text-brand-sage rounded-full px-2 py-1">渠道</span>'
                     : '<button onclick="addPrototypeCart(event, &quot;' + item.name + '&quot;, &quot;' + item.price + '&quot;)" class="absolute bottom-2 right-2 w-7 h-7 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-sm text-brand-text hover:bg-brand-sage hover:text-white transition-colors z-10"><i data-lucide="plus" class="w-4 h-4"></i></button>';
@@ -280,6 +306,15 @@
             });
             el.classList.add('active');
             renderCategory(category);
+        }
+
+        function selectFestivalTag(button, tag) {
+            activeFestivalTag = tag;
+            document.querySelectorAll('.festival-tag').forEach(function (item) {
+                item.classList.remove('active');
+            });
+            button.classList.add('active');
+            renderCategory(currentCategory);
         }
 
         renderCategory('advanced');

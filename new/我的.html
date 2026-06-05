@@ -48,6 +48,20 @@
         </div>
 
         <main class="flex-1 overflow-y-auto no-scrollbar pb-24 px-4 -mt-4 z-10">
+            <div class="bg-white rounded-xl shadow-sm p-3 mb-4 grid grid-cols-3 gap-2">
+                <div class="flex flex-col items-center gap-1 cursor-pointer" onclick="goPage('会员积分.html')">
+                    <span class="text-base font-bold font-serif text-brand-text">1280</span>
+                    <span class="text-[11px] text-gray-500">积分</span>
+                </div>
+                <div class="flex flex-col items-center gap-1 cursor-pointer" onclick="goPage('优惠券.html')">
+                    <span class="text-base font-bold font-serif text-brand-text">2 张</span>
+                    <span class="text-[11px] text-gray-500">优惠券</span>
+                </div>
+                <div class="flex flex-col items-center gap-1 cursor-pointer" onclick="goPage('收藏浏览.html')">
+                    <span class="text-base font-bold font-serif text-brand-text">12</span>
+                    <span class="text-[11px] text-gray-500">收藏</span>
+                </div>
+            </div>
             
             <!-- 订单概览 -->
             <div class="bg-white rounded-xl shadow-sm p-4 mb-4">
@@ -55,23 +69,27 @@
                     <span class="font-bold text-sm">我的订单</span>
                     <span class="text-xs text-gray-400 flex items-center cursor-pointer" onclick="goPage('订单列表.html')">全部订单 <i data-lucide="chevron-right" class="w-3 h-3 ml-0.5"></i></span>
                 </div>
-                <div class="flex justify-between px-2">
+                <div class="grid grid-cols-5 gap-y-3 px-1">
                     <div class="flex flex-col items-center gap-1.5 relative cursor-pointer" onclick="goPage('订单列表.html#unpaid')">
-                        <i data-lucide="credit-card" class="w-6 h-6 text-gray-600"></i>
+                        <i data-lucide="credit-card" class="w-5 h-5 text-gray-600"></i>
                         <span class="text-[11px] text-gray-600">待付款</span>
                     </div>
                     <div class="flex flex-col items-center gap-1.5 relative cursor-pointer" onclick="goPage('订单列表.html#unshipped')">
-                        <i data-lucide="package" class="w-6 h-6 text-gray-600"></i>
+                        <i data-lucide="package" class="w-5 h-5 text-gray-600"></i>
                         <span class="text-[11px] text-gray-600">待发货</span>
                         <span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-brand-berry text-white text-[8px] rounded-full flex items-center justify-center">1</span>
                     </div>
                     <div class="flex flex-col items-center gap-1.5 relative cursor-pointer" onclick="goPage('订单列表.html#unreceived')">
-                        <i data-lucide="truck" class="w-6 h-6 text-gray-600"></i>
+                        <i data-lucide="truck" class="w-5 h-5 text-gray-600"></i>
                         <span class="text-[11px] text-gray-600">待收货</span>
                     </div>
-                    <div class="flex flex-col items-center gap-1.5 relative cursor-pointer" onclick="goPage('订单列表.html#completed')">
-                        <i data-lucide="message-square" class="w-6 h-6 text-gray-600"></i>
-                        <span class="text-[11px] text-gray-600">评价</span>
+                    <div class="flex flex-col items-center gap-1.5 relative cursor-pointer" onclick="goPage('评价列表.html#pending')">
+                        <i data-lucide="message-square" class="w-5 h-5 text-gray-600"></i>
+                        <span class="text-[11px] text-gray-600">待评价</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1.5 relative cursor-pointer" onclick="goPage('订单列表.html#refund')">
+                        <i data-lucide="rotate-ccw" class="w-5 h-5 text-gray-600"></i>
+                        <span class="text-[11px] text-gray-600">退款/售后</span>
                     </div>
                 </div>
             </div>
@@ -86,35 +104,23 @@
                 <i data-lucide="chevron-right" class="w-4 h-4"></i>
             </div>
 
-            <!-- 基础服务 3项 -->
-            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-                <div class="flex items-center justify-between p-4 border-b border-gray-50 cursor-pointer" onclick="goPage('地址管理.html')">
-                    <div class="flex items-center gap-3">
-                        <i data-lucide="map-pin" class="w-5 h-5 text-gray-500"></i>
-                        <span class="text-sm">地址管理</span>
-                    </div>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-gray-300"></i>
+            <!-- 基础服务 -->
+            <div class="bg-white rounded-xl shadow-sm p-3 grid grid-cols-4 gap-2">
+                <div class="flex flex-col items-center gap-1.5 py-2 cursor-pointer" onclick="goPage('地址管理.html')">
+                    <i data-lucide="map-pin" class="w-5 h-5 text-gray-500"></i>
+                    <span class="text-[11px] text-gray-600">地址</span>
                 </div>
-                <div class="flex items-center justify-between p-4 border-b border-gray-50 cursor-pointer" onclick="goPage('发票管理.html')">
-                    <div class="flex items-center gap-3">
-                        <i data-lucide="receipt" class="w-5 h-5 text-gray-500"></i>
-                        <span class="text-sm">发票管理</span>
-                    </div>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-gray-300"></i>
+                <div class="flex flex-col items-center gap-1.5 py-2 cursor-pointer" onclick="goPage('发票管理.html')">
+                    <i data-lucide="receipt" class="w-5 h-5 text-gray-500"></i>
+                    <span class="text-[11px] text-gray-600">发票</span>
                 </div>
-                <div class="flex items-center justify-between p-4 border-b border-gray-50 cursor-pointer" onclick="goPage('客服售后.html')">
-                    <div class="flex items-center gap-3">
-                        <i data-lucide="headphones" class="w-5 h-5 text-gray-500"></i>
-                        <span class="text-sm">客服与售后</span>
-                    </div>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-gray-300"></i>
+                <div class="flex flex-col items-center gap-1.5 py-2 cursor-pointer" onclick="goPage('客服售后.html')">
+                    <i data-lucide="headphones" class="w-5 h-5 text-gray-500"></i>
+                    <span class="text-[11px] text-gray-600">客服</span>
                 </div>
-                <div class="flex items-center justify-between p-4 cursor-pointer" onclick="goPage('政策协议.html')">
-                    <div class="flex items-center gap-3">
-                        <i data-lucide="file-text" class="w-5 h-5 text-gray-500"></i>
-                        <span class="text-sm">政策与协议</span>
-                    </div>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-gray-300"></i>
+                <div class="flex flex-col items-center gap-1.5 py-2 cursor-pointer" onclick="goPage('政策协议.html')">
+                    <i data-lucide="file-text" class="w-5 h-5 text-gray-500"></i>
+                    <span class="text-[11px] text-gray-600">政策</span>
                 </div>
             </div>
             
